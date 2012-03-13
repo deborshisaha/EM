@@ -13,7 +13,6 @@
 		34E44C61150F2248008CEA8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C5F150F2248008CEA8C /* InfoPlist.strings */; };
 		34E44C63150F2248008CEA8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C62150F2248008CEA8C /* main.m */; };
 		34E44C67150F2248008CEA8C /* EMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C66150F2248008CEA8C /* EMAppDelegate.m */; };
-		34E44C6A150F2248008CEA8C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C68150F2248008CEA8C /* MainStoryboard.storyboard */; };
 		34E44C6D150F2248008CEA8C /* EMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C6C150F2248008CEA8C /* EMFirstViewController.m */; };
 		34E44C6F150F2248008CEA8C /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C6E150F2248008CEA8C /* first.png */; };
 		34E44C71150F2248008CEA8C /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C70150F2248008CEA8C /* first@2x.png */; };
@@ -25,6 +24,7 @@
 		34E44C82150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C88150F2248008CEA8C /* InfoPlist.strings */; };
 		34E44C8D150F2249008CEA8C /* Exercise_ManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */; };
+		34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,27 +42,27 @@
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34E44C5A150F2248008CEA8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		34E44C5E150F2248008CEA8C /* Exercise Manager-Info.plist */ = {isa = PBXFileReference; path = "Exercise Manager-Info.plist"; sourceTree = "<group>"; };
+		34E44C5E150F2248008CEA8C /* Exercise Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exercise Manager-Info.plist"; sourceTree = "<group>"; };
 		34E44C60150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34E44C62150F2248008CEA8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		34E44C64150F2248008CEA8C /* Exercise Manager-Prefix.pch */ = {isa = PBXFileReference; path = "Exercise Manager-Prefix.pch"; sourceTree = "<group>"; };
-		34E44C65150F2248008CEA8C /* EMAppDelegate.h */ = {isa = PBXFileReference; path = EMAppDelegate.h; sourceTree = "<group>"; };
+		34E44C64150F2248008CEA8C /* Exercise Manager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Exercise Manager-Prefix.pch"; sourceTree = "<group>"; };
+		34E44C65150F2248008CEA8C /* EMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMAppDelegate.h; sourceTree = "<group>"; };
 		34E44C66150F2248008CEA8C /* EMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMAppDelegate.m; sourceTree = "<group>"; };
-		34E44C69150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		34E44C6B150F2248008CEA8C /* EMFirstViewController.h */ = {isa = PBXFileReference; path = EMFirstViewController.h; sourceTree = "<group>"; };
+		34E44C6B150F2248008CEA8C /* EMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMFirstViewController.h; sourceTree = "<group>"; };
 		34E44C6C150F2248008CEA8C /* EMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMFirstViewController.m; sourceTree = "<group>"; };
 		34E44C6E150F2248008CEA8C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		34E44C70150F2248008CEA8C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		34E44C72150F2248008CEA8C /* EMSecondViewController.h */ = {isa = PBXFileReference; path = EMSecondViewController.h; sourceTree = "<group>"; };
+		34E44C72150F2248008CEA8C /* EMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSecondViewController.h; sourceTree = "<group>"; };
 		34E44C73150F2248008CEA8C /* EMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSecondViewController.m; sourceTree = "<group>"; };
 		34E44C75150F2248008CEA8C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		34E44C77150F2248008CEA8C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		34E44C7E150F2248008CEA8C /* Exercise ManagerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Exercise ManagerTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C7F150F2248008CEA8C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		34E44C87150F2248008CEA8C /* Exercise ManagerTests-Info.plist */ = {isa = PBXFileReference; path = "Exercise ManagerTests-Info.plist"; sourceTree = "<group>"; };
+		34E44C87150F2248008CEA8C /* Exercise ManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exercise ManagerTests-Info.plist"; sourceTree = "<group>"; };
 		34E44C89150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		34E44C8B150F2248008CEA8C /* Exercise_ManagerTests.h */ = {isa = PBXFileReference; path = Exercise_ManagerTests.h; sourceTree = "<group>"; };
+		34E44C8B150F2248008CEA8C /* Exercise_ManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exercise_ManagerTests.h; sourceTree = "<group>"; };
 		34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Exercise_ManagerTests.m; sourceTree = "<group>"; };
+		34E44C97150F34F2008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +122,9 @@
 		34E44C5C150F2248008CEA8C /* Exercise Manager */ = {
 			isa = PBXGroup;
 			children = (
+				34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */,
 				34E44C65150F2248008CEA8C /* EMAppDelegate.h */,
 				34E44C66150F2248008CEA8C /* EMAppDelegate.m */,
-				34E44C68150F2248008CEA8C /* MainStoryboard.storyboard */,
 				34E44C6B150F2248008CEA8C /* EMFirstViewController.h */,
 				34E44C6C150F2248008CEA8C /* EMFirstViewController.m */,
 				34E44C6E150F2248008CEA8C /* first.png */,
@@ -240,11 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E44C61150F2248008CEA8C /* InfoPlist.strings in Resources */,
-				34E44C6A150F2248008CEA8C /* MainStoryboard.storyboard in Resources */,
 				34E44C6F150F2248008CEA8C /* first.png in Resources */,
 				34E44C71150F2248008CEA8C /* first@2x.png in Resources */,
 				34E44C76150F2248008CEA8C /* second.png in Resources */,
 				34E44C78150F2248008CEA8C /* second@2x.png in Resources */,
+				34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,20 +313,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		34E44C68150F2248008CEA8C /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				34E44C69150F2248008CEA8C /* en */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
 		34E44C88150F2248008CEA8C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				34E44C89150F2248008CEA8C /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34E44C97150F34F2008CEA8C /* en */,
+			);
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
