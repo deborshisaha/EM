@@ -12,14 +12,5 @@
 
 @end
 
-@implementation AbsExercise
-@synthesize abs_exercise, abs_id;
 
-
--(id) initWithName:(NSString *)name{
-    self.abs_exercise = name;
-    return self;
-}
-
-@end
 

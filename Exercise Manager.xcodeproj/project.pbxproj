@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343223D8151062340093FB7F /* EMExercises.m in Sources */ = {isa = PBXBuildFile; fileRef = 343223D7151062340093FB7F /* EMExercises.m */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
@@ -25,8 +26,7 @@
 		34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C88150F2248008CEA8C /* InfoPlist.strings */; };
 		34E44C8D150F2249008CEA8C /* Exercise_ManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */; };
 		34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */; };
-		34E44C9B150FF429008CEA8C /* EMAbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C9A150FF429008CEA8C /* EMAbsViewController.m */; };
-		34E44CA1150FF49C008CEA8C /* EMShoulderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */; };
+		34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */; };
 		34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */; };
 		34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */; };
 		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -44,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
+		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
 		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,10 +71,8 @@
 		34E44C8B150F2248008CEA8C /* Exercise_ManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exercise_ManagerTests.h; sourceTree = "<group>"; };
 		34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Exercise_ManagerTests.m; sourceTree = "<group>"; };
 		34E44C97150F34F2008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		34E44C99150FF429008CEA8C /* EMAbsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMAbsViewController.h; sourceTree = "<group>"; };
-		34E44C9A150FF429008CEA8C /* EMAbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAbsViewController.m; sourceTree = "<group>"; };
-		34E44C9F150FF49C008CEA8C /* EMShoulderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMShoulderViewController.h; sourceTree = "<group>"; };
-		34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMShoulderViewController.m; sourceTree = "<group>"; };
+		34E44C99150FF429008CEA8C /* EMGenericExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGenericExercisesViewController.h; sourceTree = "<group>"; };
+		34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMGenericExercisesViewController.m; sourceTree = "<group>"; };
 		34E44CA2150FF4D5008CEA8C /* EMChestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChestViewController.h; sourceTree = "<group>"; };
 		34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMChestViewController.m; sourceTree = "<group>"; };
 		34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExerciseManager.sqlite; sourceTree = "<group>"; };
@@ -155,12 +155,12 @@
 				34E44C75150F2248008CEA8C /* second.png */,
 				34E44C77150F2248008CEA8C /* second@2x.png */,
 				34E44C5D150F2248008CEA8C /* Supporting Files */,
-				34E44C99150FF429008CEA8C /* EMAbsViewController.h */,
-				34E44C9A150FF429008CEA8C /* EMAbsViewController.m */,
-				34E44C9F150FF49C008CEA8C /* EMShoulderViewController.h */,
-				34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */,
+				34E44C99150FF429008CEA8C /* EMGenericExercisesViewController.h */,
+				34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */,
 				34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */,
 				34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */,
+				343223D6151062340093FB7F /* EMExercises.h */,
+				343223D7151062340093FB7F /* EMExercises.m */,
 			);
 			path = "Exercise Manager";
 			sourceTree = "<group>";
@@ -311,10 +311,10 @@
 				34E44C67150F2248008CEA8C /* EMAppDelegate.m in Sources */,
 				34E44C6D150F2248008CEA8C /* EMFirstViewController.m in Sources */,
 				34E44C74150F2248008CEA8C /* EMSecondViewController.m in Sources */,
-				34E44C9B150FF429008CEA8C /* EMAbsViewController.m in Sources */,
-				34E44CA1150FF49C008CEA8C /* EMShoulderViewController.m in Sources */,
+				34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */,
 				34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */,
 				34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */,
+				343223D8151062340093FB7F /* EMExercises.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +484,7 @@
 				34E44C92150F2249008CEA8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34E44C93150F2249008CEA8C /* Build configuration list for PBXNativeTarget "Exercise ManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +493,7 @@
 				34E44C95150F2249008CEA8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
