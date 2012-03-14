@@ -144,21 +144,21 @@
             </objects>
             <point key="canvasLocation" x="1693" y="912"/>
         </scene>
-        <!--Generic Exercises View Controller - Abs-->
+        <!--Generic Exercises View Controller - Shoulder-->
         <scene sceneID="zCG-m7-PrE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGX-eR-Rj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vkw-Kj-FuF" customClass="EMGenericExercisesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JUB-tJ-vlF">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JUB-tJ-vlF">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="5wA-iL-bDX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="5wA-iL-bDX">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -169,7 +169,7 @@
                             <outlet property="delegate" destination="vkw-Kj-FuF" id="AcZ-2u-k3T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Abs" id="Wcg-r7-5IT">
+                    <navigationItem key="navigationItem" title="Shoulder" id="Wcg-r7-5IT">
                         <barButtonItem key="backBarButtonItem" title="Exercises" id="Z1H-Dp-vbM"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -178,7 +178,7 @@
             </objects>
             <point key="canvasLocation" x="2236" y="111"/>
         </scene>
-        <!--Generic Exercises View Controller - Shoulder-->
+        <!--Generic Exercises View Controller - Abs-->
         <scene sceneID="TPg-eA-NvC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgt-mp-L2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +188,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bkU-7N-gUJ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bkU-7N-gUJ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -203,7 +203,7 @@
                             <outlet property="delegate" destination="8Cn-WD-BMQ" id="CcY-HD-kDQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shoulder" id="g9Q-jl-IM4">
+                    <navigationItem key="navigationItem" title="Abs" id="g9Q-jl-IM4">
                         <barButtonItem key="backBarButtonItem" title="Exercises" id="6OA-VQ-LBR"/>
                     </navigationItem>
                 </tableViewController>

@@ -28,9 +28,6 @@
     [super viewDidLoad];
     NSLog(@"Function : %s", __PRETTY_FUNCTION__);
     
-    // check and create database function
-    //[self createDatabaseIfNotPresent];
-
     // Get the database adapter
     [EMSQLManager createDatabase];
 
@@ -78,6 +75,8 @@
     
     // Configure the cell...
     [cell setText:exercise.pSExerciseName];
+    //[cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+    [cell accessoryType];
     return cell;
 }
 
@@ -124,6 +123,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([cell accessoryType] == UITableViewCellAccessoryNone) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
