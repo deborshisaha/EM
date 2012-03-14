@@ -75,8 +75,7 @@
     
     // Configure the cell...
     [cell setText:exercise.pSExerciseName];
-    //[cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-    [cell accessoryType];
+
     return cell;
 }
 
@@ -127,8 +126,14 @@
     
     if ([cell accessoryType] == UITableViewCellAccessoryNone) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        
+        //Adding a table with date as table name
+        [EMSQLManager createTableWithName:[self getDate] andInsertExercise: cell.text];
+        
+        
     }else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
+        //Remove from the database
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -139,5 +144,13 @@
      */
 }
 
-
+- (NSString *)getDate{
+    NSDate *todaysDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"MM-dd-yyyy"];
+    NSString *stringDate = [formatter stringFromDate:todaysDate];
+    
+    return stringDate;
+}
 @end

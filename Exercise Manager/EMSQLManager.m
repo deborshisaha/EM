@@ -80,6 +80,24 @@
     NSFileManager *fileManager = [NSFileManager  defaultManager];
     [fileManager copyItemAtPath:databasePathFromApp toPath:[EMSQLManager getDatabasePath] error:nil];
 }
+
+
+// CREATING TABLE
++ (NSString *) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName
+{
+    sqlite3 *database;
+    
+    // Opening the data base
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
+        sqlite3_exec(database,[[NSString stringWithFormat:
+                                @"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, exercise_name TEXT)", tableName] UTF8String],NULL, NULL, NULL);
+    }
+    
+    // Adding the exercise name
+    sqlite3_exec(database, [[NSString stringWithFormat: @"INSERT INTO %@ (exercise_name) VALUES( %@ )", tableName, exerciseName] UTF8String], NULL, NULL, NULL); 
+    
+    sqlite3_close(database);
+}
 @end
 
 

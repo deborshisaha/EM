@@ -20,6 +20,7 @@
 + (BOOL) checkIfDatabaseIsPresent: (NSString *)pSDatabasePath;
 + (NSString *)getDatabasePath;
 + (NSString *)getDatabaseName;
++ (NSString *) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise;
 
 @end
 
