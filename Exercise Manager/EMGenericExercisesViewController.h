@@ -7,21 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <sqlite3.h>
 #include "EMExercises.h"
+#include "EMSQLManager.h"
 
 @interface EMGenericExercisesViewController : UITableViewController{
-    
-    NSString *pSDatabaseName;
-    NSString *pSDatabasePath;
     
     // Array to store Abs exercise objects
     NSMutableArray *pMAExercise;
 }
 
 @property(nonatomic, retain) NSMutableArray *pMAExercise;
-@property(nonatomic, retain) NSString *pSDatabaseName;
-@property(nonatomic, retain) NSString *pSDatabasePath;
-
-- (void) createDatabaseIfNotPresent;
 @end

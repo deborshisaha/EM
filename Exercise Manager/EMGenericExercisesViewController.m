@@ -10,7 +10,7 @@
 
 
 @implementation EMGenericExercisesViewController
-@synthesize pMAExercise, pSDatabaseName, pSDatabasePath;
+@synthesize pMAExercise;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,23 +27,15 @@
 {
     [super viewDidLoad];
     NSLog(@"Function : %s", __PRETTY_FUNCTION__);
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    pSDatabaseName = @"ExerciseManager.sqlite";
-    
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *documentsDir = [documentPaths objectAtIndex:0];
-    pSDatabasePath = [documentsDir stringByAppendingPathComponent:pSDatabaseName];
     
     // check and create database function
-    [self createDatabaseIfNotPresent];
-    
+    //[self createDatabaseIfNotPresent];
+
+    // Get the database adapter
+    [EMSQLManager createDatabase];
+
     // Read all abs exercises
-    [self readAbsExercisesFromDatabase];
+    pMAExercise = [EMSQLManager readExercisesFromDatabase];
     
     
 }
@@ -141,45 +133,5 @@
      */
 }
 
--(void) createDatabaseIfNotPresent{
-    NSLog(@"Function : %s", __PRETTY_FUNCTION__);
-    BOOL isDatabasePresent;
-    
-    NSFileManager *fileManager = [NSFileManager  defaultManager];
-    
-    isDatabasePresent = [fileManager fileExistsAtPath:pSDatabasePath];
-    
-    if (isDatabasePresent) {
-        return;
-    }
-    
-    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:pSDatabaseName];
-    
-    [fileManager copyItemAtPath:databasePathFromApp toPath:pSDatabasePath error:nil];
-}
 
--(void) readAbsExercisesFromDatabase{
-
-    sqlite3 *database;
-    
-    pMAExercise = [[NSMutableArray alloc] init];
-    
-    if(sqlite3_open([pSDatabasePath UTF8String], &database)== SQLITE_OK){
-
-        const char *sqlStatement = "select abs_exercise from AbsExercisesTable";
-        sqlite3_stmt *compiledStatement;
-        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK){
-            NSLog(@"sqlite3_prepare_v2 ");
-            while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
-                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
-                
-                EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName];
-                [pMAExercise   addObject: exercise];
-            }
-        }
-        sqlite3_finalize(compiledStatement);
-    }
-    sqlite3_close(database);
-    
-}
 @end

@@ -172,6 +172,8 @@
                     <navigationItem key="navigationItem" title="Abs" id="Wcg-r7-5IT">
                         <barButtonItem key="backBarButtonItem" title="Exercises" id="Z1H-Dp-vbM"/>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2236" y="111"/>

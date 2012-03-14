@@ -7,8 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
+#import "EMExercises.h"
 
-@interface EMSQLManager : NSObject
+@interface EMSQLManager : NSObject{
+    
+}
+
++ (void) createDatabase;
++ (NSMutableArray *) readExercisesFromDatabase;
++ (void)writeDatabaseForFirstTime;
++ (BOOL) checkIfDatabaseIsPresent: (NSString *)pSDatabasePath;
++ (NSString *)getDatabasePath;
++ (NSString *)getDatabaseName;
 
 @end
 
