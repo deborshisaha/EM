@@ -26,15 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Function : %s", __PRETTY_FUNCTION__);
     
     // Get the database adapter
     [EMSQLManager createDatabase];
 
     // Read all abs exercises
-    pMAExercise = [EMSQLManager readExercisesFromDatabase];
-    
-    
+    pMAExercise = [EMSQLManager readAllExercisesFromTable:@"AbsExercisesTable"];
 }
 
 - (void)viewDidUnload
@@ -53,15 +50,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"Function : %s", __PRETTY_FUNCTION__);
-
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Function : %s", __PRETTY_FUNCTION__);
     // Return the number of rows in the section.
     return pMAExercise.count;
 }
@@ -125,11 +119,17 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if ([cell accessoryType] == UITableViewCellAccessoryNone) {
+        
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         
+        NSString *date=[self getDate];
         //Adding a table with date as table name
-        [EMSQLManager createTableWithName:[self getDate] andInsertExercise: cell.text];
+        [EMSQLManager createTableWithName:date andInsertExercise: cell.text];
         
+        //Lsiting
+        pMAExercise = [EMSQLManager readAllExercisesFromTable:date];
+        
+        NSLog(@"Count of exercises %d", pMAExercise.count);
         
     }else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -148,7 +148,7 @@
     NSDate *todaysDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     
-    [formatter setDateFormat:@"MM-dd-yyyy"];
+    [formatter setDateFormat:@"MM_dd_yyyy"];
     NSString *stringDate = [formatter stringFromDate:todaysDate];
     
     return stringDate;

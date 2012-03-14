@@ -15,12 +15,12 @@
 }
 
 + (void) createDatabase;
-+ (NSMutableArray *) readExercisesFromDatabase;
++(NSMutableArray *) readAllExercisesFromTable:(NSString *)tableName;
 + (void)writeDatabaseForFirstTime;
 + (BOOL) checkIfDatabaseIsPresent: (NSString *)pSDatabasePath;
 + (NSString *)getDatabasePath;
 + (NSString *)getDatabaseName;
-+ (NSString *) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise;
++ (void) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise;
 
 @end
 

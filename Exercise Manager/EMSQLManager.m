@@ -10,7 +10,7 @@
 
 @implementation EMSQLManager
 
-+(void)  createDatabase{
++(void)  createDatabase {
      
     // Just need the database path
     NSString *pSDatabasePath = [EMSQLManager getDatabasePath]  ;
@@ -22,18 +22,20 @@
     }
 }
 
-+(NSMutableArray *) readExercisesFromDatabase
++(NSMutableArray *) readAllExercisesFromTable:(NSString *)tableName
 {
     
     sqlite3 *database;
     
     NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
     
-    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
-        
-        const char *sqlStatement = "select abs_exercise from AbsExercisesTable";
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
         sqlite3_stmt *compiledStatement;
-        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK){
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT * FROM '%@' ",tableName];
+        NSLog(@"Query String: %@", pSQueryString);
+        
+        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
             NSLog(@"sqlite3_prepare_v2 ");
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
@@ -83,18 +85,32 @@
 
 
 // CREATING TABLE
-+ (NSString *) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName
++ (void ) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName
 {
     sqlite3 *database;
+    sqlite3_stmt *createStmt;
     
     // Opening the data base
     if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
-        sqlite3_exec(database,[[NSString stringWithFormat:
-                                @"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, exercise_name TEXT)", tableName] UTF8String],NULL, NULL, NULL);
+        
+        NSString *pSQueryString = [NSString stringWithFormat:
+                                   @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise_name TEXT)", tableName];
+        NSLog(@"Query String: %@", pSQueryString);
+        
+        if(sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, NULL) == SQLITE_OK)
+        {
+                NSLog(@"Table create successful");
+        }
+        
+        
+        // Adding the exercise name
+        pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exercise_name) VALUES( '%@' )", tableName, exerciseName];
+        NSLog(@"Query String: %@", pSQueryString);
+        
+        if(sqlite3_exec(database, [pSQueryString UTF8String], NULL, NULL, NULL) == SQLITE_OK){
+            NSLog(@"Insert successful");
+        }
     }
-    
-    // Adding the exercise name
-    sqlite3_exec(database, [[NSString stringWithFormat: @"INSERT INTO %@ (exercise_name) VALUES( %@ )", tableName, exerciseName] UTF8String], NULL, NULL, NULL); 
     
     sqlite3_close(database);
 }
