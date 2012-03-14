@@ -144,17 +144,17 @@
             </objects>
             <point key="canvasLocation" x="1693" y="912"/>
         </scene>
-        <!--Table View Controller - Abs-->
+        <!--Abs View Controller - Abs-->
         <scene sceneID="zCG-m7-PrE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGX-eR-Rj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="vkw-Kj-FuF" sceneMemberID="viewController">
+                <tableViewController id="vkw-Kj-FuF" customClass="EMAbsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JUB-tJ-vlF">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5wA-iL-bDX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="5wA-iL-bDX">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -176,11 +176,11 @@
             </objects>
             <point key="canvasLocation" x="2236" y="111"/>
         </scene>
-        <!--Table View Controller - Shoulder-->
+        <!--Shoulder View Controller - Shoulder-->
         <scene sceneID="TPg-eA-NvC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgt-mp-L2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="8Cn-WD-BMQ" sceneMemberID="viewController">
+                <tableViewController id="8Cn-WD-BMQ" customClass="EMShoulderViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ikp-y7-zBF">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,8 +475,14 @@
         <image name="second" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="EMAbsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMAbsViewController.h"/>
+        </class>
         <class className="EMSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EMSecondViewController.h"/>
+        </class>
+        <class className="EMShoulderViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMShoulderViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

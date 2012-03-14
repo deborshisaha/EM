@@ -28,6 +28,9 @@
 		34E44C9B150FF429008CEA8C /* EMAbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C9A150FF429008CEA8C /* EMAbsViewController.m */; };
 		34E44CA1150FF49C008CEA8C /* EMShoulderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */; };
 		34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */; };
+		34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */; };
+		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,10 @@
 		34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMShoulderViewController.m; sourceTree = "<group>"; };
 		34E44CA2150FF4D5008CEA8C /* EMChestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChestViewController.h; sourceTree = "<group>"; };
 		34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMChestViewController.m; sourceTree = "<group>"; };
+		34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExerciseManager.sqlite; sourceTree = "<group>"; };
+		34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSQLManager.h; sourceTree = "<group>"; };
+		34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSQLManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */,
 				34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */,
 				34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */,
 				34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */,
@@ -120,6 +128,7 @@
 		34E44C55150F2248008CEA8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */,
 				34E44C56150F2248008CEA8C /* UIKit.framework */,
 				34E44C58150F2248008CEA8C /* Foundation.framework */,
 				34E44C5A150F2248008CEA8C /* CoreGraphics.framework */,
@@ -131,6 +140,7 @@
 		34E44C5C150F2248008CEA8C /* Exercise Manager */ = {
 			isa = PBXGroup;
 			children = (
+				34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */,
 				34E44CA2150FF4D5008CEA8C /* EMChestViewController.h */,
 				34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */,
 				34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */,
@@ -149,6 +159,8 @@
 				34E44C9A150FF429008CEA8C /* EMAbsViewController.m */,
 				34E44C9F150FF49C008CEA8C /* EMShoulderViewController.h */,
 				34E44CA0150FF49C008CEA8C /* EMShoulderViewController.m */,
+				34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */,
+				34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */,
 			);
 			path = "Exercise Manager";
 			sourceTree = "<group>";
@@ -260,6 +272,7 @@
 				34E44C76150F2248008CEA8C /* second.png in Resources */,
 				34E44C78150F2248008CEA8C /* second@2x.png in Resources */,
 				34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */,
+				34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +314,7 @@
 				34E44C9B150FF429008CEA8C /* EMAbsViewController.m in Sources */,
 				34E44CA1150FF49C008CEA8C /* EMShoulderViewController.m in Sources */,
 				34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */,
+				34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
