@@ -13,6 +13,7 @@
 @end
 
 @implementation EMSecondViewController
+@synthesize pMAExercise;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,16 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    myData = [NSMutableArray arrayWithObjects:
-              @"Abs", 
-              @"Shoulders", 
-              @"Biceps", 
-              @"Triceps", 
-              @"Back",
-              @"Chest",
-              @"Legs",
-              @"Stretches",
-              nil];
+    
+    // Read all exercises
+    pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -66,7 +61,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [myData count];
+    return [pMAExercise count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,7 +71,7 @@
     
     // Configure the cell...
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-    [cellLabel setText:[myData objectAtIndex:indexPath.row]];
+    [cellLabel setText:[pMAExercise objectAtIndex:indexPath.row]];
 
     return cell;
 }
@@ -148,7 +143,7 @@
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         
         // Pass the name and index of our film
-        [vc setSelectedItem:[NSString stringWithFormat:@"%@", [myData objectAtIndex:selectedIndex]]];
+        [vc setSelectedItem:[NSString stringWithFormat:@"%@", [pMAExercise objectAtIndex:selectedIndex]]];
     }
 }
 

@@ -24,7 +24,6 @@
 
 +(NSMutableArray *) readAllExercisesFromTable:(NSString *)tableName
 {
-    
     sqlite3 *database;
     
     NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
@@ -47,6 +46,7 @@
         sqlite3_finalize(compiledStatement);
     }
     sqlite3_close(database);
+    NSLog(@"Number of exercise %d", [pMAExercise count]);
     
     return pMAExercise;
 }
@@ -56,6 +56,13 @@
     // This should be a constant somewhere
     NSString *pSDatabaseName = @"ExerciseManager.sqlite";
     return pSDatabaseName;
+}
+
+// Probably we have to have a Singleton class
++ (void)setDatabaseName: (NSString *) databaseName
+{
+    // This should be a constant somewhere
+    NSString *pSDatabaseName = databaseName;
 }
 
 + (NSString *)getDatabasePath
@@ -84,24 +91,57 @@
 }
 
 
-// CREATING TABLE
+// TABLE
+
++ (int) isTablePresentWithName: (NSString *) tableName
+{
+    sqlite3 *database;
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
+        
+        sqlite3_stmt *compiledStatement;
+        NSString *pSQueryString = [NSString stringWithFormat:
+                                   @"SELECT COUNT(*) FROM 'sqlite_master' WHERE type='table' AND name='%@'", tableName];
+        NSLog(@"Query String: %@", pSQueryString);
+        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(compiledStatement)==SQLITE_ROW) {
+                int count = sqlite3_column_int(compiledStatement, 0);
+                NSLog(@" count : %d", count);
+                sqlite3_finalize(compiledStatement);
+                sqlite3_close(database);
+                return count;
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    return -1;
+}
+
 + (void ) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName
 {
     sqlite3 *database;
-    sqlite3_stmt *createStmt;
+    //sqlite3_stmt *createStmt;
     
     // Opening the data base
     if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
         
         NSString *pSQueryString = [NSString stringWithFormat:
-                                   @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise_name TEXT)", tableName];
+                                   @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise TEXT)", tableName];
         NSLog(@"Query String: %@", pSQueryString);
         
-        if(sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, NULL) == SQLITE_OK)
+        int error_code = sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, NULL);
+        if(error_code == SQLITE_OK)
         {
                 NSLog(@"Table create successful");
+        }else {
+            NSLog(@" *** ERROR CODE: %d ***", error_code);
+
         }
         
+        if (exerciseName == nil) {
+            return;
+        }
         
         // Adding the exercise name
         pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exercise_name) VALUES( '%@' )", tableName, exerciseName];
@@ -139,6 +179,7 @@
         sqlite3_finalize(compiledStatement);
     }
     sqlite3_close(database);
+    NSLog(@"Number of exercise %d", [pMAExercise count]);
     
     return pMAExercise;
 }

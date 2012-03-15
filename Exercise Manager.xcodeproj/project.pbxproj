@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		343223D8151062340093FB7F /* EMExercises.m in Sources */ = {isa = PBXBuildFile; fileRef = 343223D7151062340093FB7F /* EMExercises.m */; };
+		347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
 		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
+		347AFF071512B1E200735DD2 /* EMNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewCategoryViewController.h; sourceTree = "<group>"; };
+		347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewCategoryViewController.m; sourceTree = "<group>"; };
 		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */,
 				343223D6151062340093FB7F /* EMExercises.h */,
 				343223D7151062340093FB7F /* EMExercises.m */,
+				347AFF071512B1E200735DD2 /* EMNewCategoryViewController.h */,
+				347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */,
 			);
 			path = "Exercise Manager";
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */,
 				34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */,
 				343223D8151062340093FB7F /* EMExercises.m in Sources */,
+				347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
