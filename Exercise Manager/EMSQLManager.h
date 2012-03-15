@@ -21,6 +21,7 @@
 + (NSString *)getDatabasePath;
 + (NSString *)getDatabaseName;
 + (void) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise;
++ (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate;
 
 @end
 

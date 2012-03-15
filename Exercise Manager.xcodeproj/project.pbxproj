@@ -27,7 +27,6 @@
 		34E44C8D150F2249008CEA8C /* Exercise_ManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */; };
 		34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */; };
 		34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */; };
-		34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */; };
 		34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */; };
 		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */; };
@@ -73,8 +72,6 @@
 		34E44C97150F34F2008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		34E44C99150FF429008CEA8C /* EMGenericExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGenericExercisesViewController.h; sourceTree = "<group>"; };
 		34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMGenericExercisesViewController.m; sourceTree = "<group>"; };
-		34E44CA2150FF4D5008CEA8C /* EMChestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChestViewController.h; sourceTree = "<group>"; };
-		34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMChestViewController.m; sourceTree = "<group>"; };
 		34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExerciseManager.sqlite; sourceTree = "<group>"; };
 		34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSQLManager.h; sourceTree = "<group>"; };
@@ -141,8 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */,
-				34E44CA2150FF4D5008CEA8C /* EMChestViewController.h */,
-				34E44CA3150FF4D5008CEA8C /* EMChestViewController.m */,
 				34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */,
 				34E44C65150F2248008CEA8C /* EMAppDelegate.h */,
 				34E44C66150F2248008CEA8C /* EMAppDelegate.m */,
@@ -312,7 +307,6 @@
 				34E44C6D150F2248008CEA8C /* EMFirstViewController.m in Sources */,
 				34E44C74150F2248008CEA8C /* EMSecondViewController.m in Sources */,
 				34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */,
-				34E44CA4150FF4D5008CEA8C /* EMChestViewController.m in Sources */,
 				34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */,
 				343223D8151062340093FB7F /* EMExercises.m in Sources */,
 			);

@@ -10,7 +10,7 @@
 
 
 @implementation EMGenericExercisesViewController
-@synthesize pMAExercise;
+@synthesize pMAExercise, pMAExercisesDoneToday, selectedItem;;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -18,6 +18,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
        
     }
     return self;
@@ -30,8 +31,20 @@
     // Get the database adapter
     [EMSQLManager createDatabase];
 
-    // Read all abs exercises
+    // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"AbsExercisesTable"];
+    
+    // Get exercises done today
+    todaysDate=[self getDate];
+    
+    //pMAExercisesDoneToday = [EMSQLManager exercisesDoneOn:todaysDate ];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear: animated];
+    NSLog(@"selected Item %@", selectedItem);
+    self.navigationItem.title = selectedItem;
 }
 
 - (void)viewDidUnload
@@ -122,26 +135,21 @@
         
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         
-        NSString *date=[self getDate];
         //Adding a table with date as table name
-        [EMSQLManager createTableWithName:date andInsertExercise: cell.text];
+        [EMSQLManager createTableWithName:todaysDate andInsertExercise: cell.text];
         
         //Lsiting
-        pMAExercise = [EMSQLManager readAllExercisesFromTable:date];
+        pMAExercise = [EMSQLManager readAllExercisesFromTable:todaysDate];
         
         NSLog(@"Count of exercises %d", pMAExercise.count);
         
+        // Add to dictionary and create plist
+        
     }else {
+        
         [cell setAccessoryType:UITableViewCellAccessoryNone];
-        //Remove from the database
+        //Remove from the dictionary
     }
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 - (NSString *)getDate{

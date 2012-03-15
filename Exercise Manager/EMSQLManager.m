@@ -114,6 +114,34 @@
     
     sqlite3_close(database);
 }
+
++ (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate
+{
+    sqlite3 *database;
+    
+    NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
+    
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
+        sqlite3_stmt *compiledStatement;
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT exercise_name FROM '%@' ",todaysDate];
+        NSLog(@"Query String: %@", pSQueryString);
+        
+        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
+            NSLog(@"sqlite3_prepare_v2 ");
+            while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
+                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
+                
+                EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName];
+                [pMAExercise   addObject: exercise];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return pMAExercise;
+}
 @end
 
 

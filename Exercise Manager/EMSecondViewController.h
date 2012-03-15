@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EMSecondViewController : UIViewController
+#import "EMGenericExercisesViewController.h"
+@interface EMSecondViewController : UITableViewController{
+    NSMutableArray *myData;
+}
 
 @end

@@ -12,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
                 <viewController title="Second" id="3" customClass="EMSecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5La-qt-C5c">
@@ -71,9 +71,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="8Cn-WD-BMQ" kind="push" id="jln-cV-fSm"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tK9-W4-xpn">
                                 <rect key="frame" x="170" y="105" width="130" height="76"/>
@@ -150,7 +147,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGX-eR-Rj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vkw-Kj-FuF" customClass="EMGenericExercisesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JUB-tJ-vlF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -178,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="2236" y="111"/>
         </scene>
-        <!--Generic Exercises View Controller - Abs-->
+        <!--Generic Exercises View Controller-->
         <scene sceneID="TPg-eA-NvC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgt-mp-L2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,12 +200,12 @@
                             <outlet property="delegate" destination="8Cn-WD-BMQ" id="CcY-HD-kDQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Abs" id="g9Q-jl-IM4">
+                    <navigationItem key="navigationItem" id="g9Q-jl-IM4">
                         <barButtonItem key="backBarButtonItem" title="Exercises" id="6OA-VQ-LBR"/>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2236" y="675"/>
+            <point key="canvasLocation" x="1328" y="1091"/>
         </scene>
         <!--Table View Controller - Triceps-->
         <scene sceneID="x9G-8g-oLo">
@@ -216,7 +213,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t70-M8-egL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ayS-RN-t4w" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bEX-t3-jdS">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -248,7 +245,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJD-3b-64Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="eZV-jG-AYa" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Tb8-H6-6nD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -280,7 +277,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dJ-De-Tle" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ghc-mf-ojf" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="D80-jd-C1w">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -312,7 +309,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0l-o5-g2v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="j8s-Vw-bYo" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vPE-c6-6fK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -344,7 +341,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5z-cC-sCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="rGl-zp-p30" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8vd-Ii-zgH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -399,11 +396,55 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="3" kind="relationship" relationship="rootViewController" id="LDj-Uh-LJC"/>
+                        <segue destination="QZ0-wu-6BE" kind="relationship" relationship="rootViewController" id="B0V-nR-K6b"/>
                     </connections>
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="273" y="424"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="3gk-3Q-KfQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhX-m0-8t3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="QZ0-wu-6BE" customClass="EMSecondViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="51" sectionHeaderHeight="10" sectionFooterHeight="10" id="smb-rT-vTU">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BodyParts" rowHeight="51" id="nYB-l3-KXD">
+                                <rect key="frame" x="0.0" y="46" width="320" height="53"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" id="SEO-za-gX6">
+                                            <rect key="frame" x="20" y="9" width="240" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="8Cn-WD-BMQ" kind="push" identifier="ShowExercisesOf" id="TbZ-2F-sZb"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QZ0-wu-6BE" id="Ei6-cz-0Du"/>
+                            <outlet property="delegate" destination="QZ0-wu-6BE" id="kPR-Ry-Tdj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="c5Y-Mr-JLo"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="840" y="1091"/>
         </scene>
         <!--Navigation Controller - About-->
         <scene sceneID="Wn0-bM-vVf">
@@ -445,7 +486,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pc1-e7-UmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vJN-QL-Tqr" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mOQ-oD-T0O">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -480,7 +521,7 @@
         <class className="EMGenericExercisesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EMGenericExercisesViewController.h"/>
         </class>
-        <class className="EMSecondViewController" superclassName="UIViewController">
+        <class className="EMSecondViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EMSecondViewController.h"/>
         </class>
     </classes>
