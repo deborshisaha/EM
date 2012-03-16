@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EMSQLManager.h"
 
-@interface EMNewCategoryViewController : UIViewController
+@interface EMNewCategoryViewController : UIViewController<UITextFieldDelegate>{
+    IBOutlet UITextField *categoryText;
+}
+
+@property(nonatomic, retain) IBOutlet UITextField* categoryText;
 
 @end

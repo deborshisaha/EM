@@ -13,6 +13,7 @@
 @end
 
 @implementation EMNewCategoryViewController
+@synthesize  categoryText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,4 +41,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField*) textField {
+    NSLog(@"textfield : text%@", textField.text);
+    [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text ];
+    [textField resignFirstResponder]; 
+    [self dismissModalViewControllerAnimated: YES];
+    
+    return YES;
+}
 @end

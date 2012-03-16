@@ -28,14 +28,11 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
+
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)viewDidUnload
@@ -60,20 +57,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
+    NSLog(@" row count : %d", [pMAExercise count]);
     // Return the number of rows in the section.
     return [pMAExercise count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BodyParts";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
+    static NSString *CellIdentifier = @"Cell";
+ 
+    // Create or reuse a cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-    [cellLabel setText:[pMAExercise objectAtIndex:indexPath.row]];
+    EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
+    [cellLabel setText:tempExercise.pSExerciseName];
 
     return cell;
+}
+
+- (void) viewDidAppear: (BOOL) animated{
+    
+    [super viewDidAppear:animated];
+    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
+    pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
+    [self.tableView reloadData];
 }
 
 /*

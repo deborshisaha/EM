@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BodyParts" rowHeight="51" id="nYB-l3-KXD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="51" id="nYB-l3-KXD">
                                 <rect key="frame" x="0.0" y="46" width="320" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -116,7 +116,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" style="done" id="Db1-Up-kbO">
                             <color key="tintColor" red="0.32901135599999998" green="0.52453642879999995" blue="0.98029891300000005" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="rap-Ne-Zxn" kind="modal" id="aTf-wH-z5g"/>
+                                <segue destination="rap-Ne-Zxn" kind="modal" identifier="NewCategorySegue" modalTransitionStyle="crossDissolve" id="aTf-wH-z5g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -124,11 +124,11 @@
             </objects>
             <point key="canvasLocation" x="1576" y="888"/>
         </scene>
-        <!--View Controller - Title-->
+        <!--New Category View Controller - New Category-->
         <scene sceneID="T6J-y1-ncb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMa-1h-8Ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="rap-Ne-Zxn" sceneMemberID="viewController">
+                <viewController id="rap-Ne-Zxn" customClass="EMNewCategoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MI9-QY-f0R">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -145,14 +145,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rap-Ne-Zxn" id="dVv-KZ-iva"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.32901135599999998" green="0.52453642879999995" blue="0.98029891300000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="8N6-pg-Nfx"/>
+                    <navigationItem key="navigationItem" title="New Category" id="8N6-pg-Nfx"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="categoryText" destination="wbp-KF-HYE" id="AeV-8F-ovh"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2112" y="707"/>
@@ -195,14 +201,6 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="EMGenericExercisesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMGenericExercisesViewController.h"/>
-        </class>
-        <class className="EMSecondViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMSecondViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
