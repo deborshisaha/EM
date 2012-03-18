@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EMNewCategoryViewController.h"
+#import "EMNewExerciseViewController.h"
 
-@interface EMNewCategoryViewController ()
+@interface EMNewExerciseViewController ()
 
 @end
 
-@implementation EMNewCategoryViewController
-@synthesize  categoryText;
+@implementation EMNewExerciseViewController
+@synthesize  exerciseText, category;;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,9 +42,12 @@
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
-
+    
+    DBLog(@"textfield : text%@", textField.text);
     if ([textField.text length] != 0) {
-        [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text ];
+        // Enter the field in the database, else exit the view
+        DBLog(@"Text has been entered");
+        [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text ];
     }
     [textField resignFirstResponder]; 
     [self dismissModalViewControllerAnimated: YES];

@@ -31,6 +31,7 @@
 		34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */; };
 		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */; };
+		34FBA8EE15133FDD00C84C37 /* EMNewExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSQLManager.h; sourceTree = "<group>"; };
 		34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSQLManager.m; sourceTree = "<group>"; };
+		34FBA8EC15133FDD00C84C37 /* EMNewExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewExerciseViewController.h; sourceTree = "<group>"; };
+		34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewExerciseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 		34E44C5C150F2248008CEA8C /* Exercise Manager */ = {
 			isa = PBXGroup;
 			children = (
+				34FBA8EC15133FDD00C84C37 /* EMNewExerciseViewController.h */,
+				34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */,
 				34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */,
 				34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */,
 				34E44C65150F2248008CEA8C /* EMAppDelegate.h */,
@@ -315,6 +320,7 @@
 				34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */,
 				343223D8151062340093FB7F /* EMExercises.m in Sources */,
 				347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */,
+				34FBA8EE15133FDD00C84C37 /* EMNewExerciseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,8 +420,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Exercise Manager/Exercise Manager-Info.plist";
+				"OTHER_CFLAGS[arch=*]" = "-DDEBUGGING";
+				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -426,6 +436,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
 				INFOPLIST_FILE = "Exercise Manager/Exercise Manager-Info.plist";
+				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

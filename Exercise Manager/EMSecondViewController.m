@@ -28,11 +28,12 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
+    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
 
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
 
+    DBLog(@"***************** %s ENDS **************************", __PRETTY_FUNCTION__);
 }
 
 - (void)viewDidUnload
@@ -57,14 +58,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
-    NSLog(@" row count : %d", [pMAExercise count]);
     // Return the number of rows in the section.
     return [pMAExercise count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
     static NSString *CellIdentifier = @"Cell";
  
     // Create or reuse a cell
@@ -76,15 +76,15 @@
     // Configure the cell...
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
+    
     [cellLabel setText:tempExercise.pSExerciseName];
-
     return cell;
 }
 
 - (void) viewDidAppear: (BOOL) animated{
     
     [super viewDidAppear:animated];
-    NSLog(@"Function : %s, Line : %d", __PRETTY_FUNCTION__, __LINE__ );
+    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
     [self.tableView reloadData];
 }
@@ -156,7 +156,7 @@
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         
         // Pass the name and index of our film
-        [vc setSelectedItem:[NSString stringWithFormat:@"%@", [pMAExercise objectAtIndex:selectedIndex]]];
+        [vc setSelectedItem:[NSString stringWithFormat:@"%@", [[pMAExercise objectAtIndex:selectedIndex]  pSExerciseName]]];
     }
 }
 

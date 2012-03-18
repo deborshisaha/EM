@@ -32,8 +32,8 @@
     {
         sqlite3_stmt *compiledStatement;
         NSString *pSQueryString = [NSString stringWithFormat: @"SELECT * FROM '%@' ",tableName];
-        NSLog(@"Query String: %@", pSQueryString);
-        
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+       
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
             
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
@@ -46,7 +46,6 @@
         sqlite3_finalize(compiledStatement);
     }
     sqlite3_close(database);
-    NSLog(@"Number of exercise %d", [pMAExercise count]);
     
     return pMAExercise;
 }
@@ -62,7 +61,7 @@
 + (void)setDatabaseName: (NSString *) databaseName
 {
     // This should be a constant somewhere
-    NSString *pSDatabaseName = databaseName;
+    //NSString *pSDatabaseName = databaseName;
 }
 
 + (NSString *)getDatabasePath
@@ -101,12 +100,11 @@
         sqlite3_stmt *compiledStatement;
         NSString *pSQueryString = [NSString stringWithFormat:
                                    @"SELECT COUNT(*) FROM 'sqlite_master' WHERE type='table' AND name='%@'", tableName];
-        NSLog(@"Query String: %@", pSQueryString);
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK)
         {
             if (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 int count = sqlite3_column_int(compiledStatement, 0);
-                NSLog(@" count : %d", count);
                 sqlite3_finalize(compiledStatement);
                 sqlite3_close(database);
                 return count;
@@ -135,14 +133,14 @@
             //create the table
             pSQueryString = [NSString stringWithFormat:
                                        @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise TEXT)", tableName];
-            NSLog(@"Query String: %@", pSQueryString);
+            DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
             
             int error_code = sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, NULL);
             if(error_code == SQLITE_OK)
             {
-                NSLog(@"Table create successful");
+                DBLog(@"Table create successful");
             }else {
-                NSLog(@" *** ERROR CODE: %d ***", error_code);
+                DBLog(@" *** ERROR CODE: %d ***", error_code);
                 
             }
         }
@@ -153,10 +151,10 @@
         
         // Adding the exercise name
         pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exercise) VALUES( '%@' )", tableName, exerciseName];
-        NSLog(@"Query String: %@", pSQueryString);
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         
         if(sqlite3_exec(database, [pSQueryString UTF8String], NULL, NULL, NULL) == SQLITE_OK){
-            NSLog(@"Insert successful");
+            DBLog( @"Function : %s, Line : %d  Insert Successful", __PRETTY_FUNCTION__, __LINE__);
         }
     }
     
@@ -173,10 +171,9 @@
     {
         sqlite3_stmt *compiledStatement;
         NSString *pSQueryString = [NSString stringWithFormat: @"SELECT exercise FROM '%@' ",todaysDate];
-        NSLog(@"Query String: %@", pSQueryString);
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
-            NSLog(@"sqlite3_prepare_v2 ");
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
                 
@@ -187,7 +184,6 @@
         sqlite3_finalize(compiledStatement);
     }
     sqlite3_close(database);
-    NSLog(@"Number of exercise %d", [pMAExercise count]);
     
     return pMAExercise;
 }

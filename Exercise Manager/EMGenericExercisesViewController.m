@@ -10,11 +10,10 @@
 
 
 @implementation EMGenericExercisesViewController
-@synthesize pMAExercise, pMAExercisesDoneToday, selectedItem, todaysDate;
+@synthesize pMAExercise, exercisesDoneTillNow, selectedItem, todaysDate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    NSLog(@"Function : %s", __PRETTY_FUNCTION__);
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -27,24 +26,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    
+    exercisesDoneTillNow= [NSUserDefaults standardUserDefaults];
     
     // Get the database adapter
     [EMSQLManager createDatabase];
 
     // Read all exercises
-    pMAExercise = [EMSQLManager readAllExercisesFromTable:@"AbsExercisesTable"];
+    pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
     
     // Get exercises done today
     todaysDate=[self getDate];
     
-    //pMAExercisesDoneToday = [EMSQLManager exercisesDoneOn:todaysDate ];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
     
-    [super viewDidAppear: animated];
-    NSLog(@"selected Item %@", selectedItem);
+    [super viewDidAppear:animated];
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     self.navigationItem.title = selectedItem;
+    
+    // Read all exercises
+    pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -75,14 +81,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    BOOL bIsChecked=FALSE;
     static NSString *CellIdentifier = @"Cell";
+    // Create or reuse a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    EMExercises *exercise = (EMExercises *)[pMAExercise objectAtIndex:indexPath.row];
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+      
     // Configure the cell...
-    [cell setText:exercise.pSExerciseName];
-
+    UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
+    
+    // Retrieve the value and check if the row should be checked.
+    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, tempExercise.pSExerciseName]];
+    DBLog(@" Bool : %d ", bIsChecked);
+    
+    if( bIsChecked == TRUE){
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
+    [cellLabel setText:tempExercise.pSExerciseName];
     return cell;
 }
 
@@ -90,27 +112,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+    NSString *cellLabelText = cellLabel.text;
     
-    if ([cell accessoryType] == UITableViewCellAccessoryNone) {
-        
+    BOOL bIsChecked =  FALSE;
+    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
+    
+    DBLog(@"Key : %@ ", [NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]);
+    DBLog(@"before Bool : %d ", bIsChecked);
+    
+    if (bIsChecked == FALSE) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        
-        //Adding a table with date as table name
-        [EMSQLManager createTableWithName:todaysDate andInsertExercise: cell.text];
-        
-        //Lsiting
-        pMAExercise = [EMSQLManager readAllExercisesFromTable:todaysDate];
-        
-        NSLog(@"Count of exercises %d", pMAExercise.count);
-        
-        // Add to dictionary and create plist
-        
+        [exercisesDoneTillNow setBool:TRUE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
     }else {
-        
         [cell setAccessoryType:UITableViewCellAccessoryNone];
-        //Remove from the dictionary
+        [exercisesDoneTillNow setBool:FALSE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
     }
+    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];    
+    DBLog(@"after Bool : %d ", bIsChecked);
 }
 
 - (NSString *)getDate{
@@ -121,5 +143,19 @@
     NSString *stringDate = [formatter stringFromDate:date];
     
     return stringDate;
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure we're referring to the correct segue
+    if ([[segue identifier] isEqualToString:@"AddedNewCategory"]) {
+        
+        // Get reference to the destination view controller
+        EMNewExerciseViewController *vc = [segue destinationViewController];
+        
+        // Pass the name and index of our film
+        [vc setCategory:[NSString stringWithFormat:@"%@", self.navigationItem.title]];
+    }
 }
 @end
