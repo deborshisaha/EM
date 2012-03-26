@@ -28,12 +28,10 @@
 {
     [super viewDidLoad];
     
-    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
-
-    DBLog(@"***************** %s ENDS **************************", __PRETTY_FUNCTION__);
 }
 
 - (void)viewDidUnload
@@ -64,7 +62,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     static NSString *CellIdentifier = @"Cell";
  
     // Create or reuse a cell
@@ -84,65 +82,11 @@
 - (void) viewDidAppear: (BOOL) animated{
     
     [super viewDidAppear:animated];
-    DBLog(@"***************** %s STARTS **************************", __PRETTY_FUNCTION__);
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
     [self.tableView reloadData];
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark - Table view delegate
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    // Navigation logic may go here. Create and push another view controller.
-    
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     
-}
-*/
 // Do some customisation of our new view when a table item has been selected
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -160,5 +104,19 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Do whatever data deletion you need to do...
+        // Delete the row from the data source
+        EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
+        
+        if([EMSQLManager deleteEntry:@"ExerciseCategories" withExerciseId: tempExercise.IExerciseId]){
+            [pMAExercise removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];      
+        }
+    }       
+    [tableView endUpdates];
+}
 
 @end

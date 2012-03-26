@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString *pSExerciseName;
 @property (nonatomic, readwrite) NSInteger IExerciseId;
 
--(id) initWithName:(NSString *)name;
+-(id) initWithName:(NSString *)name andId:(NSInteger)id;
 
 @end
 

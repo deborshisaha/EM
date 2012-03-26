@@ -145,6 +145,33 @@
     return stringDate;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Do whatever data deletion you need to do...
+        // Delete the row from the data source
+        EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
+        
+        if([EMSQLManager deleteEntry:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] withExerciseId: tempExercise.IExerciseId]){
+            [pMAExercise removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];      
+        }
+    }       
+    [tableView endUpdates];
+}
+
+- (IBAction)stepperChanged:(UIStepper *)sender {
+
+    UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
+    // assuming your view controller is a subclass of UITableViewController, for example.
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    UILabel *cellLabel = (UILabel *)[cell viewWithTag:2];
+    cellLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
+    
+    DBLog(@"clicked %d", indexPath.row); 
+    //self.counter.text = [NSString stringWithFormat:@"%03d",value];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -22,6 +22,31 @@
     }
 }
 
++(BOOL) deleteEntry:(NSString *)tableName withExerciseId:(NSInteger) exId{
+    
+    sqlite3 *database;
+    
+    //NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
+    
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
+        //sqlite3_stmt *compiledStatement;
+        char *errorMsg = NULL;
+        NSString *pSQueryString = [NSString stringWithFormat: @"DELETE FROM '%@' WHERE id='%i' ",tableName, exId];
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+        
+        if(sqlite3_exec(database, [pSQueryString UTF8String], NULL, NULL, &errorMsg) == SQLITE_OK){
+            DBLog(@"sqlite3_exec went thru");
+        }else {
+            sqlite3_close(database);
+            DBLog(@"executeQuery Error:  %@", errorMsg);
+            return FALSE;
+        }
+    }
+    sqlite3_close(database);
+    return TRUE;
+}
+
 +(NSMutableArray *) readAllExercisesFromTable:(NSString *)tableName
 {
     sqlite3 *database;
@@ -38,8 +63,10 @@
             
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
+                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)]intValue ];
+                DBLog(@"string : %@ integer : %i", pSExerciseName, Iid);
                 
-                EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName];
+                EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid];
                 [pMAExercise   addObject: exercise];
             }
         }
@@ -161,6 +188,7 @@
     sqlite3_close(database);
 }
 
+/*
 + (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate
 {
     sqlite3 *database;
@@ -177,8 +205,8 @@
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
                 
-                EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName];
-                [pMAExercise   addObject: exercise];
+                //EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName ];
+                //[pMAExercise   addObject: exercise];
             }
         }
         sqlite3_finalize(compiledStatement);
@@ -187,6 +215,8 @@
     
     return pMAExercise;
 }
+ */
+
 @end
 
 

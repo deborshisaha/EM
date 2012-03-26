@@ -30,4 +30,7 @@
 
 @property(nonatomic, retain) NSUserDefaults *exercisesDoneTillNow;
 
+
+- (IBAction)stepperChanged:(UIStepper *)sender;
+
 @end

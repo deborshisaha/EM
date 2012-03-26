@@ -12,8 +12,9 @@
 @synthesize pSExerciseName, IExerciseId;
 
 
--(id) initWithName:(NSString *)name{
+-(id) initWithName:(NSString *)name andId:(NSInteger)id{
     self.pSExerciseName = name;
+    self.IExerciseId = id;
     return self;
 }
 

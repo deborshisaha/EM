@@ -13,7 +13,7 @@
 @end
 
 @implementation EMNewExerciseViewController
-@synthesize  exerciseText, category;;
+@synthesize  exerciseText, category, weightMeter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,4 +54,15 @@
     
     return YES;
 }
+
+- (IBAction) weightMeterIsRequired: (id) sender {  
+    if (weightMeter.on) {
+        DBLog(@"hi"); 
+        weightMeter.on = FALSE;
+    } else {
+        DBLog(@"bi");
+        weightMeter.on = TRUE;
+    }
+    
+} 
 @end

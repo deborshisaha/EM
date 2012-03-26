@@ -10,11 +10,14 @@
 #import "EMSQLManager.h"
 
 @interface EMNewExerciseViewController : UIViewController<UITextFieldDelegate>{
+    IBOutlet UISwitch *weightMeter;
     IBOutlet UITextField *exerciseText;
     NSString *category;
 }
 
 @property(nonatomic, retain) IBOutlet UITextField* exerciseText;
 @property(nonatomic, retain) NSString *category;
+
+@property (nonatomic, retain) UISwitch *weightMeter;
 
 @end
