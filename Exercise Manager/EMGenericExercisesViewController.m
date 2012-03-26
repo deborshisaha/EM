@@ -91,7 +91,7 @@
     }
       
     // Configure the cell...
-    UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+    //UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     // Retrieve the value and check if the row should be checked.
@@ -104,7 +104,33 @@
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     
-    [cellLabel setText:tempExercise.pSExerciseName];
+    DBLog(@"tempExercise at %d n:%@ wt:%i b:%i", __LINE__, tempExercise.pSExerciseName, tempExercise.IWeight, tempExercise.IWeightMeterRequired);
+    
+    // check if weight is required
+    if(tempExercise.IWeightMeterRequired){
+        UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
+        UILabel *weight = (UILabel *)[cell viewWithTag:3];
+        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        stepper.hidden = FALSE;
+        weight.hidden = FALSE;
+        weightUnits.hidden = FALSE;
+        DBLog(@" weight %i", tempExercise.IWeight);
+        weight.text = [NSString stringWithFormat:@"%i",tempExercise.IWeight];
+        //cell.frame.size.height = 50;
+        stepper.value = tempExercise.IWeight;
+        [cellLabel setText:tempExercise.pSExerciseName];
+    }else {
+        UILabel *cellNativeText = (UILabel *)[cell viewWithTag:0];
+        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
+        UILabel *weight = (UILabel *)[cell viewWithTag:3];
+        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        stepper.hidden = TRUE;
+        weight.hidden = TRUE;
+        weightUnits.hidden = TRUE;
+        [cellNativeText setText:tempExercise.pSExerciseName];
+    }
+    //[cellLabel setText:tempExercise.pSExerciseName];
     return cell;
 }
 
@@ -162,15 +188,21 @@
 
 - (IBAction)stepperChanged:(UIStepper *)sender {
 
+    DBLog(@"IBAction %s STARTS ", __PRETTY_FUNCTION__);
+
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
     // assuming your view controller is a subclass of UITableViewController, for example.
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    //NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
-    UILabel *cellLabel = (UILabel *)[cell viewWithTag:2];
-    cellLabel.text = [NSString stringWithFormat:@"%.f",sender.value];
+    UILabel *weight = (UILabel *)[cell viewWithTag:3];
+    weight.text = [NSString stringWithFormat:@"%.f",sender.value];
     
-    DBLog(@"clicked %d", indexPath.row); 
-    //self.counter.text = [NSString stringWithFormat:@"%03d",value];
+    UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    
+    DBLog(@"IBAction exercise : ")
+    // Enter the value in database
+    [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+    //[NSString stringWithUTF8String:(char *)
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -47,7 +47,14 @@
     if ([textField.text length] != 0) {
         // Enter the field in the database, else exit the view
         DBLog(@"Text has been entered");
-        [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text ];
+        if (weightMeter.on) {
+            DBLog(@"weightMeter is on");
+            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:YES];
+        }else {
+            DBLog(@"weightMeter is off");
+            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:NO];
+        }
+
     }
     [textField resignFirstResponder]; 
     [self dismissModalViewControllerAnimated: YES];
@@ -58,10 +65,8 @@
 - (IBAction) weightMeterIsRequired: (id) sender {  
     if (weightMeter.on) {
         DBLog(@"hi"); 
-        weightMeter.on = FALSE;
     } else {
         DBLog(@"bi");
-        weightMeter.on = TRUE;
     }
     
 } 

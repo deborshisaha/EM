@@ -9,12 +9,14 @@
 #import "EMExercises.h"
 
 @implementation EMExercises
-@synthesize pSExerciseName, IExerciseId;
+@synthesize pSExerciseName, IExerciseId, IWeight,IWeightMeterRequired;
 
 
--(id) initWithName:(NSString *)name andId:(NSInteger)id{
+-(id) initWithName:(NSString *)name andId:(NSInteger)id andWeightIsRequired: (NSInteger)weightIsRequired andWeight: (NSInteger)weight{
     self.pSExerciseName = name;
     self.IExerciseId = id;
+    self.IWeightMeterRequired = weightIsRequired;
+    self.IWeight = weight;
     return self;
 }
 

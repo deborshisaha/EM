@@ -44,7 +44,7 @@
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
 
     if ([textField.text length] != 0) {
-        [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text ];
+        [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text andWeightMeterRequired: 0 ];
     }
     [textField resignFirstResponder]; 
     [self dismissModalViewControllerAnimated: YES];

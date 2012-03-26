@@ -20,10 +20,10 @@
 + (BOOL) checkIfDatabaseIsPresent: (NSString *)pSDatabasePath;
 + (NSString *)getDatabasePath;
 + (NSString *)getDatabaseName;
-+ (BOOL) deleteEntry:(NSString *)tableName withExerciseId:(NSInteger) exId;
-+ (void) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise;
++ (BOOL) deleteEntry:(NSString *)tableName withExerciseId:(NSInteger) exId ;
++ (void) createTableWithName:(NSString *)tableName andInsertExercise:(NSString *)exercise andWeightMeterRequired:(BOOL)weightMeterRequired;
 //+ (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate;
-
++ (void ) updateTableWithName:(NSString *)tableName andExercise: (NSString *)exerciseName andWeight:(NSInteger)weight;
 @end
 
 
