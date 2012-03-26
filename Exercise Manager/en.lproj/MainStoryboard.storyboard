@@ -101,7 +101,7 @@
                                     <outlet property="delegate" destination="rGU-Vp-LbF" id="Izn-lh-eR7"/>
                                 </connections>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Kaf-r7-u6a">
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Kaf-r7-u6a">
                                 <rect key="frame" x="225" y="90" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
