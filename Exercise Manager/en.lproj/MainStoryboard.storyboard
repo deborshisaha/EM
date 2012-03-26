@@ -68,7 +68,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Ae-Ks-yd0">
                             <color key="tintColor" red="0.32901135599999998" green="0.52453642879999995" blue="0.98029891300000005" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="rGU-Vp-LbF" kind="modal" identifier="AddedNewCategory" id="zzk-7C-UoN"/>
+                                <segue destination="rGU-Vp-LbF" kind="modal" identifier="AddedNewCategory" modalTransitionStyle="crossDissolve" id="zzk-7C-UoN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
