@@ -67,7 +67,7 @@
                     NSInteger weightIsRequired = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)] intValue];
                     NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
                 
-                DBLog(@"string : %@ id : %i weightIsRequired %i wt.:%i", pSExerciseName, Iid, weightIsRequired, weight );
+                //DBLog(@"string : %@ id : %i weightIsRequired %i wt.:%i", pSExerciseName, Iid, weightIsRequired, weight );
                 
                 EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeightIsRequired: weightIsRequired andWeight: weight ];
                 [pMAExercise   addObject: exercise];
