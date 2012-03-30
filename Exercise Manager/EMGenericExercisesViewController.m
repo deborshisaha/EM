@@ -201,6 +201,7 @@
 
     DBLog(@"IBAction %s STARTS ", __PRETTY_FUNCTION__);
 
+    UILabel *cellLabel = NULL;
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
     // assuming your view controller is a subclass of UITableViewController, for example.
     //NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -210,7 +211,19 @@
     
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
     
-    DBLog(@"IBAction exercise : ")
+    cellLabel = (UILabel *)[cell viewWithTag:1];
+    
+    NSString *cellLabelText = cellLabel.text;
+
+    
+    if ( sender.value > 0) {
+        [exercisesDoneTillNow setBool:TRUE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }else {
+        [exercisesDoneTillNow setBool:FALSE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
     // Enter the value in database
     [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
     //[NSString stringWithUTF8String:(char *)
