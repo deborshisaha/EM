@@ -8,15 +8,18 @@
 
 #import "EMFirstViewController.h"
 
+
 @interface EMFirstViewController ()
 
 @end
 
 @implementation EMFirstViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
