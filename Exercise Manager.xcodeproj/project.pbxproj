@@ -125,6 +125,9 @@
 		3472C72C1527FF10005C9283 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = "Exercise Manager/UIViewAdditions.m"; sourceTree = "<group>"; };
 		347AFF071512B1E200735DD2 /* EMNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewCategoryViewController.h; sourceTree = "<group>"; };
 		347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewCategoryViewController.m; sourceTree = "<group>"; };
+		34826FBB152953AA008C93DA /* bn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bn; path = "/Users/deborshi/Documents/iPhone/Local/Exercise Manager/Exercise Manager/bn.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		34826FBC152953AA008C93DA /* bn */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = bn; path = "/Users/deborshi/Documents/iPhone/Local/Exercise Manager/Exercise Manager/bn.lproj/MainStoryboard.storyboard"; sourceTree = "<absolute>"; };
+		34826FBE152953AA008C93DA /* bn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bn; path = "/Users/deborshi/Documents/iPhone/Local/Exercise Manager/Exercise ManagerTests/bn.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -519,6 +522,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				34E44C60150F2248008CEA8C /* en */,
+				34826FBB152953AA008C93DA /* bn */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -527,6 +531,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				34E44C89150F2248008CEA8C /* en */,
+				34826FBE152953AA008C93DA /* bn */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				34E44C97150F34F2008CEA8C /* en */,
+				34826FBC152953AA008C93DA /* bn */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
