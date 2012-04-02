@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EMGenericExercisesViewController.h"
+#import "EMSQLManager.h"
 
-@interface EMSecondViewController : UIViewController
+@interface EMSecondViewController : UITableViewController{
+    NSMutableArray *pMAExercise;
+}
+
+@property(nonatomic, retain) NSMutableArray *pMAExercise;
 
 @end
