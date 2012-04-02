@@ -1,8 +1,10 @@
+ls
 # xcode noise
 build/*
 *.pbxuser
 *.mode1v3
 xcuserdata
+Kal.bundle
  
 # auto git version noise
 InfoPlist.h
