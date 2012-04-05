@@ -45,6 +45,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   
   if (self = [super initWithFrame:frame]) {
     self.clipsToBounds = YES;
+    logic = theLogic ;
     delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
@@ -61,7 +62,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)drawRect:(CGRect)rect
 {
-  [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
+  [[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
   [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
   CGRect line;
   line.origin = CGPointMake(0.f, self.height - 1.f);
@@ -81,6 +82,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   if (highlightedTile != tile) {
     highlightedTile.highlighted = NO;
+    highlightedTile = tile ;
     tile.highlighted = YES;
     [tile setNeedsDisplay];
   }
@@ -89,7 +91,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (void)setSelectedTile:(KalTileView *)tile
 {
   if (selectedTile != tile) {
+      NSLog(@"%d", tile.date.day);
     selectedTile.selected = NO;
+    selectedTile = tile ;
     tile.selected = YES;
     [delegate didSelectDate:tile.date];
   }
@@ -242,6 +246,15 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (KalDate *)selectedDate { return selectedTile.date; }
 
 #pragma mark -
-
-
+/*
+- (void)dealloc
+{
+  [selectedTile release];
+  [highlightedTile release];
+  [frontMonthView release];
+  [backMonthView release];
+  [logic release];
+  [super dealloc];
+}
+*/
 @end

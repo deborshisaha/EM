@@ -38,19 +38,11 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 @implementation KalViewController
 
-@synthesize  initialDate, selectedDate;
-//@synthesize dataSource, delegate;
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
-	// Do any additional setup after loading the view, typically from a nib.
-}
+@synthesize dataSource, delegate, initialDate, selectedDate;
 
 - (id)initWithSelectedDate:(NSDate *)date
 {
-        DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:date];
     self.initialDate = date;
@@ -61,17 +53,20 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   return self;
 }
 
-- (id)init
-{    
-    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   return [self initWithSelectedDate:[NSDate date]];
 }
 
-- (KalView*)calendarView { return (KalView*)self.view; }
+- (KalView*)calendarView { 
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+    return (KalView*)self.view; 
+}
 
 - (void)setDataSource:(id<KalDataSource>)aDataSource
 {
-        DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   if (dataSource != aDataSource) {
     dataSource = aDataSource;
     tableView.dataSource = dataSource;
@@ -79,7 +74,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   if (delegate != aDelegate) {
     delegate = aDelegate;
     tableView.delegate = delegate;
@@ -87,18 +83,21 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 - (void)clearTable
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [dataSource removeAllItems];
   [tableView reloadData];
 }
 
 - (void)reloadData
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
 - (void)significantTimeChangeOccurred
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [[self calendarView] jumpToSelectedMonth];
   [self reloadData];
 }
@@ -106,8 +105,9 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
 
-- (void)didSelectDate:(KalDate *)date
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+- (void):(KalDate *)date
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   self.selectedDate = [date NSDate];
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
@@ -118,7 +118,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 - (void)showPreviousMonth
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [self clearTable];
   [logic retreatToPreviousMonth];
   [[self calendarView] slideDown];
@@ -126,7 +127,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 - (void)showFollowingMonth
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [self clearTable];
   [logic advanceToFollowingMonth];
   [[self calendarView] slideUp];
@@ -137,7 +139,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 #pragma mark KalDataSourceCallbacks protocol
 
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
   NSMutableArray *dates = [markedDates mutableCopy] ;
   for (int i=0; i<[dates count]; i++)
@@ -151,7 +154,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 #pragma mark -
 
 - (void)showAndSelectDate:(NSDate *)date
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   if ([[self calendarView] isSliding])
     return;
   
@@ -176,7 +180,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 - (NSDate *)selectedDate
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   return [self.calendarView.selectedDate NSDate];
 }
 
@@ -184,14 +189,28 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController
 
+- (void)didSelectDate:(KalDate *)date
+{
+    self.selectedDate = [date NSDate];
+    NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
+    NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
+    [self clearTable];
+    [dataSource loadItemsFromDate:from toDate:to];
+    [tableView reloadData];
+    [tableView flashScrollIndicators];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   self.initialDate = self.selectedDate; // must be done before calling super
   [super didReceiveMemoryWarning];
 }
 
 - (void)loadView
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   if (!self.title)
     self.title = @"Calendar";
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] ;
@@ -200,35 +219,44 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   tableView.dataSource = dataSource;
   tableView.delegate = delegate;
   //[tableView retain];
-  //[kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
+  [kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
   [self reloadData];
 }
 
 - (void)viewDidUnload
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [super viewDidUnload];
   //[tableView release];
   tableView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [super viewWillAppear:animated];
   [tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+{
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [super viewDidAppear:animated];
   [tableView flashScrollIndicators];
 }
 
 #pragma mark -
-
+/*
 - (void)dealloc
 {
+    NSLog(@"%s",__PRETTY_FUNCTION__);
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
+  [initialDate release];
+  [selectedDate release];
+  [logic release];
+  [tableView release];
+  [super dealloc];
 }
-
+*/
 @end
