@@ -91,7 +91,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (void)setSelectedTile:(KalTileView *)tile
 {
   if (selectedTile != tile) {
-      NSLog(@"%d", tile.date.day);
+      DBLog(@"%d", tile.date.day);
     selectedTile.selected = NO;
     selectedTile = tile ;
     tile.selected = YES;

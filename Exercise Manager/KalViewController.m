@@ -42,7 +42,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (id)initWithSelectedDate:(NSDate *)date
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:date];
     self.initialDate = date;
@@ -55,18 +55,18 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [self initWithSelectedDate:[NSDate date]];
 }
 
 - (KalView*)calendarView { 
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
     return (KalView*)self.view; 
 }
 
 - (void)setDataSource:(id<KalDataSource>)aDataSource
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (dataSource != aDataSource) {
     dataSource = aDataSource;
     tableView.dataSource = dataSource;
@@ -75,7 +75,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (delegate != aDelegate) {
     delegate = aDelegate;
     tableView.delegate = delegate;
@@ -84,20 +84,20 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)clearTable
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [dataSource removeAllItems];
   [tableView reloadData];
 }
 
 - (void)reloadData
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
 - (void)significantTimeChangeOccurred
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [[self calendarView] jumpToSelectedMonth];
   [self reloadData];
 }
@@ -107,7 +107,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void):(KalDate *)date
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.selectedDate = [date NSDate];
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
@@ -119,7 +119,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)showPreviousMonth
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self clearTable];
   [logic retreatToPreviousMonth];
   [[self calendarView] slideDown];
@@ -128,7 +128,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)showFollowingMonth
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self clearTable];
   [logic advanceToFollowingMonth];
   [[self calendarView] slideUp];
@@ -140,7 +140,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
   NSMutableArray *dates = [markedDates mutableCopy] ;
   for (int i=0; i<[dates count]; i++)
@@ -155,7 +155,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)showAndSelectDate:(NSDate *)date
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if ([[self calendarView] isSliding])
     return;
   
@@ -181,7 +181,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (NSDate *)selectedDate
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [self.calendarView.selectedDate NSDate];
 }
 
@@ -203,14 +203,14 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)didReceiveMemoryWarning
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.initialDate = self.selectedDate; // must be done before calling super
   [super didReceiveMemoryWarning];
 }
 
 - (void)loadView
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (!self.title)
     self.title = @"Calendar";
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] ;
@@ -225,7 +225,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)viewDidUnload
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [super viewDidUnload];
   //[tableView release];
   tableView = nil;
@@ -233,14 +233,14 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [super viewWillAppear:animated];
   [tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [super viewDidAppear:animated];
   [tableView flashScrollIndicators];
 }
@@ -249,7 +249,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 /*
 - (void)dealloc
 {
-    NSLog(@"%s",__PRETTY_FUNCTION__);
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
   [initialDate release];

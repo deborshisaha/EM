@@ -77,10 +77,10 @@ extern const CGSize kTileSize;
   KalTileView *tile = nil;
     int i=0;
     if (self.subviews) {
-        NSLog(@"Subviews are present #: %d", [self.subviews count]);
+        DBLog(@"Subviews are present #: %d", [self.subviews count]);
     }
   for (KalTileView *t in self.subviews) {
-      NSLog(@"%d %d %d %d", i, t.date.day, t.date.month, t.date.year);
+      DBLog(@"%d %d %d %d", i, t.date.day, t.date.month, t.date.year);
     if ([t.date isEqual:date]) {
       tile = t;
       break;

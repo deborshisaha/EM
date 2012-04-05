@@ -36,7 +36,7 @@ static KalDate *today;
 + (KalDate *)dateFromNSDate:(NSDate *)date
 {
   NSDateComponents *parts = [date cc_componentsForMonthDayAndYear];
-    NSLog(@"%i %i %i ", [parts day], [parts month], [parts year]);
+    DBLog(@"%i %i %i ", [parts day], [parts month], [parts year]);
   return [KalDate dateForDay:[parts day] month:[parts month] year:[parts year]];
 }
 
