@@ -211,8 +211,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)loadView
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  if (!self.title)
-    self.title = @"Calendar";
+  //if (!self.title)
+  //  self.title = @"Calendar";
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] ;
   self.view = kalView;
   tableView = kalView.tableView;

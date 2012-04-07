@@ -16,32 +16,32 @@
 		3472C6ED1527FE31005C9283 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6E31527FE30005C9283 /* KalTileView.m */; };
 		3472C6EE1527FE31005C9283 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6E51527FE31005C9283 /* KalView.m */; };
 		3472C6EF1527FE31005C9283 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6E71527FE31005C9283 /* KalViewController.m */; };
-		3472C7111527FEE5005C9283 /* kal_grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FA1527FEE5005C9283 /* kal_grid_background.png */; };
-		3472C7121527FEE5005C9283 /* kal_grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */; };
-		3472C7131527FEE5005C9283 /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FC1527FEE5005C9283 /* kal_header_text_fill.png */; };
-		3472C7141527FEE5005C9283 /* kal_left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FD1527FEE5005C9283 /* kal_left_arrow.png */; };
-		3472C7151527FEE5005C9283 /* kal_left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FE1527FEE5005C9283 /* kal_left_arrow@2x.png */; };
-		3472C7161527FEE5005C9283 /* kal_marker_dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FF1527FEE5005C9283 /* kal_marker_dim.png */; };
-		3472C7171527FEE5005C9283 /* kal_marker_dim@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7001527FEE5005C9283 /* kal_marker_dim@2x.png */; };
-		3472C7181527FEE5005C9283 /* kal_marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7011527FEE5005C9283 /* kal_marker_selected.png */; };
-		3472C7191527FEE5005C9283 /* kal_marker_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7021527FEE5005C9283 /* kal_marker_selected@2x.png */; };
-		3472C71A1527FEE5005C9283 /* kal_marker_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7031527FEE5005C9283 /* kal_marker_today.png */; };
-		3472C71B1527FEE5005C9283 /* kal_marker_today@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7041527FEE5005C9283 /* kal_marker_today@2x.png */; };
-		3472C71C1527FEE5005C9283 /* kal_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7051527FEE5005C9283 /* kal_marker.png */; };
-		3472C71D1527FEE5005C9283 /* kal_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7061527FEE5005C9283 /* kal_marker@2x.png */; };
-		3472C71E1527FEE5005C9283 /* kal_right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7071527FEE5005C9283 /* kal_right_arrow.png */; };
-		3472C71F1527FEE5005C9283 /* kal_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7081527FEE5005C9283 /* kal_right_arrow@2x.png */; };
-		3472C7201527FEE5005C9283 /* kal_tile_dim_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7091527FEE5005C9283 /* kal_tile_dim_text_fill.png */; };
-		3472C7211527FEE5005C9283 /* kal_tile_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70A1527FEE5005C9283 /* kal_tile_selected.png */; };
-		3472C7221527FEE5005C9283 /* kal_tile_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70B1527FEE5005C9283 /* kal_tile_text_fill.png */; };
-		3472C7231527FEE5005C9283 /* kal_tile_today_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70C1527FEE5005C9283 /* kal_tile_today_selected.png */; };
-		3472C7241527FEE5005C9283 /* kal_tile_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70D1527FEE5005C9283 /* kal_tile_today.png */; };
-		3472C7251527FEE5005C9283 /* kal_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70E1527FEE5005C9283 /* kal_tile.png */; };
-		3472C7261527FEE5005C9283 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70F1527FEE5005C9283 /* second.png */; };
-		3472C7271527FEE5005C9283 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7101527FEE5005C9283 /* second@2x.png */; };
 		3472C72D1527FF10005C9283 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C72A1527FF10005C9283 /* NSDateAdditions.m */; };
 		3472C72E1527FF10005C9283 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C72C1527FF10005C9283 /* UIViewAdditions.m */; };
 		347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */; };
+		34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FA1527FEE5005C9283 /* kal_grid_background.png */; };
+		34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */; };
+		34D13587152D5A7000EEC3BD /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FC1527FEE5005C9283 /* kal_header_text_fill.png */; };
+		34D13588152D5A7000EEC3BD /* kal_left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FD1527FEE5005C9283 /* kal_left_arrow.png */; };
+		34D13589152D5A7000EEC3BD /* kal_left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FE1527FEE5005C9283 /* kal_left_arrow@2x.png */; };
+		34D1358A152D5A7000EEC3BD /* kal_marker_dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FF1527FEE5005C9283 /* kal_marker_dim.png */; };
+		34D1358B152D5A7000EEC3BD /* kal_marker_dim@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7001527FEE5005C9283 /* kal_marker_dim@2x.png */; };
+		34D1358C152D5A7000EEC3BD /* kal_marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7011527FEE5005C9283 /* kal_marker_selected.png */; };
+		34D1358D152D5A7000EEC3BD /* kal_marker_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7021527FEE5005C9283 /* kal_marker_selected@2x.png */; };
+		34D1358E152D5A7000EEC3BD /* kal_marker_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7031527FEE5005C9283 /* kal_marker_today.png */; };
+		34D1358F152D5A7000EEC3BD /* kal_marker_today@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7041527FEE5005C9283 /* kal_marker_today@2x.png */; };
+		34D13590152D5A7000EEC3BD /* kal_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7051527FEE5005C9283 /* kal_marker.png */; };
+		34D13591152D5A7000EEC3BD /* kal_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7061527FEE5005C9283 /* kal_marker@2x.png */; };
+		34D13592152D5A7000EEC3BD /* kal_right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7071527FEE5005C9283 /* kal_right_arrow.png */; };
+		34D13593152D5A7000EEC3BD /* kal_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7081527FEE5005C9283 /* kal_right_arrow@2x.png */; };
+		34D13594152D5A7000EEC3BD /* kal_tile_dim_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7091527FEE5005C9283 /* kal_tile_dim_text_fill.png */; };
+		34D13595152D5A7000EEC3BD /* kal_tile_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70A1527FEE5005C9283 /* kal_tile_selected.png */; };
+		34D13596152D5A7000EEC3BD /* kal_tile_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70B1527FEE5005C9283 /* kal_tile_text_fill.png */; };
+		34D13597152D5A7000EEC3BD /* kal_tile_today_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70C1527FEE5005C9283 /* kal_tile_today_selected.png */; };
+		34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70D1527FEE5005C9283 /* kal_tile_today.png */; };
+		34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70E1527FEE5005C9283 /* kal_tile.png */; };
+		34D1359A152D5A7000EEC3BD /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70F1527FEE5005C9283 /* second.png */; };
+		34D1359B152D5A7000EEC3BD /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C7101527FEE5005C9283 /* second@2x.png */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
@@ -415,34 +415,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */,
+				34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */,
+				34D13587152D5A7000EEC3BD /* kal_header_text_fill.png in Resources */,
+				34D13588152D5A7000EEC3BD /* kal_left_arrow.png in Resources */,
+				34D13589152D5A7000EEC3BD /* kal_left_arrow@2x.png in Resources */,
+				34D1358A152D5A7000EEC3BD /* kal_marker_dim.png in Resources */,
+				34D1358B152D5A7000EEC3BD /* kal_marker_dim@2x.png in Resources */,
+				34D1358C152D5A7000EEC3BD /* kal_marker_selected.png in Resources */,
+				34D1358D152D5A7000EEC3BD /* kal_marker_selected@2x.png in Resources */,
+				34D1358E152D5A7000EEC3BD /* kal_marker_today.png in Resources */,
+				34D1358F152D5A7000EEC3BD /* kal_marker_today@2x.png in Resources */,
+				34D13590152D5A7000EEC3BD /* kal_marker.png in Resources */,
+				34D13591152D5A7000EEC3BD /* kal_marker@2x.png in Resources */,
+				34D13592152D5A7000EEC3BD /* kal_right_arrow.png in Resources */,
+				34D13593152D5A7000EEC3BD /* kal_right_arrow@2x.png in Resources */,
+				34D13594152D5A7000EEC3BD /* kal_tile_dim_text_fill.png in Resources */,
+				34D13595152D5A7000EEC3BD /* kal_tile_selected.png in Resources */,
+				34D13596152D5A7000EEC3BD /* kal_tile_text_fill.png in Resources */,
+				34D13597152D5A7000EEC3BD /* kal_tile_today_selected.png in Resources */,
+				34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */,
+				34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */,
+				34D1359A152D5A7000EEC3BD /* second.png in Resources */,
+				34D1359B152D5A7000EEC3BD /* second@2x.png in Resources */,
 				34E44C61150F2248008CEA8C /* InfoPlist.strings in Resources */,
 				34E44C6F150F2248008CEA8C /* first.png in Resources */,
 				34E44C71150F2248008CEA8C /* first@2x.png in Resources */,
 				34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */,
 				34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */,
-				3472C7111527FEE5005C9283 /* kal_grid_background.png in Resources */,
-				3472C7121527FEE5005C9283 /* kal_grid_shadow.png in Resources */,
-				3472C7131527FEE5005C9283 /* kal_header_text_fill.png in Resources */,
-				3472C7141527FEE5005C9283 /* kal_left_arrow.png in Resources */,
-				3472C7151527FEE5005C9283 /* kal_left_arrow@2x.png in Resources */,
-				3472C7161527FEE5005C9283 /* kal_marker_dim.png in Resources */,
-				3472C7171527FEE5005C9283 /* kal_marker_dim@2x.png in Resources */,
-				3472C7181527FEE5005C9283 /* kal_marker_selected.png in Resources */,
-				3472C7191527FEE5005C9283 /* kal_marker_selected@2x.png in Resources */,
-				3472C71A1527FEE5005C9283 /* kal_marker_today.png in Resources */,
-				3472C71B1527FEE5005C9283 /* kal_marker_today@2x.png in Resources */,
-				3472C71C1527FEE5005C9283 /* kal_marker.png in Resources */,
-				3472C71D1527FEE5005C9283 /* kal_marker@2x.png in Resources */,
-				3472C71E1527FEE5005C9283 /* kal_right_arrow.png in Resources */,
-				3472C71F1527FEE5005C9283 /* kal_right_arrow@2x.png in Resources */,
-				3472C7201527FEE5005C9283 /* kal_tile_dim_text_fill.png in Resources */,
-				3472C7211527FEE5005C9283 /* kal_tile_selected.png in Resources */,
-				3472C7221527FEE5005C9283 /* kal_tile_text_fill.png in Resources */,
-				3472C7231527FEE5005C9283 /* kal_tile_today_selected.png in Resources */,
-				3472C7241527FEE5005C9283 /* kal_tile_today.png in Resources */,
-				3472C7251527FEE5005C9283 /* kal_tile.png in Resources */,
-				3472C7261527FEE5005C9283 /* second.png in Resources */,
-				3472C7271527FEE5005C9283 /* second@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

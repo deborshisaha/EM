@@ -7,6 +7,7 @@
 //
 
 #import "EMNewCategoryViewController.h"
+#include <stdlib.h>
 
 @interface EMNewCategoryViewController ()
 
@@ -42,9 +43,11 @@
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
-
+    unsigned int rand=0;
     if ([textField.text length] != 0) {
-        [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text andWeightMeterRequired: 0 ];
+        rand= (unsigned int)arc4random();
+        DBLog(@"%s %d rand:%d", __PRETTY_FUNCTION__, __LINE__, rand);
+        [EMSQLManager createTableWithName:@"ExerciseCategories" andInsertExercise:textField.text andWeightMeterRequired: 0 andExId:rand];
     }
     [textField resignFirstResponder]; 
     [self dismissModalViewControllerAnimated: YES];

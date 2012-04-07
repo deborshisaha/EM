@@ -10,7 +10,7 @@
 
 
 @implementation EMGenericExercisesViewController
-@synthesize pMAExercise, exercisesDoneTillNow, selectedItem, todaysDate;
+@synthesize pMAExercise, pMAExercisesDoneTillNow, selectedItem, todaysDate, logTablename, done;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,18 +27,25 @@
 {
     [super viewDidLoad];
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
-    
-    exercisesDoneTillNow= [NSUserDefaults standardUserDefaults];
-    
     // Get the database adapter
     [EMSQLManager createDatabase];
-
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
-    
     // Get exercises done today
     todaysDate=[self getDate];
-    
+    //  Read all exercises done on this date
+    pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
+    //  Allocate memory to done
+    done = [[NSMutableDictionary alloc] init];
+    DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
+    DBLog(@"Line # %d ", __LINE__);
+    //  Create a dictionary with exercise Id
+    for (EMExercisesBasic *eb in pMAExercisesDoneTillNow) 
+    {
+        DBLog(@"%i", eb.IExerciseId);
+        [done setObject:[NSNumber numberWithBool:YES]
+                 forKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -49,19 +56,34 @@
     
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
-    
+    pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
+    DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
+    DBLog(@"Line # %d ", __LINE__);
+    //  Create a dictionary with exercise Id
+    for (EMExercisesBasic *eb in pMAExercisesDoneTillNow) {
+        DBLog(@"%i", eb.IExerciseId);
+        [done setObject:[NSNumber numberWithBool:YES]
+                forKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]];
+         DBLog(@"key: %i Value: %i", eb.IExerciseId, [[done valueForKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]] boolValue]);
+    }    
+    /*  
+     iterate through the mutable array and with the help of exercise id fetch information from the log DB to check
+     whether the exercise was performed today?
+     */
     [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -75,6 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Return the number of rows in the section.
     return pMAExercise.count;
 }
@@ -95,9 +118,11 @@
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     // Retrieve the value and check if the row should be checked.
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, tempExercise.pSExerciseName]];
-    
-    if( bIsChecked == TRUE){
+    bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
+    //bIsChecked = [done valueForKey:]; //, [[NSString stringWithFormat:@"%@", eb.IExerciseId]];
+    DBLog(@"key %i value %i",  tempExercise.IExerciseId, bIsChecked);
+   
+    if(  bIsChecked  == YES){
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -118,7 +143,7 @@
         //cell.frame.size.height = 50;
         stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
-        DBLog(@"%d %@", __LINE__, tempExercise.pSExerciseName);
+        DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
     }else {
         UILabel *cellNativeText = (UILabel *)[cell viewWithTag:0];
         UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
@@ -128,14 +153,14 @@
         weight.hidden = TRUE;
         weightUnits.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
-        DBLog(@"%d %@", __LINE__, tempExercise.pSExerciseName);
+        DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
     }
     //[cellLabel setText:tempExercise.pSExerciseName];
     return cell;
 }
 
 #pragma mark - Table view delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DBLog(@" %s ", __PRETTY_FUNCTION__);
@@ -167,6 +192,7 @@
     }
     bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];    
 }
+ */
 
 - (NSString *)getDate{
     NSDate *date = [NSDate date];
@@ -179,6 +205,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     [tableView beginUpdates];    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Do whatever data deletion you need to do...
@@ -203,7 +230,9 @@
 
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
     // assuming your view controller is a subclass of UITableViewController, for example.
-    //NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
     
     UILabel *weight = (UILabel *)[cell viewWithTag:3];
     weight.text = [NSString stringWithFormat:@"%.f",sender.value];
@@ -211,13 +240,30 @@
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
     
     DBLog(@"IBAction exercise : ")
-    // Enter the value in database
-    [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-    //[NSString stringWithUTF8String:(char *)
+    if (sender.value > 0) {
+        //  Enter into the log table with date, weight, exercise name and exercise id
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: sender.value]){
+            //  Set the check for the row
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
+        // Enter the value in database
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+    }else{
+        // Check if the control is coming to this block for the first time ater getting zero
+        if ([cell accessoryType] == UITableViewCellAccessoryCheckmark ) {
+            //  Clear log database after having looked for the exercise id
+            [EMSQLManager clearLogTable:[self getDate] withExerciseId:tempExercise.IExerciseId ];
+            //  Uncheck the row
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            // Enter the value in database
+            [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+        }
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"AddedNewCategory"]) {
         
