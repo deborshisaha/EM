@@ -106,13 +106,24 @@
 {
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     BOOL bIsChecked=FALSE;
+    UIStepper *stepper=NULL;
+    UILabel *weightUnits = NULL;
+    UILabel *weight = NULL;
+    UILabel *cellLabel = NULL;
+    UILabel *cellNativeText = NULL;
+    
     static NSString *CellIdentifier = @"Cell";
     // Create or reuse a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-      
+  
+    stepper = (UIStepper *)[cell viewWithTag:2];
+    weight = (UILabel *)[cell viewWithTag:3];
+    weightUnits = (UILabel *)[cell viewWithTag:4];
+    
     // Configure the cell...
     //UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
@@ -127,72 +138,28 @@
     }else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
-    
-    //DBLog(@"tempExercise at %d n:%@ wt:%i b:%i", __LINE__, tempExercise.pSExerciseName, tempExercise.IWeight, tempExercise.IWeightMeterRequired);
-    
+        
     // check if weight is required
     if(tempExercise.IWeightMeterRequired){
-        UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
-        UILabel *weight = (UILabel *)[cell viewWithTag:3];
-        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        cellLabel = (UILabel *)[cell viewWithTag:1];
         stepper.hidden = FALSE;
         weight.hidden = FALSE;
         weightUnits.hidden = FALSE;
         weight.text = [NSString stringWithFormat:@"%i",tempExercise.IWeight];
-        //cell.frame.size.height = 50;
         stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
-        DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
+        //DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
     }else {
-        UILabel *cellNativeText = (UILabel *)[cell viewWithTag:0];
-        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
-        UILabel *weight = (UILabel *)[cell viewWithTag:3];
-        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        cellNativeText = (UILabel *)[cell viewWithTag:0];
         stepper.hidden = TRUE;
         weight.hidden = TRUE;
         weightUnits.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
-        DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
+        //DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
     }
     //[cellLabel setText:tempExercise.pSExerciseName];
     return cell;
 }
-
-#pragma mark - Table view delegate
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    DBLog(@" %s ", __PRETTY_FUNCTION__);
-
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UILabel *cellLabel = NULL;
-    
-    // check the pMAExercise
-    EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
-
-    if (tempExercise.IWeightMeterRequired) {
-        cellLabel = (UILabel *)[cell viewWithTag:1];
-    }else {
-        cellLabel = (UILabel *)[cell viewWithTag:0];
-    }
-    NSString *cellLabelText = cellLabel.text;
-    
-    BOOL bIsChecked =  FALSE;
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    
-    DBLog(@"Key : %@ ", [NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]);
-    
-    if (bIsChecked == FALSE) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        [exercisesDoneTillNow setBool:TRUE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    }else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [exercisesDoneTillNow setBool:FALSE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    }
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];    
-}
- */
 
 - (NSString *)getDate{
     NSDate *date = [NSDate date];

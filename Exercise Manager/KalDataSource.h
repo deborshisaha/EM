@@ -84,14 +84,6 @@
 
 #pragma mark -
 
-/*
- *    SimpleKalDataSource
- *    -------------------
- *
- *  A null implementation of the KalDataSource protocol.
- *
- */
-
 @interface SimpleKalDataSource : NSObject <KalDataSource>
 {
 }
