@@ -26,8 +26,6 @@
     
     sqlite3 *database;
     
-    //NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
-    
     if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
     {
         //sqlite3_stmt *compiledStatement;
@@ -62,14 +60,46 @@
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
             
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
-                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
-                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)]intValue ];
+                    NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
+                    NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)]intValue ];
                     NSInteger weightIsRequired = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)] intValue];
                     NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
                 
                 //DBLog(@"string : %@ id : %i weightIsRequired %i wt.:%i", pSExerciseName, Iid, weightIsRequired, weight );
                 
                 EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeightIsRequired: weightIsRequired andWeight: weight ];
+                [pMAExercise   addObject: exercise];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return pMAExercise;
+}
+
++(NSMutableArray *) readFromLogTable:(NSString *)tableName
+{
+    sqlite3 *database;
+    
+    NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
+    
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
+        sqlite3_stmt *compiledStatement;
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT * FROM '%@' ",tableName];
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+        
+        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
+            
+            while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
+                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
+                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)]intValue ];
+                NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
+                
+                DBLog(@"string : %@ id : %i wt.:%i", pSExerciseName, Iid, weight );
+                
+                EMExercisesBasic *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeight: weight ];
                 [pMAExercise   addObject: exercise];
             }
         }
@@ -146,13 +176,14 @@
     return -1;
 }
 
-+ (void ) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName andWeightMeterRequired:(BOOL)weightMeterRequired
++ (void ) createTableWithName:(NSString *)tableName andInsertExercise: (NSString *)exerciseName andWeightMeterRequired:(BOOL)weightMeterRequired andExId:(int)exId                                                                                                                                                    
 {
     sqlite3 *database;
     //sqlite3_stmt *createStmt;
     
     // First check if the table is present??
     int count=0;
+
     count = [EMSQLManager isTablePresentWithName:tableName];
     
     // Opening the data base
@@ -162,7 +193,7 @@
         if (count == 0) {
             //create the table
             pSQueryString = [NSString stringWithFormat:
-                                       @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise TEXT, weight_meter_required INTEGER, weight INTEGER)", tableName];
+                                       @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY NOT NULL, exercise TEXT, weight_meter_required INTEGER, weight INTEGER)", tableName];
             DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
             
             int error_code = sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, NULL);
@@ -171,7 +202,6 @@
                 DBLog(@"Table create successful");
             }else {
                 DBLog(@" *** ERROR CODE: %d ***", error_code);
-                
             }
         }
         
@@ -181,9 +211,10 @@
         
         // Adding the exercise name
         if(weightMeterRequired){
-            pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exercise, weight_meter_required, weight) VALUES( '%@', 1, 0 )", tableName, exerciseName];
+            pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (id, exercise, weight_meter_required, weight) VALUES( %d, '%@', 1, 0 )", tableName, exId, exerciseName];
         }else{
-             pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exercise, weight_meter_required, weight) VALUES( '%@', 0, 0 )", tableName, exerciseName];           
+            pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (id, exercise, weight_meter_required, weight) VALUES( %d, '%@', 0, 0 )", tableName, exId, exerciseName]; 
+            DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         }
         DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         
@@ -208,6 +239,131 @@
     }
     sqlite3_close(database);
 }
+
+
+//  Log table
++ (void) createLogTableWithName:(NSString *)logTableName{
+    sqlite3 *database;
+    //sqlite3_stmt *createStmt;
+    
+    char *errormsg=NULL;
+    // First check if the table is present??
+    int count=0;
+    count = [EMSQLManager isTablePresentWithName:logTableName];
+    
+    // Opening the data base
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
+        
+        NSString *pSQueryString;
+        if (count == 0) {
+            //create the table
+            pSQueryString = [NSString stringWithFormat:
+                             @"CREATE TABLE '%@' (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, exercise TEXT, exId INTEGER, weight INTEGER)", logTableName];
+            DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+            
+            int error_code = sqlite3_exec(database,[ pSQueryString UTF8String],NULL, NULL, &errormsg);
+            if(error_code == SQLITE_OK)
+            {
+                DBLog(@"Table create successful");
+            }else {
+                DBLog(@" *** ERROR MSG: %s ***", errormsg);
+            }
+        }
+    }
+    sqlite3_close(database);
+}
+
+//  Enter values into log table
++ (BOOL)logWithTablename:(NSString *)logTableName andExerciseName:(NSString *)exercise andExId:(NSInteger)exId andWeight:(int)weight{
+    
+    DBLog(@"%s %d", __PRETTY_FUNCTION__, __LINE__);
+    sqlite3 *database;
+    int count=0;
+    char *errormsg=NULL;
+    
+    //  Check if the table is present
+    count = [EMSQLManager isTablePresentWithName:logTableName];
+    if (!count) {
+        DBLog(@"Table not present");
+        [self createLogTableWithName:logTableName];
+    }
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK){
+        NSString *pSQueryString;
+        if (exercise == nil) {
+            return FALSE;
+        }
+        
+        pSQueryString = [NSString stringWithFormat: @"INSERT INTO '%@' (exId, exercise, weight) VALUES( %i, '%@', %d )", logTableName, exId , exercise, weight];
+                         
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+                         
+        if(sqlite3_exec(database, [pSQueryString UTF8String], NULL, NULL, &errormsg) == SQLITE_OK){
+            DBLog( @"Function : %s, Line : %d  Insert Successful", __PRETTY_FUNCTION__, __LINE__);
+            return TRUE;
+        }else {
+            DBLog(@"Logging unsuccessful because %s", errormsg);
+            return FALSE;
+        }
+    }
+    sqlite3_close(database);
+    return FALSE;
+}
+
++(BOOL) clearLogTable:(NSString *)logTableName withExerciseId:(NSInteger) exId{
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
+        //sqlite3_stmt *compiledStatement;
+        char *errorMsg = NULL;
+        NSString *pSQueryString = [NSString stringWithFormat: @"DELETE FROM '%@' WHERE exId='%i' ",logTableName, exId];
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+        
+        if(sqlite3_exec(database, [pSQueryString UTF8String], NULL, NULL, &errorMsg) == SQLITE_OK){
+            DBLog(@"sqlite3_exec went thru");
+        }else {
+            sqlite3_close(database);
+            DBLog(@"executeQuery Error:  %s", errorMsg);
+            return FALSE;
+        }
+    }
+    sqlite3_close(database);
+    return TRUE;
+}
+
++(NSMutableArray *) readAllExercisesFromLogTable:(NSString *)tableName
+{
+    sqlite3 *database;
+    
+    NSMutableArray *pMAExerciseBasic = [[NSMutableArray alloc] init];
+    
+    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
+    {
+        sqlite3_stmt *compiledStatement;
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT * FROM '%@' ",tableName];
+        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
+        
+        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
+            
+            while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
+                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
+                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)]intValue ];
+                NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)] intValue];
+                
+                DBLog(@"string : %@ id : %i weightIsRequired wt.:%i", pSExerciseName, Iid, weight );
+                
+                EMExercisesBasic *exercise = [[EMExercisesBasic alloc] initWithName:pSExerciseName andId:Iid andWeight: weight ];
+                [pMAExerciseBasic   addObject: exercise];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return pMAExerciseBasic;
+}
+
 
 /*
 + (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate

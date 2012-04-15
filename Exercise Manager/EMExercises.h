@@ -7,19 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Kal.h"
 
-@interface EMExercises : NSObject
+@interface EMExercisesBasic : NSObject 
 {
     NSString *pSExerciseName;
     NSInteger IExerciseId;
-    NSInteger IWeightMeterRequired;
     NSInteger IWeight;
 }
 
 @property (nonatomic, retain) NSString *pSExerciseName;
 @property (nonatomic, readwrite) NSInteger IExerciseId;
-@property (nonatomic, readwrite) NSInteger IWeightMeterRequired;
 @property (nonatomic, readwrite) NSInteger IWeight;
+
+-(id) initWithName:(NSString *)name andId:(NSInteger)id andWeight: (NSInteger)weight;
+
+@end
+
+
+@interface EMExercises : EMExercisesBasic
+{
+    NSInteger IWeightMeterRequired;
+}
+
+@property (nonatomic, readwrite) NSInteger IWeightMeterRequired;
 
 -(id) initWithName:(NSString *)name andId:(NSInteger)id andWeightIsRequired: (NSInteger)weightIsRequired andWeight: (NSInteger)weight;
 

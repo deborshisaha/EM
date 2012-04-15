@@ -30,14 +30,13 @@ static KalDate *today;
 
 + (KalDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
 {
-  DBLog(@"%s day:%d month:%d year:%d",  __PRETTY_FUNCTION__, day, month, year );
-  return [[KalDate alloc] initForDay:day month:month year:year] ;
+  return [[KalDate alloc] initForDay:day month:month year:year];
 }
 
 + (KalDate *)dateFromNSDate:(NSDate *)date
 {
   NSDateComponents *parts = [date cc_componentsForMonthDayAndYear];
-  DBLog(@"%s day:%i month:%i year:%i",  __PRETTY_FUNCTION__, [parts day], [parts month], [parts year] );
+    DBLog(@"%i %i %i ", [parts day], [parts month], [parts year]);
   return [KalDate dateForDay:[parts day] month:[parts month] year:[parts year]];
 }
 

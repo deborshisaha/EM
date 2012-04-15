@@ -7,6 +7,7 @@
 //
 
 #import "EMNewExerciseViewController.h"
+#import <stdlib.h>
 
 @interface EMNewExerciseViewController ()
 
@@ -45,16 +46,21 @@
     
     DBLog(@"textfield : text%@", textField.text);
     if ([textField.text length] != 0) {
+        // Generate the random id
+        unsigned int ExId=0;
+        ExId = arc4random()%1000;
         // Enter the field in the database, else exit the view
-        DBLog(@"Text has been entered");
+        DBLog(@"Text has been entered ");
+        DBLog(@"ID generated %u", ExId);
         if (weightMeter.on) {
             DBLog(@"weightMeter is on");
-            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:YES];
+            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:YES andExId:ExId];
         }else {
             DBLog(@"weightMeter is off");
-            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:NO];
+            [EMSQLManager createTableWithName:[ NSString stringWithFormat:@"%@ExercisesTable", category] andInsertExercise:textField.text andWeightMeterRequired:NO andExId:ExId];
         }
-
+        //  Create log DB for this category
+        // [EMSQLManager createLogTableWithName:[NSString stringWithFormat:@"%@LogTable", category]];
     }
     [textField resignFirstResponder]; 
     [self dismissModalViewControllerAnimated: YES];

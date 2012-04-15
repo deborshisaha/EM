@@ -47,7 +47,7 @@
   KalLogic *logic;
 }
 
-@property (nonatomic, assign) id<KalViewDelegate> delegate;
+@property (nonatomic, retain) id<KalViewDelegate> delegate;
 @property (nonatomic, readonly) UITableView *tableView;
 @property (nonatomic, readonly) KalDate *selectedDate;
 
