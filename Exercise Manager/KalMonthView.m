@@ -24,7 +24,7 @@ extern const CGSize kTileSize;
     for (int i=0; i<6; i++) {
       for (int j=0; j<7; j++) {
         CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
-        [self addSubview:[[KalTileView alloc] initWithFrame:r]];
+        [self addSubview:[[KalTileView alloc] initWithFrame:r] ];
       }
     }
   }
@@ -75,11 +75,17 @@ extern const CGSize kTileSize;
 - (KalTileView *)tileForDate:(KalDate *)date
 {
   KalTileView *tile = nil;
+    int i=0;
+    if (self.subviews) {
+        DBLog(@"Subviews are present #: %d", [self.subviews count]);
+    }
   for (KalTileView *t in self.subviews) {
+      DBLog(@"%d %d %d %d", i, t.date.day, t.date.month, t.date.year);
     if ([t.date isEqual:date]) {
       tile = t;
       break;
     }
+      i++;
   }
   NSAssert1(tile != nil, @"Failed to find corresponding tile for date %@", date);
   

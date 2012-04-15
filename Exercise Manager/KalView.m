@@ -19,14 +19,13 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 @implementation KalView
 
-@synthesize  tableView;
-@dynamic delegate;
+@synthesize delegate, tableView;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
   if ((self = [super initWithFrame:frame])) {
     delegate = theDelegate;
-    //logic = [theLogic retain];
+    logic = theLogic ;
     [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
     self.autoresizesSubviews = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -36,7 +35,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
     [self addSubviewsToHeaderView:headerView];
     [self addSubview:headerView];
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)] ;
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self addSubviewsToContentView:contentView];
     [self addSubview:contentView];
@@ -125,7 +124,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   //[nextMonthButton release];
   
   // Add column labels for each weekday (adjusting based on the current locale's first weekday)
-  NSArray *weekdayNames = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
+  NSArray *weekdayNames = [[[NSDateFormatter alloc] init]  shortWeekdaySymbols];
   NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
   for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
@@ -215,16 +214,19 @@ static const CGFloat kMonthLabelHeight = 17.f;
 - (void)markTilesForDates:(NSArray *)dates { [gridView markTilesForDates:dates]; }
 
 - (KalDate *)selectedDate { return gridView.selectedDate; }
-
+/*
 - (void)dealloc
 {
   [logic removeObserver:self forKeyPath:@"selectedMonthNameAndYear"];
-  //[logic release];
+  [logic release];
   
-  //[headerTitleLabel release];
+  [headerTitleLabel release];
   [gridView removeObserver:self forKeyPath:@"frame"];
-
-  //[super dealloc];
+  [gridView release];
+  [tableView release];
+  [shadowView release];
+  [super dealloc];
 }
+ */
 
 @end

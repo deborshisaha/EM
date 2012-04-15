@@ -10,7 +10,7 @@
 
 
 @implementation EMGenericExercisesViewController
-@synthesize pMAExercise, exercisesDoneTillNow, selectedItem, todaysDate;
+@synthesize pMAExercise, pMAExercisesDoneTillNow, selectedItem, todaysDate, logTablename, done;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,18 +27,25 @@
 {
     [super viewDidLoad];
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
-    
-    exercisesDoneTillNow= [NSUserDefaults standardUserDefaults];
-    
     // Get the database adapter
     [EMSQLManager createDatabase];
-
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
-    
     // Get exercises done today
     todaysDate=[self getDate];
-    
+    //  Read all exercises done on this date
+    pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
+    //  Allocate memory to done
+    done = [[NSMutableDictionary alloc] init];
+    DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
+    DBLog(@"Line # %d ", __LINE__);
+    //  Create a dictionary with exercise Id
+    for (EMExercisesBasic *eb in pMAExercisesDoneTillNow) 
+    {
+        DBLog(@"%i", eb.IExerciseId);
+        [done setObject:[NSNumber numberWithBool:YES]
+                 forKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -49,19 +56,34 @@
     
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
-    
+    pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
+    DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
+    DBLog(@"Line # %d ", __LINE__);
+    //  Create a dictionary with exercise Id
+    for (EMExercisesBasic *eb in pMAExercisesDoneTillNow) {
+        DBLog(@"%i", eb.IExerciseId);
+        [done setObject:[NSNumber numberWithBool:YES]
+                forKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]];
+         DBLog(@"key: %i Value: %i", eb.IExerciseId, [[done valueForKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]] boolValue]);
+    }    
+    /*  
+     iterate through the mutable array and with the help of exercise id fetch information from the log DB to check
+     whether the exercise was performed today?
+     */
     [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -75,6 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Return the number of rows in the section.
     return pMAExercise.count;
 }
@@ -83,89 +106,56 @@
 {
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     BOOL bIsChecked=FALSE;
+    UIStepper *stepper=NULL;
+    UILabel *weightUnits = NULL;
+    UILabel *weight = NULL;
+    UILabel *cellLabel = NULL;
+    UILabel *cellNativeText = NULL;
+    
     static NSString *CellIdentifier = @"Cell";
     // Create or reuse a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-      
+  
+    stepper = (UIStepper *)[cell viewWithTag:2];
+    weight = (UILabel *)[cell viewWithTag:3];
+    weightUnits = (UILabel *)[cell viewWithTag:4];
+    
     // Configure the cell...
-    //UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     // Retrieve the value and check if the row should be checked.
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, tempExercise.pSExerciseName]];
-    
-    if( bIsChecked == TRUE){
+    bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
+   
+    if(  bIsChecked  == YES){
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
-    
-    //DBLog(@"tempExercise at %d n:%@ wt:%i b:%i", __LINE__, tempExercise.pSExerciseName, tempExercise.IWeight, tempExercise.IWeightMeterRequired);
-    
+        
     // check if weight is required
     if(tempExercise.IWeightMeterRequired){
-        UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
-        UILabel *weight = (UILabel *)[cell viewWithTag:3];
-        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        cellLabel = (UILabel *)[cell viewWithTag:1];
         stepper.hidden = FALSE;
         weight.hidden = FALSE;
         weightUnits.hidden = FALSE;
-        weight.text = [NSString stringWithFormat:@"%i",tempExercise.IWeight];
-        //cell.frame.size.height = 50;
         stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
-        DBLog(@"%d %@", __LINE__, tempExercise.pSExerciseName);
+        [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
+        [weight setFont:[UIFont fontWithName:@"SallandoItalic" size:24.0]];
+        [cellLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
     }else {
-        UILabel *cellNativeText = (UILabel *)[cell viewWithTag:0];
-        UIStepper *stepper = (UIStepper *)[cell viewWithTag:2];
-        UILabel *weight = (UILabel *)[cell viewWithTag:3];
-        UILabel *weightUnits = (UILabel *)[cell viewWithTag:4];
+        cellNativeText = (UILabel *)[cell viewWithTag:0];
         stepper.hidden = TRUE;
         weight.hidden = TRUE;
         weightUnits.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
-        DBLog(@"%d %@", __LINE__, tempExercise.pSExerciseName);
+        [cellNativeText setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
     }
-    //[cellLabel setText:tempExercise.pSExerciseName];
     return cell;
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    DBLog(@" %s ", __PRETTY_FUNCTION__);
-
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UILabel *cellLabel = NULL;
-    
-    // check the pMAExercise
-    EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
-
-    if (tempExercise.IWeightMeterRequired) {
-        cellLabel = (UILabel *)[cell viewWithTag:1];
-    }else {
-        cellLabel = (UILabel *)[cell viewWithTag:0];
-    }
-    NSString *cellLabelText = cellLabel.text;
-    
-    BOOL bIsChecked =  FALSE;
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    
-    DBLog(@"Key : %@ ", [NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]);
-    
-    if (bIsChecked == FALSE) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        [exercisesDoneTillNow setBool:TRUE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    }else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [exercisesDoneTillNow setBool:FALSE forKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];
-    }
-    bIsChecked = [exercisesDoneTillNow boolForKey:[NSString stringWithFormat:@"%@_%@", todaysDate, cellLabelText]];    
 }
 
 - (NSString *)getDate{
@@ -179,6 +169,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     [tableView beginUpdates];    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Do whatever data deletion you need to do...
@@ -197,27 +188,61 @@
     return 90.0;
 }
 
-- (IBAction)stepperChanged:(UIStepper *)sender {
-
-    DBLog(@"IBAction %s STARTS ", __PRETTY_FUNCTION__);
-
+- (IBAction)weightIncreased:(id)sender{
+    // get required elements of the cell
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
-    // assuming your view controller is a subclass of UITableViewController, for example.
-    //NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     UILabel *weight = (UILabel *)[cell viewWithTag:3];
-    weight.text = [NSString stringWithFormat:@"%.f",sender.value];
-    
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
+    UIButton *decreaseButton = (UIButton *)[cell viewWithTag:10];
+    UIButton *increaseButton = (UIButton *)[cell viewWithTag:11];
     
-    DBLog(@"IBAction exercise : ")
-    // Enter the value in database
-    [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-    //[NSString stringWithUTF8String:(char *)
+    // Increase the value by 5 only if it has not reached the maximum limit
+    if (tempExercise.IWeight < 1000) {
+        tempExercise.IWeight += 5;
+        //  Enable the decrease button
+        decreaseButton.hidden = FALSE;
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+    }
+    if(tempExercise.IWeight == 1000){
+        //  Deactivate the button
+        increaseButton.hidden = TRUE;
+    }
+    // Update the label
+    [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];
+}
+
+- (IBAction)weightDecreased:(id)sender{
+    // get required elements of the cell
+    UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UILabel *weight = (UILabel *)[cell viewWithTag:3];
+    UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
+    UIButton *increaseButton = (UIButton *)[cell viewWithTag:11];
+    
+    // decrease the value by 5 only if it is greater that zero
+    if (tempExercise.IWeight > 0) {
+        tempExercise.IWeight -= 5;
+        //  Enable the increase button
+        increaseButton.hidden = FALSE;
+        // Update the DB with new value
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+
+    }
+    // Update the label
+    [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];
+    
+    if(tempExercise.IWeight == 0){
+        // Update the label
+        [weight setText: [NSString stringWithFormat:@"0"]];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"AddedNewCategory"]) {
         
