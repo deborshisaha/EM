@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3409AD8615372489005A0A1B /* SallandoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3409AD8515372489005A0A1B /* SallandoItalic.ttf */; };
-		3409AD8715372539005A0A1B /* SallandoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3409AD8515372489005A0A1B /* SallandoItalic.ttf */; };
 		343223D8151062340093FB7F /* EMExercises.m in Sources */ = {isa = PBXBuildFile; fileRef = 343223D7151062340093FB7F /* EMExercises.m */; };
 		3472C6E81527FE31005C9283 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6D81527FE30005C9283 /* KalDataSource.m */; };
 		3472C6E91527FE31005C9283 /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6DA1527FE30005C9283 /* KalDate.m */; };
@@ -78,7 +76,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3409AD8515372489005A0A1B /* SallandoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SallandoItalic.ttf; path = "Exercise Manager/Resources/SallandoItalic.ttf"; sourceTree = "<group>"; };
 		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
 		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
 		3472C6D61527FE30005C9283 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = "Exercise Manager/Kal.h"; sourceTree = "<group>"; };
@@ -233,7 +230,6 @@
 				34FDBBA21537591B001C7954 /* upArrowMax.png */,
 				34FDBB9F153758F4001C7954 /* upArrow.png */,
 				3472C6FA1527FEE5005C9283 /* kal_grid_background.png */,
-				3409AD8515372489005A0A1B /* SallandoItalic.ttf */,
 				3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */,
 				3472C6FC1527FEE5005C9283 /* kal_header_text_fill.png */,
 				3472C6FD1527FEE5005C9283 /* kal_left_arrow.png */,
@@ -422,7 +418,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3409AD8715372539005A0A1B /* SallandoItalic.ttf in Resources */,
 				34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */,
 				34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */,
 				34D13587152D5A7000EEC3BD /* kal_header_text_fill.png in Resources */,
@@ -458,7 +453,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */,
-				3409AD8615372489005A0A1B /* SallandoItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
