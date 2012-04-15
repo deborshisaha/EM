@@ -42,6 +42,7 @@
 		34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70D1527FEE5005C9283 /* kal_tile_today.png */; };
 		34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70E1527FEE5005C9283 /* kal_tile.png */; };
 		34D412E2153A785200D8A52C /* EMSqliteDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D412E1153A785200D8A52C /* EMSqliteDatasource.m */; };
+		34D412E4153A8B3F00D8A52C /* SallandoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
@@ -129,6 +130,7 @@
 		34AD32F6153767DA002F3435 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = downArrow.png; path = "Exercise Manager/Resources/downArrow.png"; sourceTree = "<group>"; };
 		34D412E0153A785200D8A52C /* EMSqliteDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSqliteDatasource.h; sourceTree = "<group>"; };
 		34D412E1153A785200D8A52C /* EMSqliteDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSqliteDatasource.m; sourceTree = "<group>"; };
+		34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SallandoItalic.ttf; path = "Exercise Manager/Resources/SallandoItalic.ttf"; sourceTree = "<group>"; };
 		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				34AD32F6153767DA002F3435 /* downArrow.png */,
+				34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */,
 				34FDBBA21537591B001C7954 /* upArrowMax.png */,
 				34FDBB9F153758F4001C7954 /* upArrow.png */,
 				3472C6FA1527FEE5005C9283 /* kal_grid_background.png */,
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */,
+				34D412E4153A8B3F00D8A52C /* SallandoItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
