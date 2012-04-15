@@ -104,7 +104,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
-
+/*
 - (void):(KalDate *)date
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -115,7 +115,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
   [tableView flashScrollIndicators];
-}
+}*/
 
 - (void)showPreviousMonth
 {
@@ -191,6 +191,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)didSelectDate:(KalDate *)date
 {
+    DBLog(@"%s %d", __PRETTY_FUNCTION__, __LINE__);
+    DBLog(@"Date selected: %d %d %d", date.day, date.month, date.year);
     self.selectedDate = [date NSDate];
     NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
     NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
@@ -246,6 +248,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 #pragma mark -
+
+
 /*
 - (void)dealloc
 {

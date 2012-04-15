@@ -36,5 +36,6 @@
 
 
 - (IBAction)stepperChanged:(UIStepper *)sender;
-
+- (IBAction)weightIncreased:(id)sender;
+- (IBAction)weightDecreased:(id)sender;
 @end

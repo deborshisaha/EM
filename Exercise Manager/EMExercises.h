@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Kal.h"
 
-@interface EMExercisesBasic : NSObject
+@interface EMExercisesBasic : NSObject 
 {
     NSString *pSExerciseName;
     NSInteger IExerciseId;

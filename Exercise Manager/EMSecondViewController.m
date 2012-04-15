@@ -76,6 +76,8 @@
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     [cellLabel setText:tempExercise.pSExerciseName];
+    DBLog(@"Should change font");
+    [cellLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
     return cell;
 }
 

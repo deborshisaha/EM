@@ -20,12 +20,18 @@
     return self;
 }
 
+#pragma mark Sqlite access
+
+- (NSString *)databasePath
+{
+    return [[NSBundle mainBundle] pathForResource:@"holidays" ofType:@"db"];
+}
+
 @end
 
 
 @implementation EMExercisesBasic
 @synthesize pSExerciseName, IExerciseId, IWeight;
-
 
 -(id) initWithName:(NSString *)name andId:(NSInteger)id andWeight: (NSInteger)weight{
 self.pSExerciseName = name;

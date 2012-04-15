@@ -125,13 +125,10 @@
     weightUnits = (UILabel *)[cell viewWithTag:4];
     
     // Configure the cell...
-    //UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     // Retrieve the value and check if the row should be checked.
     bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
-    //bIsChecked = [done valueForKey:]; //, [[NSString stringWithFormat:@"%@", eb.IExerciseId]];
-    DBLog(@"key %i value %i",  tempExercise.IExerciseId, bIsChecked);
    
     if(  bIsChecked  == YES){
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -145,19 +142,19 @@
         stepper.hidden = FALSE;
         weight.hidden = FALSE;
         weightUnits.hidden = FALSE;
-        weight.text = [NSString stringWithFormat:@"%i",tempExercise.IWeight];
         stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
-        //DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
+        [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
+        [weight setFont:[UIFont fontWithName:@"SallandoItalic" size:24.0]];
+        [cellLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
     }else {
         cellNativeText = (UILabel *)[cell viewWithTag:0];
         stepper.hidden = TRUE;
         weight.hidden = TRUE;
         weightUnits.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
-        //DBLog(@"Line # %d %@", __LINE__, tempExercise.pSExerciseName);
+        [cellNativeText setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
     }
-    //[cellLabel setText:tempExercise.pSExerciseName];
     return cell;
 }
 
@@ -191,40 +188,55 @@
     return 90.0;
 }
 
-- (IBAction)stepperChanged:(UIStepper *)sender {
-
-    DBLog(@"IBAction %s STARTS ", __PRETTY_FUNCTION__);
-
+- (IBAction)weightIncreased:(id)sender{
+    // get required elements of the cell
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
-    // assuming your view controller is a subclass of UITableViewController, for example.
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
-    
     UILabel *weight = (UILabel *)[cell viewWithTag:3];
-    weight.text = [NSString stringWithFormat:@"%.f",sender.value];
-    
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
+    UIButton *decreaseButton = (UIButton *)[cell viewWithTag:10];
+    UIButton *increaseButton = (UIButton *)[cell viewWithTag:11];
     
-    DBLog(@"IBAction exercise : ")
-    if (sender.value > 0) {
-        //  Enter into the log table with date, weight, exercise name and exercise id
-        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: sender.value]){
-            //  Set the check for the row
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        }
-        // Enter the value in database
+    // Increase the value by 5 only if it has not reached the maximum limit
+    if (tempExercise.IWeight < 1000) {
+        tempExercise.IWeight += 5;
+        //  Enable the decrease button
+        decreaseButton.hidden = FALSE;
         [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-    }else{
-        // Check if the control is coming to this block for the first time ater getting zero
-        if ([cell accessoryType] == UITableViewCellAccessoryCheckmark ) {
-            //  Clear log database after having looked for the exercise id
-            [EMSQLManager clearLogTable:[self getDate] withExerciseId:tempExercise.IExerciseId ];
-            //  Uncheck the row
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-            // Enter the value in database
-            [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-        }
+    }
+    if(tempExercise.IWeight == 1000){
+        //  Deactivate the button
+        increaseButton.hidden = TRUE;
+    }
+    // Update the label
+    [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];
+}
+
+- (IBAction)weightDecreased:(id)sender{
+    // get required elements of the cell
+    UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UILabel *weight = (UILabel *)[cell viewWithTag:3];
+    UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
+    UIButton *increaseButton = (UIButton *)[cell viewWithTag:11];
+    
+    // decrease the value by 5 only if it is greater that zero
+    if (tempExercise.IWeight > 0) {
+        tempExercise.IWeight -= 5;
+        //  Enable the increase button
+        increaseButton.hidden = FALSE;
+        // Update the DB with new value
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+
+    }
+    // Update the label
+    [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];
+    
+    if(tempExercise.IWeight == 0){
+        // Update the label
+        [weight setText: [NSString stringWithFormat:@"0"]];
     }
 }
 
