@@ -77,7 +77,7 @@
     
     [cellLabel setText:tempExercise.pSExerciseName];
     DBLog(@"Should change font");
-    [cellLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
+    [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     return cell;
 }
 

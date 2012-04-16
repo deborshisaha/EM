@@ -45,7 +45,7 @@
   return [NSArray array];
 }
 
-- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+- (void)loadItemsFromDate:(NSDate *)fromDate 
 {
   // do nothing
 }

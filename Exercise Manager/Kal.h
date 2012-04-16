@@ -35,7 +35,7 @@
  */
 
 #import "KalViewController.h"
-#import "KalDataSource.h"
+#import "EMTableViewDataSource.h"
 
 // The KalDataSource implementation should post this notification
 // whenever its content has changed. Kal uses this notification to

@@ -41,6 +41,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // to accomodate all 7 columns. The 7th day's 2px inner stroke
   // will be clipped off the screen, but that's fine because
   // MobileCal does the same thing.
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   frame.size.width = 7 * kTileSize.width;
   
   if (self = [super initWithFrame:frame]) {
@@ -62,6 +63,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)drawRect:(CGRect)rect
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
   [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
   CGRect line;
@@ -72,6 +74,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)sizeToFit
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.height = frontMonthView.height;
 }
 
@@ -80,6 +83,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)setHighlightedTile:(KalTileView *)tile
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (highlightedTile != tile) {
     highlightedTile.highlighted = NO;
     highlightedTile = tile ;
@@ -90,8 +94,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)setSelectedTile:(KalTileView *)tile
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (selectedTile != tile) {
-      DBLog(@"%d", tile.date.day);
+      //DBLog(@"%d", tile.date.day);
     selectedTile.selected = NO;
     selectedTile = tile ;
     tile.selected = YES;
@@ -99,8 +104,20 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   }
 }
 
+- (void) userSelectedTile:(KalTileView *)tile{
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    if (selectedTile != tile) {
+        //DBLog(@"%d", tile.date.day);
+        selectedTile.selected = NO;
+        selectedTile = tile ;
+        tile.selected = YES;
+        [delegate userSelectedDate:tile.date];
+    }
+}
+
 - (void)receivedTouches:(NSSet *)touches withEvent:event
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   UITouch *touch = [touches anyObject];
   CGPoint location = [touch locationInView:self];
   UIView *hitView = [self hitTest:location withEvent:event];
@@ -114,23 +131,26 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
       self.highlightedTile = tile;
     } else {
       self.highlightedTile = nil;
-      self.selectedTile = tile;
+        [self userSelectedTile: tile];
     }
   }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self receivedTouches:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self receivedTouches:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   UITouch *touch = [touches anyObject];
   CGPoint location = [touch locationInView:self];
   UIView *hitView = [self hitTest:location withEvent:event];
@@ -156,6 +176,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)swapMonthsAndSlide:(int)direction keepOneRow:(BOOL)keepOneRow
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   backMonthView.hidden = NO;
   
   // set initial positions before the slide
@@ -193,6 +214,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)slide:(int)direction
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   transitioning = YES;
   
   [backMonthView showDates:logic.daysInSelectedMonth

@@ -145,15 +145,15 @@
         stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
         [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
-        [weight setFont:[UIFont fontWithName:@"SallandoItalic" size:24.0]];
-        [cellLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
+        [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:36.0]];
     }else {
         cellNativeText = (UILabel *)[cell viewWithTag:0];
         stepper.hidden = TRUE;
         weight.hidden = TRUE;
         weightUnits.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
-        [cellNativeText setFont:[UIFont fontWithName:@"SallandoItalic" size:36.0]];
+        [cellNativeText setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     }
     return cell;
 }
@@ -204,6 +204,10 @@
         //  Enable the decrease button
         decreaseButton.hidden = FALSE;
         [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+            //  Set the check for the row
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     }
     if(tempExercise.IWeight == 1000){
         //  Deactivate the button
@@ -229,7 +233,10 @@
         increaseButton.hidden = FALSE;
         // Update the DB with new value
         [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+            //  Set the check for the row
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     }
     // Update the label
     [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];
