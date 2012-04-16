@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "Kal.h"
+//#include "Kal.h"
 #include "EMExercises.h"
 
-@interface EMSqliteDatasource : NSObject <KalDataSource>{
+@interface EMSqliteDatasource : NSObject <EMTableViewDataSource>{
     //NSMutableArray *items;
     NSMutableArray *exercises;
 }
 
 + (EMSqliteDatasource *)dataSource;
-- (EMExercisesBasic *)exerciseAtIndexPath:(NSIndexPath *)indexPath;  // exposed for HolidayAppDelegate so that 
+- (id) initWithTodaysDate:(NSDate *) date;
+//- (EMExercisesBasic *)exerciseAtIndexPath:(NSIndexPath *)indexPath;  // exposed for HolidayAppDelegate so that 
+//- (void)loadExerciseOfDate:(NSDate *)ofDate;
 @end

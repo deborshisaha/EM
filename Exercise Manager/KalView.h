@@ -74,5 +74,6 @@
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
 - (void)didSelectDate:(KalDate *)date;
+- (void)userSelectedDate:(KalDate *)date;
 
 @end

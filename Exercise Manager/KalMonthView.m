@@ -18,6 +18,7 @@ extern const CGSize kTileSize;
 
 - (id)initWithFrame:(CGRect)frame
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super initWithFrame:frame])) {
     self.opaque = NO;
     self.clipsToBounds = YES;
@@ -33,6 +34,7 @@ extern const CGSize kTileSize;
 
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   int tileNum = 0;
   NSArray *dates[] = { leadingAdjacentDates, mainDates, trailingAdjacentDates };
   
@@ -55,12 +57,14 @@ extern const CGSize kTileSize;
 
 - (void)drawRect:(CGRect)rect
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
 }
 
 - (KalTileView *)firstTileOfMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   KalTileView *tile = nil;
   for (KalTileView *t in self.subviews) {
     if (!t.belongsToAdjacentMonth) {
@@ -74,6 +78,7 @@ extern const CGSize kTileSize;
 
 - (KalTileView *)tileForDate:(KalDate *)date
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   KalTileView *tile = nil;
     int i=0;
     if (self.subviews) {
@@ -94,11 +99,13 @@ extern const CGSize kTileSize;
 
 - (void)sizeToFit
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.height = 1.f + kTileSize.height * numWeeks;
 }
 
 - (void)markTilesForDates:(NSArray *)dates
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   for (KalTileView *tile in self.subviews)
     tile.marked = [dates containsObject:tile.date];
 }
