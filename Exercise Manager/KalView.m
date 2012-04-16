@@ -23,6 +23,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super initWithFrame:frame])) {
     delegate = theDelegate;
     logic = theLogic ;
@@ -46,11 +47,15 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (id)initWithFrame:(CGRect)frame
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [NSException raise:@"Incomplete initializer" format:@"KalView must be initialized with a delegate and a KalLogic. Use the initWithFrame:delegate:logic: method."];
   return nil;
 }
 
-- (void)redrawEntireMonth { [self jumpToSelectedMonth]; }
+- (void)redrawEntireMonth { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    [self jumpToSelectedMonth]; 
+}
 
 - (void)slideDown { [gridView slideDown]; }
 - (void)slideUp { [gridView slideUp]; }
@@ -69,6 +74,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)addSubviewsToHeaderView:(UIView *)headerView
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   const CGFloat kChangeMonthButtonWidth = 46.0f;
   const CGFloat kChangeMonthButtonHeight = 30.0f;
   const CGFloat kMonthLabelWidth = 200.0f;
@@ -147,6 +153,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   // Both the tile grid and the list of events will automatically lay themselves
   // out to fit the # of weeks in the currently displayed month.
   // So the only part of the frame that we need to specify is the width.
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   CGRect fullWidthAutomaticLayoutFrame = CGRectMake(0.f, 0.f, self.width, 0.f);
 
   // The tile grid (the calendar body)
@@ -171,6 +178,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (object == gridView && [keyPath isEqualToString:@"frame"]) {
     
     /* Animate tableView filling the remaining space after the
@@ -200,20 +208,34 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)setHeaderTitleText:(NSString *)text
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   [headerTitleLabel setText:text];
+    //[headerTitleLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:28.0]];
   [headerTitleLabel sizeToFit];
   headerTitleLabel.left = floorf(self.width/2.f - headerTitleLabel.width/2.f);
 }
 
-- (void)jumpToSelectedMonth { [gridView jumpToSelectedMonth]; }
+- (void)jumpToSelectedMonth { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    [gridView jumpToSelectedMonth]; 
+}
 
-- (void)selectDate:(KalDate *)date { [gridView selectDate:date]; }
+- (void)selectDate:(KalDate *)date { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    [gridView selectDate:date]; 
+}
 
 - (BOOL)isSliding { return gridView.transitioning; }
 
-- (void)markTilesForDates:(NSArray *)dates { [gridView markTilesForDates:dates]; }
+- (void)markTilesForDates:(NSArray *)dates { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    [gridView markTilesForDates:dates]; 
+}
 
-- (KalDate *)selectedDate { return gridView.selectedDate; }
+- (KalDate *)selectedDate { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    return gridView.selectedDate;
+}
 /*
 - (void)dealloc
 {

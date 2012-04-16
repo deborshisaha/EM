@@ -82,20 +82,35 @@
 {
     sqlite3 *database;
     
-    NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
-    
+    NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];;    
+    //  Should check if the table exists or not
+    int count=0;
+    count = [EMSQLManager isTablePresentWithName:tableName];
+    if (count == 0){
+        pMAExercise = [[NSMutableArray alloc] init];
+        // No exercise performed on this day. Create a dummy informing the user- no exercise was performed
+        NSString *pSExerciseName = @"NONE";
+        NSInteger Iid = 0;
+        NSInteger weight = 0;
+        EMExercisesBasic *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeight: weight ];
+        [pMAExercise   addObject: exercise];
+
+        return pMAExercise;
+    }
+
+
     if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
     {
         sqlite3_stmt *compiledStatement;
-        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT * FROM '%@' ",tableName];
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT DISTINCT exercise FROM '%@' ",tableName];
         DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
             
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
-                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)];
-                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)]intValue ];
-                NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
+                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
+                NSInteger Iid = 0;//[[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)]intValue ];
+                NSInteger weight = 0;//[[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
                 
                 DBLog(@"string : %@ id : %i wt.:%i", pSExerciseName, Iid, weight );
                 

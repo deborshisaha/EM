@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3417C300153B8D8C00CA7570 /* EMTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMTableViewDataSource.h; sourceTree = "<group>"; };
 		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
 		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
 		3472C6D61527FE30005C9283 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = "Exercise Manager/Kal.h"; sourceTree = "<group>"; };
@@ -313,6 +314,7 @@
 				347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */,
 				34D412E0153A785200D8A52C /* EMSqliteDatasource.h */,
 				34D412E1153A785200D8A52C /* EMSqliteDatasource.m */,
+				3417C300153B8D8C00CA7570 /* EMTableViewDataSource.h */,
 			);
 			path = "Exercise Manager";
 			sourceTree = "<group>";

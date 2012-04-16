@@ -204,6 +204,10 @@
         //  Enable the decrease button
         decreaseButton.hidden = FALSE;
         [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+            //  Set the check for the row
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     }
     if(tempExercise.IWeight == 1000){
         //  Deactivate the button
@@ -229,7 +233,10 @@
         increaseButton.hidden = FALSE;
         // Update the DB with new value
         [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+            //  Set the check for the row
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     }
     // Update the label
     [weight setText: [NSString stringWithFormat:@"%.i", tempExercise.IWeight]];

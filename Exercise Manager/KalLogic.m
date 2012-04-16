@@ -27,11 +27,13 @@
 
 + (NSSet *)keyPathsForValuesAffectingSelectedMonthNameAndYear
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [NSSet setWithObjects:@"baseDate", nil];
 }
 
 - (id)initForDate:(NSDate *)date
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
     [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
@@ -42,27 +44,32 @@
 
 - (id)init
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [self initForDate:[NSDate date]];
 }
 
 - (void)moveToMonthForDate:(NSDate *)date
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.baseDate = [date cc_dateByMovingToFirstDayOfTheMonth];
   [self recalculateVisibleDays];
 }
 
 - (void)retreatToPreviousMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth]];
 }
 
 - (void)advanceToFollowingMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth]];
 }
 
 - (NSString *)selectedMonthNameAndYear;
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [monthAndYearFormatter stringFromDate:self.baseDate];
 }
 
@@ -70,11 +77,13 @@
 
 - (NSUInteger)numberOfDaysInPreviousPartialWeek
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   return [self.baseDate cc_weekday] - 1;
 }
 
 - (NSUInteger)numberOfDaysInFollowingPartialWeek
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
   c.day = [self.baseDate cc_numberOfDaysInMonth];
   NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
@@ -83,6 +92,7 @@
 
 - (NSArray *)calculateDaysInFinalWeekOfPreviousMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   NSMutableArray *days = [NSMutableArray array];
   
   NSDate *beginningOfPreviousMonth = [self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth];
@@ -97,6 +107,7 @@
 
 - (NSArray *)calculateDaysInSelectedMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   NSMutableArray *days = [NSMutableArray array];
   
   NSUInteger numDays = [self.baseDate cc_numberOfDaysInMonth];
@@ -109,6 +120,7 @@
 
 - (NSArray *)calculateDaysInFirstWeekOfFollowingMonth
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   NSMutableArray *days = [NSMutableArray array];
   
   NSDateComponents *c = [[self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth] cc_componentsForMonthDayAndYear];
@@ -122,6 +134,7 @@
 
 - (void)recalculateVisibleDays
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   self.daysInSelectedMonth = [self calculateDaysInSelectedMonth];
   self.daysInFinalWeekOfPreviousMonth = [self calculateDaysInFinalWeekOfPreviousMonth];
   self.daysInFirstWeekOfFollowingMonth = [self calculateDaysInFirstWeekOfFollowingMonth];

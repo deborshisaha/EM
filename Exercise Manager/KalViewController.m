@@ -8,6 +8,7 @@
 #import "KalDataSource.h"
 #import "KalDate.h"
 #import "KalPrivate.h"
+#import "EMSqliteDatasource.h"
 
 #define PROFILER 0
 #if PROFILER
@@ -56,14 +57,16 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  return [self initWithSelectedDate:[NSDate date]];
+    dataSource = [[EMSqliteDatasource alloc] initWithTodaysDate:[NSDate date]];
+    //tableView.dataSource = dataSource;
+    return [self initWithSelectedDate:[NSDate date]];
 }
 
 - (KalView*)calendarView { 
     DBLog(@"%s",__PRETTY_FUNCTION__);
     return (KalView*)self.view; 
 }
-
+/*
 - (void)setDataSource:(id<KalDataSource>)aDataSource
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -72,7 +75,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     tableView.dataSource = dataSource;
   }
 }
-
+*/
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -85,14 +88,16 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)clearTable
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  [dataSource removeAllItems];
-  [tableView reloadData];
+/*  
+    [dataSource removeAllItems];
+    [tableView reloadData];
+*/
 }
 
 - (void)reloadData
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
+  //[dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
 - (void)significantTimeChangeOccurred
@@ -115,7 +120,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
   [tableView flashScrollIndicators];
-}*/
+}
+ */
 
 - (void)showPreviousMonth
 {
@@ -141,14 +147,15 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
-  NSMutableArray *dates = [markedDates mutableCopy] ;
-  for (int i=0; i<[dates count]; i++)
-    [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
+  //NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
+  //NSMutableArray *dates = [markedDates mutableCopy] ;
+  //for (int i=0; i<[dates count]; i++)
+    //[dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
   
-  [[self calendarView] markTilesForDates:dates];
-  [self didSelectDate:self.calendarView.selectedDate];
+  //[[self calendarView] markTilesForDates:dates];
+  //[self didSelectDate:self.calendarView.selectedDate];
 }
+
 
 // ---------------------------------------
 #pragma mark -
@@ -191,13 +198,15 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)didSelectDate:(KalDate *)date
 {
-    DBLog(@"%s %d", __PRETTY_FUNCTION__, __LINE__);
-    DBLog(@"Date selected: %d %d %d", date.day, date.month, date.year);
+    DBLog(@"%s", __PRETTY_FUNCTION__);
+    //DBLog(@"Date selected: %d %d %d", date.day, date.month, date.year);
     self.selectedDate = [date NSDate];
-    NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
-    NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
+    //NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
+    //NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
     [self clearTable];
-    [dataSource loadItemsFromDate:from toDate:to];
+    //[dataSource loadItemsFromDate:from ];
+    //[dataSource loadExerciseOfDate: self.selectedDate];
+    
     [tableView reloadData];
     [tableView flashScrollIndicators];
 }
@@ -216,9 +225,12 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   //if (!self.title)
   //  self.title = @"Calendar";
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] ;
-  self.view = kalView;
+  
+    // Set the data source
+    //[dataSource loadExerciseOfDate:<#(NSDate *)#>]
+    self.view = kalView;
   tableView = kalView.tableView;
-  tableView.dataSource = dataSource;
+    tableView.dataSource = dataSource;
   tableView.delegate = delegate;
   //[tableView retain];
   [kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];

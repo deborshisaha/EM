@@ -15,6 +15,7 @@ extern const CGSize kTileSize;
 
 - (id)initWithFrame:(CGRect)frame
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   if ((self = [super initWithFrame:frame])) {
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
@@ -27,6 +28,7 @@ extern const CGSize kTileSize;
 
 - (void)drawRect:(CGRect)rect
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGFloat fontSize = 24.f;
   UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
@@ -89,6 +91,7 @@ extern const CGSize kTileSize;
 
 - (void)resetState
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   // realign to the grid
   CGRect frame = self.frame;
   frame.origin = origin;
@@ -105,6 +108,7 @@ extern const CGSize kTileSize;
 
 - (void)setDate:(KalDate *)aDate
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   if (date == aDate)
     return;
 
@@ -114,10 +118,14 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isSelected { return flags.selected; }
+- (BOOL)isSelected { 
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.selected; 
+}
 
 - (void)setSelected:(BOOL)selected
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   if (flags.selected == selected)
     return;
 
@@ -140,10 +148,14 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isHighlighted { return flags.highlighted; }
+- (BOOL)isHighlighted { 
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.highlighted; 
+}
 
 - (void)setHighlighted:(BOOL)highlighted
 {
+    DBLog(@"%s",__PRETTY_FUNCTION__);
   if (flags.highlighted == highlighted)
     return;
   
@@ -151,10 +163,14 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isMarked { return flags.marked; }
+- (BOOL)isMarked { 
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.marked; 
+}
 
 - (void)setMarked:(BOOL)marked
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   if (flags.marked == marked)
     return;
   
@@ -162,10 +178,14 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (KalTileType)type { return flags.type; }
+- (KalTileType)type { 
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.type; 
+}
 
 - (void)setType:(KalTileType)tileType
 {
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
   if (flags.type == tileType)
     return;
   
@@ -186,9 +206,15 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isToday { return flags.type == KalTileTypeToday; }
+- (BOOL)isToday { 
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.type == KalTileTypeToday; 
+}
 
-- (BOOL)belongsToAdjacentMonth { return flags.type == KalTileTypeAdjacent; }
+- (BOOL)belongsToAdjacentMonth { 
+    //DBLog(@"%s",__PRETTY_FUNCTION__);
+    return flags.type == KalTileTypeAdjacent; 
+}
 /*
 - (void)dealloc
 {
