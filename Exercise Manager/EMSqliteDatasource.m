@@ -49,6 +49,7 @@
     EMExercisesBasic *exercise = [self exerciseAtIndexPath:indexPath];
     //cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"flags/%@.gif", holiday.country]];
     cell.textLabel.text = exercise.pSExerciseName;
+    [cell.textLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     //cell.textLabel.text = cellValue;
     return cell;
 }

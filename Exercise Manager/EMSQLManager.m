@@ -65,8 +65,6 @@
                     NSInteger weightIsRequired = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)] intValue];
                     NSInteger weight = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
                 
-                //DBLog(@"string : %@ id : %i weightIsRequired %i wt.:%i", pSExerciseName, Iid, weightIsRequired, weight );
-                
                 EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeightIsRequired: weightIsRequired andWeight: weight ];
                 [pMAExercise   addObject: exercise];
             }
@@ -89,12 +87,11 @@
     if (count == 0){
         pMAExercise = [[NSMutableArray alloc] init];
         // No exercise performed on this day. Create a dummy informing the user- no exercise was performed
-        NSString *pSExerciseName = @"NONE";
+        NSString *pSExerciseName = @"";
         NSInteger Iid = 0;
         NSInteger weight = 0;
         EMExercisesBasic *exercise = [[EMExercises alloc] initWithName:pSExerciseName andId:Iid andWeight: weight ];
         [pMAExercise   addObject: exercise];
-
         return pMAExercise;
     }
 
@@ -380,34 +377,6 @@
 }
 
 
-/*
-+ (NSMutableArray *)exercisesDoneOn: (NSString *) todaysDate
-{
-    sqlite3 *database;
-    
-    NSMutableArray *pMAExercise = [[NSMutableArray alloc] init];
-    
-    if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
-    {
-        sqlite3_stmt *compiledStatement;
-        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT exercise FROM '%@' ",todaysDate];
-        DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
-        
-        if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
-            while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
-                NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
-                
-                //EMExercises *exercise = [[EMExercises alloc] initWithName:pSExerciseName ];
-                //[pMAExercise   addObject: exercise];
-            }
-        }
-        sqlite3_finalize(compiledStatement);
-    }
-    sqlite3_close(database);
-    
-    return pMAExercise;
-}
- */
 
 @end
 

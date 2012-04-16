@@ -58,7 +58,7 @@ extern const CGSize kTileSize;
   } else if (self.belongsToAdjacentMonth) {
     textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_dim_text_fill.png"]];
     shadowColor = nil;
-    markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_dim.png"];
+    markerImage = [UIImage imageNamed:@"kal_marker_dim.png"];
   } else {
     textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
     shadowColor = [UIColor whiteColor];

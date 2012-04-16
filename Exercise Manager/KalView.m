@@ -210,7 +210,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 {
     //DBLog(@"%s",__PRETTY_FUNCTION__);
   [headerTitleLabel setText:text];
-    //[headerTitleLabel setFont:[UIFont fontWithName:@"SallandoItalic" size:28.0]];
+    [headerTitleLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:28.0]];
   [headerTitleLabel sizeToFit];
   headerTitleLabel.left = floorf(self.width/2.f - headerTitleLabel.width/2.f);
 }

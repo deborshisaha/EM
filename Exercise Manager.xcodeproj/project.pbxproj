@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3417C302153BDAA800CA7570 /* StreetHumouresque.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */; };
+		3417C303153BDADD00CA7570 /* StreetHumouresque.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */; };
 		343223D8151062340093FB7F /* EMExercises.m in Sources */ = {isa = PBXBuildFile; fileRef = 343223D7151062340093FB7F /* EMExercises.m */; };
 		3472C6E81527FE31005C9283 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6D81527FE30005C9283 /* KalDataSource.m */; };
 		3472C6E91527FE31005C9283 /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6DA1527FE30005C9283 /* KalDate.m */; };
@@ -79,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		3417C300153B8D8C00CA7570 /* EMTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMTableViewDataSource.h; sourceTree = "<group>"; };
+		3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = StreetHumouresque.ttf; path = "Exercise Manager/Resources/StreetHumouresque.ttf"; sourceTree = "<group>"; };
 		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
 		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
 		3472C6D61527FE30005C9283 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = "Exercise Manager/Kal.h"; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 			children = (
 				34AD32F6153767DA002F3435 /* downArrow.png */,
 				34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */,
+				3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */,
 				34FDBBA21537591B001C7954 /* upArrowMax.png */,
 				34FDBB9F153758F4001C7954 /* upArrow.png */,
 				3472C6FA1527FEE5005C9283 /* kal_grid_background.png */,
@@ -421,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3417C303153BDADD00CA7570 /* StreetHumouresque.ttf in Resources */,
 				34E72AE6153AA4CE0041DCF9 /* SallandoItalic.ttf in Resources */,
 				34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */,
 				34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */,
@@ -458,6 +463,7 @@
 			files = (
 				34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */,
 				34D412E4153A8B3F00D8A52C /* SallandoItalic.ttf in Resources */,
+				3417C302153BDAA800CA7570 /* StreetHumouresque.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
