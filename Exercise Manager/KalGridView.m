@@ -104,6 +104,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   }
 }
 
+- (void) userSelectedTile:(KalTileView *)tile{
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+    if (selectedTile != tile) {
+        //DBLog(@"%d", tile.date.day);
+        selectedTile.selected = NO;
+        selectedTile = tile ;
+        tile.selected = YES;
+        [delegate userSelectedDate:tile.date];
+    }
+}
+
 - (void)receivedTouches:(NSSet *)touches withEvent:event
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -120,7 +131,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
       self.highlightedTile = tile;
     } else {
       self.highlightedTile = nil;
-      self.selectedTile = tile;
+        [self userSelectedTile: tile];
     }
   }
 }

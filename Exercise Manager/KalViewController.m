@@ -88,16 +88,13 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)clearTable
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-/*  
     [dataSource removeAllItems];
     [tableView reloadData];
-*/
 }
 
 - (void)reloadData
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  //[dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
 - (void)significantTimeChangeOccurred
@@ -201,12 +198,18 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     DBLog(@"%s", __PRETTY_FUNCTION__);
     //DBLog(@"Date selected: %d %d %d", date.day, date.month, date.year);
     self.selectedDate = [date NSDate];
-    //NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
-    //NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
-    [self clearTable];
-    //[dataSource loadItemsFromDate:from ];
-    //[dataSource loadExerciseOfDate: self.selectedDate];
-    
+    [tableView reloadData];
+    [tableView flashScrollIndicators];
+}
+
+- (void)userSelectedDate:(KalDate *)date
+{
+    DBLog(@"%s", __PRETTY_FUNCTION__);
+    //DBLog(@"Date selected: %d %d %d", date.day, date.month, date.year);
+    self.selectedDate = [date NSDate];
+    DBLog(@" DAY user selected %d", date.day);
+    [dataSource loadExerciseOfDate:[date NSDate]];
+    //[self reloadData];
     [tableView reloadData];
     [tableView flashScrollIndicators];
 }
@@ -249,6 +252,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
   [super viewWillAppear:animated];
+    [dataSource loadExerciseOfDate:[NSDate date]];
   [tableView reloadData];
 }
 

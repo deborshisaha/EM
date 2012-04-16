@@ -234,6 +234,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (KalDate *)selectedDate { 
     DBLog(@"%s",__PRETTY_FUNCTION__);
+    //DBLog(@"date", gridview.selectedDate);
     return gridView.selectedDate;
 }
 /*

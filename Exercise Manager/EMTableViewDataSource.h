@@ -11,9 +11,5 @@
 @protocol EMTableViewDataSource <NSObject, UITableViewDataSource>
 
 - (void)loadExerciseOfDate:(NSDate *)ofDate;
-
-@end
-
-@protocol EMTableViewDataSourceCallback <NSObject>
-- (void)loadedDataSource:(id<EMTableViewDataSource>)dataSource;
+- (void)removeAllItems;
 @end

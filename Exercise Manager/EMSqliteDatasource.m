@@ -59,40 +59,14 @@
     return [exercises count];
 }
 
-// Load exercise of that date
-/*- (void)loadExercises:(NSDate *)ofDate delegate:(id<KalDataSourceCallbacks>)delegate
-{
-    DBLog(@"Fetching exercises done on date %@ ...", ofDate);
-	[delegate loadedDataSource:self];
-}
-*/
-
 - (void) loadExerciseOfDate:(NSDate *)date{
     DBLog(@"%s %d", __PRETTY_FUNCTION__, __LINE__);
-    // Construct the table name from the date
+    // Construct the table name from the date)
     NSString *tableName = [self getLogTableName:date];
     DBLog(@"Read from log table %@", tableName);
     exercises = [EMSQLManager readFromLogTable:tableName];
-    if ( !exercises ) {
-        DBLog(@"No exercises performed from table %@", tableName);
-        [exercises addObject:@"None"];
-        DBLog(@"Just added so count is %d", [exercises count]);
-    }
 }
 
-/*
-- (void)loadItemsOfDate:(NSDate *)ofDate
-{
-    DBLog(@"%s %d", __PRETTY_FUNCTION__, __LINE__);
-    // Construct the table name from the date
-    NSString *tableName = [self getLogTableName:ofDate];
-    DBLog(@"Read from log table %@", tableName);
-    exercises = [EMSQLManager readFromLogTable:tableName];
-    if ([exercises count] == 0) {
-        [exercises addObject:@"None"];
-    }
-}
-*/
 - (void)removeAllItems
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -101,11 +75,11 @@
 
 - (NSString *)getLogTableName:forDate{
     DBLog(@"%s",__PRETTY_FUNCTION__);
-    NSDate *date = [NSDate date];
+    //NSDate *date = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     
     [formatter setDateFormat:@"MM_dd_yyyy"];
-    NSString *stringDate = [formatter stringFromDate:date];
+    NSString *stringDate = [formatter stringFromDate:forDate];
     
     return stringDate;
 }
