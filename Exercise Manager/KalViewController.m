@@ -57,8 +57,10 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
+    self.title = @"History";
+    self.tabBarItem.image = [UIImage imageNamed:@"History.png"];
+    //self.tabBarController.tabBar.selectionIndicatorImage = @"downArrow.png";
     dataSource = [[EMSqliteDatasource alloc] initWithTodaysDate:[NSDate date]];
-    //tableView.dataSource = dataSource;
     return [self initWithSelectedDate:[NSDate date]];
 }
 
@@ -66,16 +68,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     DBLog(@"%s",__PRETTY_FUNCTION__);
     return (KalView*)self.view; 
 }
-/*
-- (void)setDataSource:(id<KalDataSource>)aDataSource
-{
-    DBLog(@"%s",__PRETTY_FUNCTION__);
-  if (dataSource != aDataSource) {
-    dataSource = aDataSource;
-    tableView.dataSource = dataSource;
-  }
-}
-*/
+
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -106,19 +99,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
-/*
-- (void):(KalDate *)date
-{
-    DBLog(@"%s",__PRETTY_FUNCTION__);
-  self.selectedDate = [date NSDate];
-  NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
-  NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
-  [self clearTable];
-  [dataSource loadItemsFromDate:from toDate:to];
-  [tableView reloadData];
-  [tableView flashScrollIndicators];
-}
- */
+
 
 - (void)showPreviousMonth
 {
@@ -137,22 +118,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [[self calendarView] slideUp];
   [self reloadData];
 }
-
-// -----------------------------------------
-#pragma mark KalDataSourceCallbacks protocol
-
-- (void)loadedDataSource:(id<KalDataSource>)theDataSource;
-{
-    DBLog(@"%s",__PRETTY_FUNCTION__);
-  //NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
-  //NSMutableArray *dates = [markedDates mutableCopy] ;
-  //for (int i=0; i<[dates count]; i++)
-    //[dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
-  
-  //[[self calendarView] markTilesForDates:dates];
-  //[self didSelectDate:self.calendarView.selectedDate];
-}
-
 
 // ---------------------------------------
 #pragma mark -
@@ -225,8 +190,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)loadView
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  //if (!self.title)
-  //  self.title = @"Calendar";
+
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] ;
   
     // Set the data source
@@ -235,7 +199,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   tableView = kalView.tableView;
     tableView.dataSource = dataSource;
   tableView.delegate = delegate;
-  //[tableView retain];
+  
   [kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
   [self reloadData];
 }
@@ -247,17 +211,17 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)viewDidUnload
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  [super viewDidUnload];
-  //[tableView release];
-  tableView = nil;
+    [super viewDidUnload];
+    //[tableView release];
+    tableView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  [super viewWillAppear:animated];
+    [super viewWillAppear:animated];
     [dataSource loadExerciseOfDate:[NSDate date]];
-  [tableView reloadData];
+    [tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -268,20 +232,4 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 #pragma mark -
-
-
-
-/*
-- (void)dealloc
-{
-    DBLog(@"%s",__PRETTY_FUNCTION__);
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
-  [initialDate release];
-  [selectedDate release];
-  [logic release];
-  [tableView release];
-  [super dealloc];
-}
-*/
 @end

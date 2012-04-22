@@ -30,16 +30,7 @@
     
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 
-    //self.navigationController.navigationBar.opaque = NO;
-    //self.navigationController.navigationBar.tintColor = [UIColor clearColor];
-
-    //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableViewBg.png"]];
-    //self.tableView.backgroundView = imageView;
-    // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
-    
-    //UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"categoryBg.png"]];
-    //self.tableView.backgroundView = bg;
 }
 
 - (void)viewDidUnload

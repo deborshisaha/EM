@@ -171,7 +171,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0i8-fA-idv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ZcN-LE-CCF" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KD0-Hn-Y8V">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -189,18 +189,19 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="lbM-9f-OGl"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1615" y="-563"/>
+            <point key="canvasLocation" x="1611" y="-588"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Item-->
         <scene sceneID="h9o-03-LuG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBV-Rw-ofK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="r5E-xI-v4F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Kgi-kr-IcS"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YTK-Ks-rgE">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZcN-LE-CCF" kind="relationship" relationship="rootViewController" id="B4x-jg-Qix"/>
+                        <segue destination="ZcN-LE-CCF" kind="relationship" relationship="rootViewController" id="WOj-Sc-RmG"/>
                     </connections>
                 </navigationController>
             </objects>
@@ -217,38 +218,38 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" id="Qwq-GI-uVW"/>
+                    <navigationItem key="navigationItem" id="uLz-JS-Ugj"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1010" y="138"/>
+            <point key="canvasLocation" x="1392" y="118"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="m2S-r7-Yfl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUa-6O-d1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController definesPresentationContext="YES" modalTransitionStyle="partialCurl" id="KuQ-sd-m4H" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" modalTransitionStyle="partialCurl" id="KuQ-sd-m4H" customClass="EMTabBarController" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleAspectFill" id="YOl-fe-isK">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.23827855044549909" green="0.47826086956521741" blue="0.19423263944420249" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.97019361410000005" green="0.81492290020000002" blue="0.54367988069999995" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0Xf-Sk-5dW" kind="relationship" relationship="viewControllers" id="ybf-H6-ryc"/>
                         <segue destination="dTZ-yH-nA0" kind="relationship" relationship="viewControllers" id="Hf3-AC-QSL"/>
+                        <segue destination="0Xf-Sk-5dW" kind="relationship" relationship="viewControllers" id="ybf-H6-ryc"/>
+                        <segue destination="r5E-xI-v4F" kind="relationship" relationship="viewControllers" id="Bnu-h7-JJo"/>
                     </connections>
                 </tabBarController>
             </objects>
             <point key="canvasLocation" x="463" y="123"/>
         </scene>
-        <!--Navigation Controller - Exercises-->
+        <!--Custom Navigation Controller - Exercises-->
         <scene sceneID="8GG-Oe-cqr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWe-nw-CsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="0Xf-Sk-5dW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Exercises" id="qbh-Bc-cA9"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rgl-A1-UaE">
+                <navigationController definesPresentationContext="YES" id="0Xf-Sk-5dW" customClass="EMCustomNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Exercises" image="Exercise.png" id="qbh-Bc-cA9"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rgl-A1-UaE" customClass="EMCustomNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -368,10 +369,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Exercise.png" width="30" height="30"/>
         <image name="downArrow.png" width="100" height="100"/>
         <image name="upArrow.png" width="100" height="100"/>
     </resources>
     <classes>
+        <class className="EMCustomNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMCustomNavigationBar.h"/>
+        </class>
+        <class className="EMCustomNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMCustomNavigationController.h"/>
+        </class>
         <class className="EMGenericExercisesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EMGenericExercisesViewController.h"/>
             <relationships>
@@ -399,6 +407,9 @@
         </class>
         <class className="EMSecondViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EMSecondViewController.h"/>
+        </class>
+        <class className="EMTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EMTabBarController.h"/>
         </class>
         <class className="KalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KalViewController.h"/>

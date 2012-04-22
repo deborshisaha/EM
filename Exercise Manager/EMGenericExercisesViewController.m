@@ -156,6 +156,10 @@
         DBLog(@"Done today");
     }else {
         DBLog(@"Not done today");
+        cell.backgroundView = nil;
+        weight.textColor = [UIColor blackColor];
+        cellLabel.textColor = [UIColor blackColor];
+        unitLabel.textColor = [UIColor blackColor];
     }
     return cell;
 }
