@@ -13,11 +13,14 @@
     IBOutlet UISwitch *weightMeter;
     IBOutlet UITextField *exerciseText;
     NSString *category;
+    IBOutlet UILabel *label1, *label2;
 }
 
 @property(nonatomic, retain) IBOutlet UITextField* exerciseText;
 @property(nonatomic, retain) NSString *category;
-
+@property(nonatomic, retain) IBOutlet UILabel* label1;
+@property(nonatomic, retain) IBOutlet UILabel* label2;
 @property (nonatomic, retain) UISwitch *weightMeter;
 
+- (IBAction)cancel :(id)sender;
 @end

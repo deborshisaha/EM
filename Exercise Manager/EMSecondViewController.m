@@ -30,8 +30,16 @@
     
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 
+    //self.navigationController.navigationBar.opaque = NO;
+    //self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+
+    //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableViewBg.png"]];
+    //self.tableView.backgroundView = imageView;
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
+    
+    //UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"categoryBg.png"]];
+    //self.tableView.backgroundView = bg;
 }
 
 - (void)viewDidUnload
@@ -78,6 +86,11 @@
     [cellLabel setText:tempExercise.pSExerciseName];
     DBLog(@"Should change font");
     [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+    
+    //UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"categoryCellBg.png"]];
+    //cell.backgroundView = bg;
+    //cell.alpha = 0.5;
+    
     return cell;
 }
 

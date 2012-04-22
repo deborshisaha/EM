@@ -14,7 +14,7 @@
 @end
 
 @implementation EMNewExerciseViewController
-@synthesize  exerciseText, category, weightMeter;
+@synthesize  exerciseText, category, weightMeter, label1, label2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [label1 setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
+    [label2 setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
+    [exerciseText setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
 }
 
 - (void)viewDidUnload
@@ -74,6 +77,10 @@
     } else {
         DBLog(@"bi");
     }
-    
 } 
+
+- (IBAction)cancel :(id)sender{
+    [self dismissModalViewControllerAnimated: YES];   
+}
+
 @end

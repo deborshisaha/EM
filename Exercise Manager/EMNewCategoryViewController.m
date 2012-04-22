@@ -14,7 +14,7 @@
 @end
 
 @implementation EMNewCategoryViewController
-@synthesize  categoryText;
+@synthesize  categoryText,label;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [label setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
+    [categoryText setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
 }
 
 - (void)viewDidUnload
@@ -54,4 +56,9 @@
     
     return YES;
 }
+
+- (IBAction)cancel :(id)sender{
+    [self dismissModalViewControllerAnimated: YES];   
+}
+
 @end

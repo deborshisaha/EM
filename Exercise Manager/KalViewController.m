@@ -240,6 +240,10 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [self reloadData];
 }
 
+- (void)viewDidload{
+    DBLog(@"%s",__PRETTY_FUNCTION__);
+}
+
 - (void)viewDidUnload
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -264,6 +268,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 }
 
 #pragma mark -
+
 
 
 /*

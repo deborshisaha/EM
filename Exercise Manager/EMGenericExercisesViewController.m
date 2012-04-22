@@ -14,11 +14,11 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    DBLog(@"%s", __PRETTY_FUNCTION__);
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
         
-       
     }
     return self;
 }
@@ -27,25 +27,19 @@
 {
     [super viewDidLoad];
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    
     // Get the database adapter
     [EMSQLManager createDatabase];
-    // Read all exercises
-    pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
+
     // Get exercises done today
     todaysDate=[self getDate];
-    //  Read all exercises done on this date
-    pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
+
     //  Allocate memory to done
+    pMAExercise = [[NSMutableArray alloc] init];
+    pMAExercisesDoneTillNow = [[NSMutableArray alloc] init];
     done = [[NSMutableDictionary alloc] init];
     DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
     DBLog(@"Line # %d ", __LINE__);
-    //  Create a dictionary with exercise Id
-    for (EMExercisesBasic *eb in pMAExercisesDoneTillNow) 
-    {
-        DBLog(@"%i", eb.IExerciseId);
-        [done setObject:[NSNumber numberWithBool:YES]
-                 forKey:[NSString stringWithFormat:@"%i", eb.IExerciseId]];
-    }
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -53,7 +47,7 @@
     [super viewDidAppear:animated];
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     self.navigationItem.title = selectedItem;
-    
+
     // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem]];
     pMAExercisesDoneTillNow = [EMSQLManager readFromLogTable:todaysDate];
@@ -71,6 +65,9 @@
      whether the exercise was performed today?
      */
     [self.tableView reloadData];
+    
+    //Mark exercises which are done
+    DBLog(@"All set");
 }
 
 - (void)viewDidUnload
@@ -106,11 +103,11 @@
 {
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     BOOL bIsChecked=FALSE;
-    UIStepper *stepper=NULL;
-    UILabel *weightUnits = NULL;
+    //UIStepper *stepper=NULL;
     UILabel *weight = NULL;
     UILabel *cellLabel = NULL;
     UILabel *cellNativeText = NULL;
+    UILabel *unitLabel = NULL;
     
     static NSString *CellIdentifier = @"Cell";
     // Create or reuse a cell
@@ -119,41 +116,46 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-  
-    stepper = (UIStepper *)[cell viewWithTag:2];
+    
     weight = (UILabel *)[cell viewWithTag:3];
-    weightUnits = (UILabel *)[cell viewWithTag:4];
+    unitLabel = (UILabel *)[cell viewWithTag:4];
     
     // Configure the cell...
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
-    
-    // Retrieve the value and check if the row should be checked.
-    bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
-   
-    if(  bIsChecked  == YES){
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-    }else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }
         
     // check if weight is required
     if(tempExercise.IWeightMeterRequired){
         cellLabel = (UILabel *)[cell viewWithTag:1];
-        stepper.hidden = FALSE;
+        //stepper.hidden = FALSE;
         weight.hidden = FALSE;
-        weightUnits.hidden = FALSE;
-        stepper.value = tempExercise.IWeight;
+        unitLabel.hidden = FALSE;
+        //stepper.value = tempExercise.IWeight;
         [cellLabel setText:tempExercise.pSExerciseName];
         [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
-        [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
-        [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:36.0]];
+        [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
+        [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        [unitLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
     }else {
         cellNativeText = (UILabel *)[cell viewWithTag:0];
-        stepper.hidden = TRUE;
+        //stepper.hidden = TRUE;
         weight.hidden = TRUE;
-        weightUnits.hidden = TRUE;
+        unitLabel.hidden = TRUE;
         [cellNativeText setText:tempExercise.pSExerciseName];
         [cellNativeText setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+    }
+    // Retrieve the value and check if the row should be checked.
+    bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
+    
+    if(  bIsChecked  == YES){
+        //  Set the check for the row
+        UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exerciseDone.png"]];
+        cell.backgroundView = img1;
+        weight.textColor = [UIColor whiteColor];
+        cellLabel.textColor = [UIColor whiteColor];
+        unitLabel.textColor = [UIColor whiteColor];
+        DBLog(@"Done today");
+    }else {
+        DBLog(@"Not done today");
     }
     return cell;
 }
@@ -185,7 +187,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90.0;
+    return 60.0;
 }
 
 - (IBAction)weightIncreased:(id)sender{
@@ -193,6 +195,7 @@
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     UILabel *weight = (UILabel *)[cell viewWithTag:3];
+    UILabel *unitLabel = (UILabel *)[cell viewWithTag:4];
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
     UIButton *decreaseButton = (UIButton *)[cell viewWithTag:10];
@@ -203,10 +206,15 @@
         tempExercise.IWeight += 5;
         //  Enable the decrease button
         decreaseButton.hidden = FALSE;
-        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:tempExercise.IWeight];
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: tempExercise.IWeight]){
             //  Set the check for the row
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            DBLog(@"Changing Color");
+            UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exerciseDone.png"]];
+            cell.backgroundView = img1;
+            weight.textColor = [UIColor whiteColor];
+            exercise.textColor = [UIColor whiteColor];
+            unitLabel.textColor = [UIColor whiteColor];
         }
     }
     if(tempExercise.IWeight == 1000){
@@ -221,6 +229,7 @@
     // get required elements of the cell
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UILabel *unitLabel = (UILabel *)[cell viewWithTag:4];
     UILabel *weight = (UILabel *)[cell viewWithTag:3];
     UILabel *exercise = (UILabel *)[cell viewWithTag:1];
     EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
@@ -232,10 +241,16 @@
         //  Enable the increase button
         increaseButton.hidden = FALSE;
         // Update the DB with new value
-        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:[weight.text intValue]];
-        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: [weight.text intValue]]){
+        [EMSQLManager updateTableWithName:[NSString stringWithFormat:@"%@ExercisesTable", selectedItem] andExercise:exercise.text andWeight:tempExercise.IWeight];
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: tempExercise.IWeight]){
             //  Set the check for the row
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            //[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            DBLog(@"Changing Color");
+            UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exerciseDone.png"]];
+            cell.backgroundView = img1;
+            weight.textColor = [UIColor whiteColor];
+            exercise.textColor = [UIColor whiteColor];
+            unitLabel.textColor = [UIColor whiteColor];
         }
     }
     // Update the label
@@ -260,4 +275,5 @@
         [vc setCategory:[NSString stringWithFormat:@"%@", self.navigationItem.title]];
     }
 }
+
 @end

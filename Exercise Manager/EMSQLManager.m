@@ -37,7 +37,7 @@
             DBLog(@"sqlite3_exec went thru");
         }else {
             sqlite3_close(database);
-            DBLog(@"executeQuery Error:  %@", errorMsg);
+            DBLog(@"executeQuery Error:  %s", errorMsg);
             return FALSE;
         }
     }
@@ -99,15 +99,15 @@
     if(sqlite3_open([[EMSQLManager getDatabasePath] UTF8String], &database)== SQLITE_OK)
     {
         sqlite3_stmt *compiledStatement;
-        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT DISTINCT exercise FROM '%@' ",tableName];
+        NSString *pSQueryString = [NSString stringWithFormat: @"SELECT DISTINCT(exercise), exId FROM '%@' ",tableName];
         DBLog( @"Function : %s, Line : %d  %@", __PRETTY_FUNCTION__, __LINE__ , pSQueryString);
         
         if(sqlite3_prepare_v2(database, [pSQueryString UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK){
             
             while (sqlite3_step(compiledStatement)==SQLITE_ROW) {
                 NSString *pSExerciseName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,0)];
-                NSInteger Iid = 0;//[[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)]intValue ];
-                NSInteger weight = 0;//[[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,3)] intValue];
+                NSInteger Iid = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,1)]intValue ];
+                NSInteger weight = 0;//[[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement,2)] intValue];
                 
                 DBLog(@"string : %@ id : %i wt.:%i", pSExerciseName, Iid, weight );
                 

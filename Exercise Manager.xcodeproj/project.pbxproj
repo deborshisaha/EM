@@ -21,6 +21,7 @@
 		3472C72D1527FF10005C9283 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C72A1527FF10005C9283 /* NSDateAdditions.m */; };
 		3472C72E1527FF10005C9283 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C72C1527FF10005C9283 /* UIViewAdditions.m */; };
 		347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */; };
+		348877CD154377DF003749B6 /* exerciseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 348877CC154377DF003749B6 /* exerciseDone.png */; };
 		34AD32F7153767DA002F3435 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AD32F6153767DA002F3435 /* downArrow.png */; };
 		34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FA1527FEE5005C9283 /* kal_grid_background.png */; };
 		34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */; };
@@ -44,7 +45,6 @@
 		34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70D1527FEE5005C9283 /* kal_tile_today.png */; };
 		34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70E1527FEE5005C9283 /* kal_tile.png */; };
 		34D412E2153A785200D8A52C /* EMSqliteDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D412E1153A785200D8A52C /* EMSqliteDatasource.m */; };
-		34D412E4153A8B3F00D8A52C /* SallandoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
@@ -63,10 +63,8 @@
 		34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 34E44CA5150FFDCB008CEA8C /* ExerciseManager.sqlite */; };
 		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */; };
-		34E72AE6153AA4CE0041DCF9 /* SallandoItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */; };
 		34FBA8EE15133FDD00C84C37 /* EMNewExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */; };
 		34FDBBA0153758F4001C7954 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FDBB9F153758F4001C7954 /* upArrow.png */; };
-		34FDBBA31537591B001C7954 /* upArrowMax.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FDBBA21537591B001C7954 /* upArrowMax.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,10 +127,10 @@
 		3472C72C1527FF10005C9283 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = "Exercise Manager/UIViewAdditions.m"; sourceTree = "<group>"; };
 		347AFF071512B1E200735DD2 /* EMNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewCategoryViewController.h; sourceTree = "<group>"; };
 		347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewCategoryViewController.m; sourceTree = "<group>"; };
+		348877CC154377DF003749B6 /* exerciseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exerciseDone.png; path = "Exercise Manager/Resources/exerciseDone.png"; sourceTree = "<group>"; };
 		34AD32F6153767DA002F3435 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = downArrow.png; path = "Exercise Manager/Resources/downArrow.png"; sourceTree = "<group>"; };
 		34D412E0153A785200D8A52C /* EMSqliteDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSqliteDatasource.h; sourceTree = "<group>"; };
 		34D412E1153A785200D8A52C /* EMSqliteDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSqliteDatasource.m; sourceTree = "<group>"; };
-		34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SallandoItalic.ttf; path = "Exercise Manager/Resources/SallandoItalic.ttf"; sourceTree = "<group>"; };
 		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -163,7 +161,6 @@
 		34FBA8EC15133FDD00C84C37 /* EMNewExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewExerciseViewController.h; sourceTree = "<group>"; };
 		34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewExerciseViewController.m; sourceTree = "<group>"; };
 		34FDBB9F153758F4001C7954 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upArrow.png; path = "Exercise Manager/Resources/upArrow.png"; sourceTree = "<group>"; };
-		34FDBBA21537591B001C7954 /* upArrowMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upArrowMax.png; path = "Exercise Manager/Resources/upArrowMax.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,9 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				34AD32F6153767DA002F3435 /* downArrow.png */,
-				34D412E3153A8B3F00D8A52C /* SallandoItalic.ttf */,
+				348877CC154377DF003749B6 /* exerciseDone.png */,
 				3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */,
-				34FDBBA21537591B001C7954 /* upArrowMax.png */,
 				34FDBB9F153758F4001C7954 /* upArrow.png */,
 				3472C6FA1527FEE5005C9283 /* kal_grid_background.png */,
 				3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */,
@@ -426,7 +422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3417C303153BDADD00CA7570 /* StreetHumouresque.ttf in Resources */,
-				34E72AE6153AA4CE0041DCF9 /* SallandoItalic.ttf in Resources */,
 				34D13585152D5A7000EEC3BD /* kal_grid_background.png in Resources */,
 				34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */,
 				34D13587152D5A7000EEC3BD /* kal_header_text_fill.png in Resources */,
@@ -452,8 +447,8 @@
 				34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */,
 				34E44CA6150FFDCB008CEA8C /* ExerciseManager.sqlite in Resources */,
 				34FDBBA0153758F4001C7954 /* upArrow.png in Resources */,
-				34FDBBA31537591B001C7954 /* upArrowMax.png in Resources */,
 				34AD32F7153767DA002F3435 /* downArrow.png in Resources */,
+				348877CD154377DF003749B6 /* exerciseDone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +457,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */,
-				34D412E4153A8B3F00D8A52C /* SallandoItalic.ttf in Resources */,
 				3417C302153BDAA800CA7570 /* StreetHumouresque.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

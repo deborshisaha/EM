@@ -21,9 +21,9 @@
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
     if ((self = [super init])) {
-        //items = [[NSMutableArray alloc] init];
+        tableForDate = date;
         exercises = [[NSMutableArray alloc] init];
-        [self loadExerciseOfDate:date];
+        [self loadExerciseOfDate:tableForDate];
         DBLog(@"exercise count: %d", [exercises count]);
     }
     return self;
@@ -54,6 +54,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+    [tableView beginUpdates];    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Do whatever data deletion you need to do...
+        // Delete the row from the data source
+        EMExercises *tempExercise = [exercises objectAtIndex:indexPath.row];
+        
+        if([EMSQLManager clearLogTable:[self getLogTableName:tableForDate] withExerciseId: tempExercise.IExerciseId]){
+            [exercises removeObjectAtIndex:indexPath.row];
+            DBLog(@"number of exercises in %i", [exercises count]);
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];      
+        }
+    }       
+    [tableView endUpdates];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
@@ -66,6 +83,7 @@
     NSString *tableName = [self getLogTableName:date];
     DBLog(@"Read from log table %@", tableName);
     exercises = [EMSQLManager readFromLogTable:tableName];
+    DBLog(@"number of exercises in %@ : %i", tableName, [exercises count]);
 }
 
 - (void)removeAllItems
@@ -81,6 +99,7 @@
     
     [formatter setDateFormat:@"MM_dd_yyyy"];
     NSString *stringDate = [formatter stringFromDate:forDate];
+    DBLog(@"string date: %@", stringDate);
     
     return stringDate;
 }
