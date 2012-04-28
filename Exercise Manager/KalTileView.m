@@ -31,7 +31,7 @@ extern const CGSize kTileSize;
     //DBLog(@"%s",__PRETTY_FUNCTION__);
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGFloat fontSize = 24.f;
-  UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+  UIFont *font = [UIFont fontWithName:@"Street Humouresque" size:24.0];
   UIColor *shadowColor = nil;
   UIColor *textColor = nil;
   UIImage *markerImage = nil;
@@ -41,28 +41,32 @@ extern const CGSize kTileSize;
   CGContextScaleCTM(ctx, 1, -1);
   
   if ([self isToday] && self.selected) {
-    [[[UIImage imageNamed:@"kal_tile_today_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
-    textColor = [UIColor whiteColor];
-    shadowColor = [UIColor blackColor];
+    [[[UIImage imageNamed:@"TodaysTileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+      textColor = [UIColor blackColor];
+      shadowColor = nil;
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
   } else if ([self isToday] && !self.selected) {
-    [[[UIImage imageNamed:@"kal_tile_today.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
-    textColor = [UIColor whiteColor];
-    shadowColor = [UIColor blackColor];
+    [[[UIImage imageNamed:@"TileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    textColor = [UIColor blackColor];
+    shadowColor = [UIColor clearColor];
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
   } else if (self.selected) {
-    [[[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
-    textColor = [UIColor whiteColor];
-    shadowColor = [UIColor blackColor];
-    markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
+      // Some day selected
+    [[[UIImage imageNamed:@"TileSelected2.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+      textColor = [UIColor blackColor];
+      shadowColor = nil;
+      markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
   } else if (self.belongsToAdjacentMonth) {
-    textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_dim_text_fill.png"]];
-    shadowColor = nil;
-    markerImage = [UIImage imageNamed:@"kal_marker_dim.png"];
+      // Dates of next month
+      //textColor = [UIColor blackColor];
+      textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_dim_text_fill.png"]];
+      shadowColor = nil;
+      markerImage = [UIImage imageNamed:@"kal_marker_dim.png"];
   } else {
-    textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
-    shadowColor = [UIColor whiteColor];
-    markerImage = [UIImage imageNamed:@"kal_marker.png"];
+      textColor = [UIColor blackColor];
+      //textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
+      shadowColor = nil;
+      markerImage = [UIImage imageNamed:@"kal_marker.png"];
   }
   
   if (flags.marked)

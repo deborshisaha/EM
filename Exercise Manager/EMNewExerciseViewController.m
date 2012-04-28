@@ -41,12 +41,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
-/*
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-*/
+
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
     DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     DBLog(@"textfield : text%@", textField.text);

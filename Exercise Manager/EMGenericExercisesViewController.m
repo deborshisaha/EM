@@ -109,8 +109,8 @@
     BOOL bIsChecked=FALSE;
     //UIStepper *stepper=NULL;
     UILabel *weight = NULL;
-    UILabel *cellLabel = NULL;
-    UILabel *cellNativeText = NULL;
+    UILabel *exerciseLabel = NULL;
+    UILabel *exerciseLabelNative = NULL;
     UILabel *unitLabel = NULL;
     
     static NSString *CellIdentifier = @"Cell";
@@ -129,23 +129,21 @@
         
     // check if weight is required
     if(tempExercise.IWeightMeterRequired){
-        cellLabel = (UILabel *)[cell viewWithTag:1];
-        //stepper.hidden = FALSE;
+        exerciseLabel = (UILabel *)[cell viewWithTag:1];
         weight.hidden = FALSE;
         unitLabel.hidden = FALSE;
-        //stepper.value = tempExercise.IWeight;
-        [cellLabel setText:tempExercise.pSExerciseName];
+        [exerciseLabel setText:tempExercise.pSExerciseName];
         [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
         [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
-        [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
         [unitLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
     }else {
-        cellNativeText = (UILabel *)[cell viewWithTag:0];
+        exerciseLabelNative = (UILabel *)[cell viewWithTag:0];
         //stepper.hidden = TRUE;
         weight.hidden = TRUE;
         unitLabel.hidden = TRUE;
-        [cellNativeText setText:tempExercise.pSExerciseName];
-        [cellNativeText setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        [exerciseLabelNative setText:tempExercise.pSExerciseName];
+        [exerciseLabelNative setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     }
     // Retrieve the value and check if the row should be checked.
     bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
@@ -155,14 +153,14 @@
         UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exerciseDone.png"]];
         cell.backgroundView = img1;
         weight.textColor = [UIColor whiteColor];
-        cellLabel.textColor = [UIColor whiteColor];
+        exerciseLabel.textColor = [UIColor whiteColor];
         unitLabel.textColor = [UIColor whiteColor];
         DBLog(@"Done today");
     }else {
         DBLog(@"Not done today");
         cell.backgroundView = nil;
         weight.textColor = [UIColor blackColor];
-        cellLabel.textColor = [UIColor blackColor];
+        exerciseLabel.textColor = [UIColor blackColor];
         unitLabel.textColor = [UIColor blackColor];
     }
     return cell;
@@ -283,5 +281,6 @@
         [vc setCategory:[NSString stringWithFormat:@"%@", self.navigationItem.title]];
     }
 }
+
 
 @end

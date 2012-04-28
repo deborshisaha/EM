@@ -77,7 +77,6 @@
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     [cellLabel setText:tempExercise.pSExerciseName];
-    DBLog(@"Should change font");
     [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     
     //UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"categoryCellBg.png"]];
@@ -126,5 +125,7 @@
     }       
     [tableView endUpdates];
 }
+
+
 
 @end

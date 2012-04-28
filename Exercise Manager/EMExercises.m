@@ -20,13 +20,6 @@
     return self;
 }
 
-#pragma mark Sqlite access
-
-- (NSString *)databasePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"holidays" ofType:@"db"];
-}
-
 @end
 
 
