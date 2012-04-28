@@ -26,12 +26,12 @@
 
 - (void)viewDidLoad
 {
-    DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    self.tabBar.backgroundImage = [UIImage imageNamed:@"tabbarBG.png"];
-    self.tabBar.selectionIndicatorImage = [UIImage imageNamed:@"selectedItemImage.png"];
+      DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
+      [super viewDidLoad];
+      self.tabBar.backgroundImage = [UIImage imageNamed:@"tabbarDark.png"];
+      //self.tabBar.backgroundColor = [UIColor greenColor];
+      self.tabBar.selectionIndicatorImage = [UIImage imageNamed:@"selectedItemImage.png"];
+      self.tabBar.selectedImageTintColor = [UIColor redColor];    
 }
 
 - (void)viewDidUnload
@@ -40,11 +40,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
-
+/*
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+*/
 @end

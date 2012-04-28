@@ -31,6 +31,8 @@
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
+    
+    self.navigationController.navigationBar.topItem.title = @"Exercises";
 }
 
 - (void)viewDidUnload

@@ -38,8 +38,12 @@
     pMAExercise = [[NSMutableArray alloc] init];
     pMAExercisesDoneTillNow = [[NSMutableArray alloc] init];
     done = [[NSMutableDictionary alloc] init];
+
+    //Customizing the navigation bar
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+
+
     DBLog(@"# of exercise %d", [pMAExercisesDoneTillNow count]);
-    DBLog(@"Line # %d ", __LINE__);
 }
 
 -(void) viewDidAppear:(BOOL)animated{

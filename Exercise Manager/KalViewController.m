@@ -60,7 +60,9 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     self.title = @"History";
     self.tabBarItem.image = [UIImage imageNamed:@"History.png"];
     //self.tabBarController.tabBar.selectionIndicatorImage = @"downArrow.png";
+    [EMSQLManager createDatabase];
     dataSource = [[EMSqliteDatasource alloc] initWithTodaysDate:[NSDate date]];
+
     return [self initWithSelectedDate:[NSDate date]];
 }
 

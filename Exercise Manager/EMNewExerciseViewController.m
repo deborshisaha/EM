@@ -26,8 +26,10 @@
 }
 
 - (void)viewDidLoad
-{
+{DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     [super viewDidLoad];
+    //Customizing the navigation bar
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
 	// Do any additional setup after loading the view.
     [label1 setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
     [label2 setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0 ]];
@@ -35,18 +37,18 @@
 }
 
 - (void)viewDidUnload
-{
+{DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
-
+/*
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+*/
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
-    
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     DBLog(@"textfield : text%@", textField.text);
     if ([textField.text length] != 0) {
         // Generate the random id
@@ -66,7 +68,7 @@
         // [EMSQLManager createLogTableWithName:[NSString stringWithFormat:@"%@LogTable", category]];
     }
     [textField resignFirstResponder]; 
-    [self dismissModalViewControllerAnimated: YES];
+    [self.navigationController popViewControllerAnimated: YES];
     
     return YES;
 }
@@ -79,8 +81,5 @@
     }
 } 
 
-- (IBAction)cancel :(id)sender{
-    [self dismissModalViewControllerAnimated: YES];   
-}
 
 @end

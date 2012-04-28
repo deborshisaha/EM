@@ -17,5 +17,4 @@
 @property(nonatomic, retain) IBOutlet UITextField* categoryText;
 @property(nonatomic, retain) IBOutlet UILabel* label;
 
-- (IBAction)cancel :(id)sender;
 @end

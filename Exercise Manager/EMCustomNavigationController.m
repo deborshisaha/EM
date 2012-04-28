@@ -15,8 +15,10 @@
 @implementation EMCustomNavigationBar: UINavigationBar 
 
 - (void) drawRect:(CGRect)rect{
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     UIImage *image = [UIImage imageNamed:@"tabbarBG.png"];
-    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [image drawInRect:frame];
 }
 
 @end
@@ -34,9 +36,8 @@
 
 - (void)viewDidLoad
 {
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.navigationBar.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidUnload
@@ -47,6 +48,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 

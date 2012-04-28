@@ -13,13 +13,47 @@
 +(void)  createDatabase {
      
     // Just need the database path
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     NSString *pSDatabasePath = [EMSQLManager getDatabasePath]  ;
     
+    DBLog(@"Database path %@", pSDatabasePath);
+    
     if ([EMSQLManager checkIfDatabaseIsPresent: pSDatabasePath]) {
+        DBLog(@"Database is present");
+        if ([EMSQLManager isTablePresentWithName:@"AbsExercisesTable"]) {
+            DBLog(@"Present");
+        }
+        if ([EMSQLManager isTablePresentWithName:@"ChestExercisesTable"]) {
+            DBLog(@"Present");
+        }
+        if ([EMSQLManager isTablePresentWithName:@"ShouldersExercisesTable"]) {
+            DBLog(@"Present");
+        }
         return;
     } else {
+        DBLog(@"Database is Absent");
         [EMSQLManager writeDatabaseForFirstTime];
     }
+}
+
++ (NSString *)getDatabaseName
+{
+    // This should be a constant somewhere
+    NSString *pSDatabaseName = @"EM.sqlite";
+    return pSDatabaseName;
+}
+
++ (NSString *)getDatabasePath
+{
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
+    NSString *pSDatabaseName = [EMSQLManager getDatabaseName];
+    
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    
+    NSString *pSDatabasePath = [documentsDir stringByAppendingPathComponent:pSDatabaseName];
+    return pSDatabasePath;
 }
 
 +(BOOL) deleteEntry:(NSString *)tableName withExerciseId:(NSInteger) exId{
@@ -122,40 +156,18 @@
     return pMAExercise;
 }
 
-+ (NSString *)getDatabaseName
-{
-    // This should be a constant somewhere
-    NSString *pSDatabaseName = @"ExerciseManager.sqlite";
-    return pSDatabaseName;
-}
-
-// Probably we have to have a Singleton class
-+ (void)setDatabaseName: (NSString *) databaseName
-{
-    // This should be a constant somewhere
-    //NSString *pSDatabaseName = databaseName;
-}
-
-+ (NSString *)getDatabasePath
-{
-    NSString *pSDatabaseName = [EMSQLManager getDatabaseName];
-    
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *documentsDir = [documentPaths objectAtIndex:0];
-    
-    NSString *pSDatabasePath = [documentsDir stringByAppendingPathComponent:pSDatabaseName];
-    return pSDatabasePath;
-}
-
 + (BOOL) checkIfDatabaseIsPresent: (NSString *)pSDatabasePath
 {    
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
+    BOOL success;
     NSFileManager *fileManager = [NSFileManager  defaultManager];
-    return [fileManager fileExistsAtPath:pSDatabasePath];
+    success = [fileManager fileExistsAtPath:pSDatabasePath];
+    return success;
 }
 
 + (void)writeDatabaseForFirstTime
 {
+    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[EMSQLManager getDatabaseName]];
     NSFileManager *fileManager = [NSFileManager  defaultManager];
     [fileManager copyItemAtPath:databasePathFromApp toPath:[EMSQLManager getDatabasePath] error:nil];

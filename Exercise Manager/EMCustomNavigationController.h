@@ -12,6 +12,6 @@
 
 @end
 
-@interface EMCustomNavigationBar : UINavigationBar
+@interface EMCustomNavigationBar : UINavigationBar 
 
 @end

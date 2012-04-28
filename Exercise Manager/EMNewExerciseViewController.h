@@ -22,5 +22,4 @@
 @property(nonatomic, retain) IBOutlet UILabel* label2;
 @property (nonatomic, retain) UISwitch *weightMeter;
 
-- (IBAction)cancel :(id)sender;
 @end
