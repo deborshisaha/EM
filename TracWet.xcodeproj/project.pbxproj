@@ -156,23 +156,23 @@
 		34C4D3AB154BD4F3009E0D5B /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RightArrow.png; path = "Exercise Manager/Resources/RightArrow.png"; sourceTree = "<group>"; };
 		34D412E0153A785200D8A52C /* EMSqliteDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSqliteDatasource.h; sourceTree = "<group>"; };
 		34D412E1153A785200D8A52C /* EMSqliteDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSqliteDatasource.m; sourceTree = "<group>"; };
-		34E44C52150F2248008CEA8C /* Exercise Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E44C52150F2248008CEA8C /* TracWet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracWet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34E44C5A150F2248008CEA8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		34E44C5E150F2248008CEA8C /* Exercise Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exercise Manager-Info.plist"; sourceTree = "<group>"; };
+		34E44C5E150F2248008CEA8C /* TracWet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TracWet-Info.plist"; sourceTree = "<group>"; };
 		34E44C60150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34E44C62150F2248008CEA8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		34E44C64150F2248008CEA8C /* Exercise Manager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Exercise Manager-Prefix.pch"; sourceTree = "<group>"; };
+		34E44C64150F2248008CEA8C /* TracWet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TracWet-Prefix.pch"; sourceTree = "<group>"; };
 		34E44C65150F2248008CEA8C /* EMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMAppDelegate.h; sourceTree = "<group>"; };
 		34E44C66150F2248008CEA8C /* EMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMAppDelegate.m; sourceTree = "<group>"; };
 		34E44C6B150F2248008CEA8C /* EMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMFirstViewController.h; sourceTree = "<group>"; };
 		34E44C6C150F2248008CEA8C /* EMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMFirstViewController.m; sourceTree = "<group>"; };
 		34E44C72150F2248008CEA8C /* EMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSecondViewController.h; sourceTree = "<group>"; };
 		34E44C73150F2248008CEA8C /* EMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSecondViewController.m; sourceTree = "<group>"; };
-		34E44C7E150F2248008CEA8C /* Exercise ManagerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Exercise ManagerTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E44C7E150F2248008CEA8C /* TracWetTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TracWetTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C7F150F2248008CEA8C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		34E44C87150F2248008CEA8C /* Exercise ManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exercise ManagerTests-Info.plist"; sourceTree = "<group>"; };
+		34E44C87150F2248008CEA8C /* TracWetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TracWetTests-Info.plist"; sourceTree = "<group>"; };
 		34E44C89150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34E44C8B150F2248008CEA8C /* Exercise_ManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exercise_ManagerTests.h; sourceTree = "<group>"; };
 		34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Exercise_ManagerTests.m; sourceTree = "<group>"; };
@@ -311,8 +311,8 @@
 		34E44C53150F2248008CEA8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34E44C52150F2248008CEA8C /* Exercise Manager.app */,
-				34E44C7E150F2248008CEA8C /* Exercise ManagerTests.octest */,
+				34E44C52150F2248008CEA8C /* TracWet.app */,
+				34E44C7E150F2248008CEA8C /* TracWetTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,10 +364,10 @@
 		34E44C5D150F2248008CEA8C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				34E44C5E150F2248008CEA8C /* Exercise Manager-Info.plist */,
+				34E44C5E150F2248008CEA8C /* TracWet-Info.plist */,
 				34E44C5F150F2248008CEA8C /* InfoPlist.strings */,
 				34E44C62150F2248008CEA8C /* main.m */,
-				34E44C64150F2248008CEA8C /* Exercise Manager-Prefix.pch */,
+				34E44C64150F2248008CEA8C /* TracWet-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -385,7 +385,7 @@
 		34E44C86150F2248008CEA8C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				34E44C87150F2248008CEA8C /* Exercise ManagerTests-Info.plist */,
+				34E44C87150F2248008CEA8C /* TracWetTests-Info.plist */,
 				34E44C88150F2248008CEA8C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -394,9 +394,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		34E44C51150F2248008CEA8C /* Exercise Manager */ = {
+		34E44C51150F2248008CEA8C /* TracWet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34E44C90150F2249008CEA8C /* Build configuration list for PBXNativeTarget "Exercise Manager" */;
+			buildConfigurationList = 34E44C90150F2249008CEA8C /* Build configuration list for PBXNativeTarget "TracWet" */;
 			buildPhases = (
 				34E44C4E150F2248008CEA8C /* Sources */,
 				34E44C4F150F2248008CEA8C /* Frameworks */,
@@ -406,14 +406,14 @@
 			);
 			dependencies = (
 			);
-			name = "Exercise Manager";
+			name = TracWet;
 			productName = "Exercise Manager";
-			productReference = 34E44C52150F2248008CEA8C /* Exercise Manager.app */;
+			productReference = 34E44C52150F2248008CEA8C /* TracWet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		34E44C7D150F2248008CEA8C /* Exercise ManagerTests */ = {
+		34E44C7D150F2248008CEA8C /* TracWetTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34E44C93150F2249008CEA8C /* Build configuration list for PBXNativeTarget "Exercise ManagerTests" */;
+			buildConfigurationList = 34E44C93150F2249008CEA8C /* Build configuration list for PBXNativeTarget "TracWetTests" */;
 			buildPhases = (
 				34E44C79150F2248008CEA8C /* Sources */,
 				34E44C7A150F2248008CEA8C /* Frameworks */,
@@ -425,9 +425,9 @@
 			dependencies = (
 				34E44C84150F2248008CEA8C /* PBXTargetDependency */,
 			);
-			name = "Exercise ManagerTests";
+			name = TracWetTests;
 			productName = "Exercise ManagerTests";
-			productReference = 34E44C7E150F2248008CEA8C /* Exercise ManagerTests.octest */;
+			productReference = 34E44C7E150F2248008CEA8C /* TracWetTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -452,8 +452,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34E44C51150F2248008CEA8C /* Exercise Manager */,
-				34E44C7D150F2248008CEA8C /* Exercise ManagerTests */,
+				34E44C51150F2248008CEA8C /* TracWet */,
+				34E44C7D150F2248008CEA8C /* TracWetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -574,7 +574,7 @@
 /* Begin PBXTargetDependency section */
 		34E44C84150F2248008CEA8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 34E44C51150F2248008CEA8C /* Exercise Manager */;
+			target = 34E44C51150F2248008CEA8C /* TracWet */;
 			targetProxy = 34E44C83150F2248008CEA8C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -656,12 +656,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
+				GCC_PREFIX_HEADER = "Exercise Manager/TracWet-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				INFOPLIST_FILE = "Exercise Manager/Exercise Manager-Info.plist";
+				INFOPLIST_FILE = "Exercise Manager/TracWet-Info.plist";
 				"OTHER_CFLAGS[arch=*]" = "-DDEBUGGING";
 				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TracWet;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -671,10 +671,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
-				INFOPLIST_FILE = "Exercise Manager/Exercise Manager-Info.plist";
+				GCC_PREFIX_HEADER = "Exercise Manager/TracWet-Prefix.pch";
+				INFOPLIST_FILE = "Exercise Manager/TracWet-Info.plist";
 				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TracWet;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -689,8 +689,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
-				INFOPLIST_FILE = "Exercise ManagerTests/Exercise ManagerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Exercise ManagerTests/TracWetTests-Info.plist";
+				PRODUCT_NAME = TracWetTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -706,8 +706,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exercise Manager/Exercise Manager-Prefix.pch";
-				INFOPLIST_FILE = "Exercise ManagerTests/Exercise ManagerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Exercise ManagerTests/TracWetTests-Info.plist";
+				PRODUCT_NAME = TracWetTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -725,7 +725,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34E44C90150F2249008CEA8C /* Build configuration list for PBXNativeTarget "Exercise Manager" */ = {
+		34E44C90150F2249008CEA8C /* Build configuration list for PBXNativeTarget "TracWet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34E44C91150F2249008CEA8C /* Debug */,
@@ -734,7 +734,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34E44C93150F2249008CEA8C /* Build configuration list for PBXNativeTarget "Exercise ManagerTests" */ = {
+		34E44C93150F2249008CEA8C /* Build configuration list for PBXNativeTarget "TracWetTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34E44C94150F2249008CEA8C /* Debug */,
