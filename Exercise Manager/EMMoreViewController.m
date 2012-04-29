@@ -112,25 +112,25 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     DBLog(@"%s", __PRETTY_FUNCTION__);
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 3 , 300, 20)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 70)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0 , 300, 20)];
     headerLabel.backgroundColor= [UIColor clearColor];
     [headerLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18]];
     [headerView addSubview:headerLabel];
-    
+    [headerView setBackgroundColor:[UIColor greenColor]];
     switch (section) {
         case 0:
-            [headerView setBackgroundColor:[UIColor greenColor]];
+            //[headerView setBackgroundColor:[UIColor greenColor]];
             headerLabel.text = @"How to(s)";
             break;
             
         case 1:
-            [headerView setBackgroundColor:[UIColor greenColor]];
+            //[headerView setBackgroundColor:[UIColor greenColor]];
             headerLabel.text = @"What";
             break;
             
         case 2:
-            [headerView setBackgroundColor:[UIColor greenColor]];
+            //[headerView setBackgroundColor:[UIColor greenColor]];
             headerLabel.text = @"Misc";
             break;
             
