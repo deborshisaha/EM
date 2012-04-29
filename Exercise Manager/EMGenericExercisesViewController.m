@@ -110,8 +110,10 @@
     //UIStepper *stepper=NULL;
     UILabel *weight = NULL;
     UILabel *exerciseLabel = NULL;
-    UILabel *exerciseLabelNative = NULL;
+    //UILabel *exerciseLabelNative = NULL;
     UILabel *unitLabel = NULL;
+    UIImageView *downArrow = NULL;
+    UIImageView *upArrow = NULL;
     
     static NSString *CellIdentifier = @"Cell";
     // Create or reuse a cell
@@ -123,27 +125,35 @@
     
     weight = (UILabel *)[cell viewWithTag:3];
     unitLabel = (UILabel *)[cell viewWithTag:4];
-    
+    downArrow = (UIImageView *) [cell viewWithTag:10];
+    upArrow = (UIImageView *) [cell viewWithTag:11];
+    exerciseLabel = (UILabel *)[cell viewWithTag:1];
     // Configure the cell...
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
         
     // check if weight is required
     if(tempExercise.IWeightMeterRequired){
-        exerciseLabel = (UILabel *)[cell viewWithTag:1];
+        //exerciseLabel = (UILabel *)[cell viewWithTag:1];
         weight.hidden = FALSE;
         unitLabel.hidden = FALSE;
-        [exerciseLabel setText:tempExercise.pSExerciseName];
+   
         [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
         [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
+        
+        [exerciseLabel setText:tempExercise.pSExerciseName];
         [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
         [unitLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
     }else {
-        exerciseLabelNative = (UILabel *)[cell viewWithTag:0];
-        //stepper.hidden = TRUE;
+        //exerciseLabelNative = (UILabel *)[cell viewWithTag:0];
         weight.hidden = TRUE;
         unitLabel.hidden = TRUE;
-        [exerciseLabelNative setText:tempExercise.pSExerciseName];
-        [exerciseLabelNative setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        downArrow.hidden = TRUE;
+        upArrow.hidden = TRUE;
+        [exerciseLabel setText:tempExercise.pSExerciseName];
+        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+
+        //[exerciseLabelNative setText:tempExercise.pSExerciseName];
+        //[exerciseLabelNative setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
     }
     // Retrieve the value and check if the row should be checked.
     bIsChecked = [[done valueForKey:[NSString stringWithFormat:@"%i", tempExercise.IExerciseId]] boolValue];
@@ -282,5 +292,25 @@
     }
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UILabel *unitLabel = (UILabel *)[cell viewWithTag:4];
+    UILabel *exercise = (UILabel *)[cell viewWithTag:1];
+    EMExercises *tempExercise =[pMAExercise objectAtIndex:indexPath.row];
+    
+    if (! unitLabel.hidden) {
+        DBLog(@"This cell has weight meter and cell gets highlighted only when weights are changed");
+    }else {
+        DBLog(@"This cell DOES NOT have a weight meter, so cell gets selected by didSelectRowAtIndexPath");
+        if([EMSQLManager logWithTablename:[self getDate] andExerciseName:tempExercise.pSExerciseName andExId:tempExercise.IExerciseId andWeight: tempExercise.IWeight]){
+            UIImageView *img1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exerciseDone.png"]];
+            cell.backgroundView = img1;
+            exercise.textColor = [UIColor whiteColor];
+        }else {
+            DBLog(@"error : Write to DB failed");
+        }
+    }
+}
 
 @end
