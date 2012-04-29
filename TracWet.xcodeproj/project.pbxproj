@@ -15,7 +15,6 @@
 		345B62BA1543C0E80013CEB2 /* tabbarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62B91543C0E80013CEB2 /* tabbarBG.png */; };
 		345B62BD1543C2150013CEB2 /* EMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 345B62BC1543C2140013CEB2 /* EMTabBarController.m */; };
 		345B62C115440D1E0013CEB2 /* selectedItemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62C015440D1E0013CEB2 /* selectedItemImage.png */; };
-		345B62CA154429FC0013CEB2 /* EMCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 345B62C9154429FC0013CEB2 /* EMCustomNavigationController.m */; };
 		345B62CC154495420013CEB2 /* addBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62CB154495410013CEB2 /* addBg.png */; };
 		3472C6E81527FE31005C9283 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6D81527FE30005C9283 /* KalDataSource.m */; };
 		3472C6E91527FE31005C9283 /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C6DA1527FE30005C9283 /* KalDate.m */; };
@@ -29,14 +28,17 @@
 		3472C72E1527FF10005C9283 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3472C72C1527FF10005C9283 /* UIViewAdditions.m */; };
 		347A6CE0154D0BB8008BAFEC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 347A6CDF154D0BB8008BAFEC /* icon.png */; };
 		347A6CE5154D0C70008BAFEC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 347A6CE4154D0C70008BAFEC /* icon@2x.png */; };
+		347A6CEA154D1491008BAFEC /* EMCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A6CE9154D1491008BAFEC /* EMCustomNavigationController.m */; };
+		347A6CED154D16EA008BAFEC /* EMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A6CEC154D16EA008BAFEC /* EMMoreViewController.m */; };
+		347A6CF0154DB30A008BAFEC /* EMMoreDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A6CEF154DB30A008BAFEC /* EMMoreDetailsViewController.m */; };
 		347AFF091512B1E300735DD2 /* EMNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */; };
 		348877CD154377DF003749B6 /* exerciseDone.png in Resources */ = {isa = PBXBuildFile; fileRef = 348877CC154377DF003749B6 /* exerciseDone.png */; };
 		34AD32F7153767DA002F3435 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AD32F6153767DA002F3435 /* downArrow.png */; };
 		34C4D3A0154BBC85009E0D5B /* tabbarDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D39F154BBC85009E0D5B /* tabbarDark.png */; };
 		34C4D3A2154BC355009E0D5B /* calendarGridBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A1154BC354009E0D5B /* calendarGridBackground.png */; };
 		34C4D3A4154BC694009E0D5B /* TodaysTileSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A3154BC693009E0D5B /* TodaysTileSelected.png */; };
-		34C4D3A6154BC91E009E0D5B /* TileSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A5154BC91D009E0D5B /* TileSelected.png */; };
-		34C4D3A8154BCB10009E0D5B /* TileSelected2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A7154BCB0F009E0D5B /* TileSelected2.png */; };
+		34C4D3A6154BC91E009E0D5B /* TodaysTile.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A5154BC91D009E0D5B /* TodaysTile.png */; };
+		34C4D3A8154BCB10009E0D5B /* TileSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A7154BCB0F009E0D5B /* TileSelected.png */; };
 		34C4D3AA154BD4AB009E0D5B /* LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3A9154BD4AA009E0D5B /* LeftArrow.png */; };
 		34C4D3AC154BD4F4009E0D5B /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4D3AB154BD4F3009E0D5B /* RightArrow.png */; };
 		34D13586152D5A7000EEC3BD /* kal_grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C6FB1527FEE5005C9283 /* kal_grid_shadow.png */; };
@@ -100,8 +102,6 @@
 		345B62BB1543C2140013CEB2 /* EMTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTabBarController.h; sourceTree = "<group>"; };
 		345B62BC1543C2140013CEB2 /* EMTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 6; lastKnownFileType = sourcecode.c.objc; path = EMTabBarController.m; sourceTree = "<group>"; tabWidth = 6; };
 		345B62C015440D1E0013CEB2 /* selectedItemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectedItemImage.png; path = "Exercise Manager/Resources/selectedItemImage.png"; sourceTree = "<group>"; };
-		345B62C8154429FB0013CEB2 /* EMCustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCustomNavigationController.h; sourceTree = "<group>"; };
-		345B62C9154429FC0013CEB2 /* EMCustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCustomNavigationController.m; sourceTree = "<group>"; };
 		345B62CB154495410013CEB2 /* addBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addBg.png; path = "Exercise Manager/Resources/addBg.png"; sourceTree = "<group>"; };
 		3472C6D61527FE30005C9283 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = "Exercise Manager/Kal.h"; sourceTree = "<group>"; };
 		3472C6D71527FE30005C9283 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KalDataSource.h; path = "Exercise Manager/KalDataSource.h"; sourceTree = "<group>"; };
@@ -143,6 +143,12 @@
 		3472C72C1527FF10005C9283 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = "Exercise Manager/UIViewAdditions.m"; sourceTree = "<group>"; };
 		347A6CDF154D0BB8008BAFEC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = "Exercise Manager/Resources/icon.png"; sourceTree = "<group>"; };
 		347A6CE4154D0C70008BAFEC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Exercise Manager/Resources/icon@2x.png"; sourceTree = "<group>"; };
+		347A6CE8154D1491008BAFEC /* EMCustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCustomNavigationController.h; sourceTree = "<group>"; };
+		347A6CE9154D1491008BAFEC /* EMCustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCustomNavigationController.m; sourceTree = "<group>"; };
+		347A6CEB154D16EA008BAFEC /* EMMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMoreViewController.h; sourceTree = "<group>"; };
+		347A6CEC154D16EA008BAFEC /* EMMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMoreViewController.m; sourceTree = "<group>"; };
+		347A6CEE154DB30A008BAFEC /* EMMoreDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMoreDetailsViewController.h; sourceTree = "<group>"; };
+		347A6CEF154DB30A008BAFEC /* EMMoreDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMoreDetailsViewController.m; sourceTree = "<group>"; };
 		347AFF071512B1E200735DD2 /* EMNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNewCategoryViewController.h; sourceTree = "<group>"; };
 		347AFF081512B1E200735DD2 /* EMNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMNewCategoryViewController.m; sourceTree = "<group>"; };
 		348877CC154377DF003749B6 /* exerciseDone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exerciseDone.png; path = "Exercise Manager/Resources/exerciseDone.png"; sourceTree = "<group>"; };
@@ -150,8 +156,8 @@
 		34C4D39F154BBC85009E0D5B /* tabbarDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbarDark.png; path = "Exercise Manager/Resources/tabbarDark.png"; sourceTree = "<group>"; };
 		34C4D3A1154BC354009E0D5B /* calendarGridBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendarGridBackground.png; path = "Exercise Manager/Resources/calendarGridBackground.png"; sourceTree = "<group>"; };
 		34C4D3A3154BC693009E0D5B /* TodaysTileSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TodaysTileSelected.png; path = "Exercise Manager/Resources/TodaysTileSelected.png"; sourceTree = "<group>"; };
-		34C4D3A5154BC91D009E0D5B /* TileSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TileSelected.png; path = "Exercise Manager/Resources/TileSelected.png"; sourceTree = "<group>"; };
-		34C4D3A7154BCB0F009E0D5B /* TileSelected2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TileSelected2.png; path = "Exercise Manager/Resources/TileSelected2.png"; sourceTree = "<group>"; };
+		34C4D3A5154BC91D009E0D5B /* TodaysTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TodaysTile.png; path = "Exercise Manager/Resources/TodaysTile.png"; sourceTree = "<group>"; };
+		34C4D3A7154BCB0F009E0D5B /* TileSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TileSelected.png; path = "Exercise Manager/Resources/TileSelected.png"; sourceTree = "<group>"; };
 		34C4D3A9154BD4AA009E0D5B /* LeftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LeftArrow.png; path = "Exercise Manager/Resources/LeftArrow.png"; sourceTree = "<group>"; };
 		34C4D3AB154BD4F3009E0D5B /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RightArrow.png; path = "Exercise Manager/Resources/RightArrow.png"; sourceTree = "<group>"; };
 		34D412E0153A785200D8A52C /* EMSqliteDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSqliteDatasource.h; sourceTree = "<group>"; };
@@ -280,11 +286,11 @@
 				34C4D3AB154BD4F3009E0D5B /* RightArrow.png */,
 				3472C7031527FEE5005C9283 /* kal_marker_today.png */,
 				3472C7041527FEE5005C9283 /* kal_marker_today@2x.png */,
-				34C4D3A7154BCB0F009E0D5B /* TileSelected2.png */,
+				34C4D3A7154BCB0F009E0D5B /* TileSelected.png */,
 				3472C7051527FEE5005C9283 /* kal_marker.png */,
 				3472C7061527FEE5005C9283 /* kal_marker@2x.png */,
 				3472C7081527FEE5005C9283 /* kal_right_arrow@2x.png */,
-				34C4D3A5154BC91D009E0D5B /* TileSelected.png */,
+				34C4D3A5154BC91D009E0D5B /* TodaysTile.png */,
 				34C4D3A3154BC693009E0D5B /* TodaysTileSelected.png */,
 				3472C70A1527FEE5005C9283 /* kal_tile_selected.png */,
 				3472C70B1527FEE5005C9283 /* kal_tile_text_fill.png */,
@@ -355,8 +361,12 @@
 				3417C300153B8D8C00CA7570 /* EMTableViewDataSource.h */,
 				345B62BB1543C2140013CEB2 /* EMTabBarController.h */,
 				345B62BC1543C2140013CEB2 /* EMTabBarController.m */,
-				345B62C8154429FB0013CEB2 /* EMCustomNavigationController.h */,
-				345B62C9154429FC0013CEB2 /* EMCustomNavigationController.m */,
+				347A6CE8154D1491008BAFEC /* EMCustomNavigationController.h */,
+				347A6CE9154D1491008BAFEC /* EMCustomNavigationController.m */,
+				347A6CEB154D16EA008BAFEC /* EMMoreViewController.h */,
+				347A6CEC154D16EA008BAFEC /* EMMoreViewController.m */,
+				347A6CEE154DB30A008BAFEC /* EMMoreDetailsViewController.h */,
+				347A6CEF154DB30A008BAFEC /* EMMoreDetailsViewController.m */,
 			);
 			path = "Exercise Manager";
 			sourceTree = "<group>";
@@ -493,8 +503,8 @@
 				34C4D3A0154BBC85009E0D5B /* tabbarDark.png in Resources */,
 				34C4D3A2154BC355009E0D5B /* calendarGridBackground.png in Resources */,
 				34C4D3A4154BC694009E0D5B /* TodaysTileSelected.png in Resources */,
-				34C4D3A6154BC91E009E0D5B /* TileSelected.png in Resources */,
-				34C4D3A8154BCB10009E0D5B /* TileSelected2.png in Resources */,
+				34C4D3A6154BC91E009E0D5B /* TodaysTile.png in Resources */,
+				34C4D3A8154BCB10009E0D5B /* TileSelected.png in Resources */,
 				34C4D3AA154BD4AB009E0D5B /* LeftArrow.png in Resources */,
 				34C4D3AC154BD4F4009E0D5B /* RightArrow.png in Resources */,
 				34E9A1D0154CFCDA001D90AB /* Default@2x.png in Resources */,
@@ -557,7 +567,9 @@
 				3472C72E1527FF10005C9283 /* UIViewAdditions.m in Sources */,
 				34D412E2153A785200D8A52C /* EMSqliteDatasource.m in Sources */,
 				345B62BD1543C2150013CEB2 /* EMTabBarController.m in Sources */,
-				345B62CA154429FC0013CEB2 /* EMCustomNavigationController.m in Sources */,
+				347A6CEA154D1491008BAFEC /* EMCustomNavigationController.m in Sources */,
+				347A6CED154D16EA008BAFEC /* EMMoreViewController.m in Sources */,
+				347A6CF0154DB30A008BAFEC /* EMMoreDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

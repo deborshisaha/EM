@@ -46,25 +46,24 @@ extern const CGSize kTileSize;
       shadowColor = nil;
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
   } else if ([self isToday] && !self.selected) {
-    [[[UIImage imageNamed:@"TileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    [[[UIImage imageNamed:@"TodaysTile.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
     textColor = [UIColor blackColor];
     shadowColor = [UIColor clearColor];
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
   } else if (self.selected) {
       // Some day selected
-    [[[UIImage imageNamed:@"TileSelected2.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    [[[UIImage imageNamed:@"TileSelected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
       textColor = [UIColor blackColor];
       shadowColor = nil;
       markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
   } else if (self.belongsToAdjacentMonth) {
       // Dates of next month
       //textColor = [UIColor blackColor];
-      textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_dim_text_fill.png"]];
+      textColor = [UIColor grayColor];
       shadowColor = nil;
       markerImage = [UIImage imageNamed:@"kal_marker_dim.png"];
   } else {
       textColor = [UIColor blackColor];
-      //textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
       shadowColor = nil;
       markerImage = [UIImage imageNamed:@"kal_marker.png"];
   }

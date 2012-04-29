@@ -1,29 +1,20 @@
 //
-//  EMCustomNavigationController.m
-//  Exercise Manager
+//  EMMoreDetailsViewController.m
+//  TracWet
 //
-//  Created by Deborshi Saha on 4/22/12.
+//  Created by Deborshi Saha on 4/29/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EMCustomNavigationController.h"
+#import "EMMoreDetailsViewController.h"
 
-@interface EMCustomNavigationController ()
-
-@end
-
-@implementation EMCustomNavigationBar: UINavigationBar 
-
-- (void) drawRect:(CGRect)rect{
-DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
-CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-UIImage *image = [UIImage imageNamed:@"tabbarBG.png"];
-[image drawInRect:frame];
-}
+@interface EMMoreDetailsViewController ()
 
 @end
 
-@implementation EMCustomNavigationController
+
+@implementation EMMoreDetailsViewController
+@synthesize titleString, topic, topicLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +27,12 @@ UIImage *image = [UIImage imageNamed:@"tabbarBG.png"];
 
 - (void)viewDidLoad
 {
-    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    self.title = titleString;
+    [topicLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:17]];
+    topicLabel.text = topic;
+    
 }
 
 - (void)viewDidUnload
@@ -48,7 +43,6 @@ UIImage *image = [UIImage imageNamed:@"tabbarBG.png"];
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    DBLog(@"%s STARTS", __PRETTY_FUNCTION__);
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 

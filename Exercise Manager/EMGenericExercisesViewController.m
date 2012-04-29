@@ -138,11 +138,11 @@
         unitLabel.hidden = FALSE;
    
         [weight setText:[NSString stringWithFormat:@"%i",tempExercise.IWeight]];
-        [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
+        [weight setFont:[UIFont fontWithName:@"Street Humouresque" size:15.0]];
         
         [exerciseLabel setText:tempExercise.pSExerciseName];
-        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
-        [unitLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
+        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0]];
+        [unitLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:15.0]];
     }else {
         //exerciseLabelNative = (UILabel *)[cell viewWithTag:0];
         weight.hidden = TRUE;
@@ -150,7 +150,7 @@
         downArrow.hidden = TRUE;
         upArrow.hidden = TRUE;
         [exerciseLabel setText:tempExercise.pSExerciseName];
-        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+        [exerciseLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:20.0]];
 
         //[exerciseLabelNative setText:tempExercise.pSExerciseName];
         //[exerciseLabelNative setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
@@ -203,7 +203,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60.0;
+    return 50.0;
 }
 
 - (IBAction)weightIncreased:(id)sender{
