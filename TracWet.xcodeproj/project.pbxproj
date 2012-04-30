@@ -10,6 +10,7 @@
 		3417C302153BDAA800CA7570 /* StreetHumouresque.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */; };
 		3417C303153BDADD00CA7570 /* StreetHumouresque.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */; };
 		343223D8151062340093FB7F /* EMExercises.m in Sources */ = {isa = PBXBuildFile; fileRef = 343223D7151062340093FB7F /* EMExercises.m */; };
+		3438BD12154DFF75008BCB26 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3438BD11154DFF75008BCB26 /* MessageUI.framework */; };
 		345B62B61543B7160013CEB2 /* History.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62B51543B7160013CEB2 /* History.png */; };
 		345B62B81543BB960013CEB2 /* Exercise.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62B71543BB960013CEB2 /* Exercise.png */; };
 		345B62BA1543C0E80013CEB2 /* tabbarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 345B62B91543C0E80013CEB2 /* tabbarBG.png */; };
@@ -96,6 +97,7 @@
 		3417C301153BDAA700CA7570 /* StreetHumouresque.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = StreetHumouresque.ttf; path = "Exercise Manager/Resources/StreetHumouresque.ttf"; sourceTree = "<group>"; };
 		343223D6151062340093FB7F /* EMExercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMExercises.h; sourceTree = "<group>"; };
 		343223D7151062340093FB7F /* EMExercises.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMExercises.m; sourceTree = "<group>"; };
+		3438BD11154DFF75008BCB26 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		345B62B51543B7160013CEB2 /* History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = History.png; path = "Exercise Manager/Resources/History.png"; sourceTree = "<group>"; };
 		345B62B71543BB960013CEB2 /* Exercise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Exercise.png; path = "Exercise Manager/Resources/Exercise.png"; sourceTree = "<group>"; };
 		345B62B91543C0E80013CEB2 /* tabbarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabbarBG.png; path = "Exercise Manager/Resources/tabbarBG.png"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3438BD12154DFF75008BCB26 /* MessageUI.framework in Frameworks */,
 				34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */,
 				34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */,
 				34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */,
@@ -326,6 +329,7 @@
 		34E44C55150F2248008CEA8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3438BD11154DFF75008BCB26 /* MessageUI.framework */,
 				34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */,
 				34E44C56150F2248008CEA8C /* UIKit.framework */,
 				34E44C58150F2248008CEA8C /* Foundation.framework */,

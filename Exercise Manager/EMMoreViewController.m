@@ -36,7 +36,7 @@
     NSArray *whats = [NSArray arrayWithObjects:@"To expect?", @"Is the gray color on changing weight?", nil];
     NSDictionary *whatsInDict = [NSDictionary dictionaryWithObject:whats forKey:@"More"];
     
-    NSArray *misc = [NSArray arrayWithObjects:@"Contact us", @"About", nil];
+    NSArray *misc = [NSArray arrayWithObjects: @"Contact Us", @"About", nil];
     NSDictionary *miscInDict = [NSDictionary dictionaryWithObject:misc forKey:@"More"];
     
     [moreItems addObject:howTosInDict];
