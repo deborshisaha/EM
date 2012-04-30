@@ -11,8 +11,10 @@
 
 @interface EMNewCategoryViewController : UIViewController<UITextFieldDelegate>{
     IBOutlet UITextField *categoryText;
+    IBOutlet UILabel *label;
 }
 
 @property(nonatomic, retain) IBOutlet UITextField* categoryText;
+@property(nonatomic, retain) IBOutlet UILabel* label;
 
 @end

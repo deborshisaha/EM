@@ -13,6 +13,7 @@
 @interface EMSqliteDatasource : NSObject <EMTableViewDataSource>{
     //NSMutableArray *items;
     NSMutableArray *exercises;
+    NSDate *tableForDate;
 }
 
 + (EMSqliteDatasource *)dataSource;

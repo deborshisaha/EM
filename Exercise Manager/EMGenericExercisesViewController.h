@@ -26,7 +26,6 @@
 @property(nonatomic, retain) NSMutableArray *pMAExercise;
 @property(nonatomic, retain) NSString *todaysDate;
 
-//@property (nonatomic) NSInteger selectedIndex;
 @property (nonatomic, retain) NSString *selectedItem;
 @property (nonatomic, retain) NSString *logTablename;
 
@@ -34,8 +33,6 @@
 
 @property(nonatomic, retain) NSMutableDictionary *done;
 
-
-- (IBAction)stepperChanged:(UIStepper *)sender;
 - (IBAction)weightIncreased:(id)sender;
 - (IBAction)weightDecreased:(id)sender;
 @end

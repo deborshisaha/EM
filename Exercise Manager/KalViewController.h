@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "KalView.h"       // for the KalViewDelegate protocol
 #import "EMTableViewDataSource.h" // for the KalDataSourceCallbacks protocol
+#import "EMSQLManager.h"
 
 @class KalLogic, KalDate;
 

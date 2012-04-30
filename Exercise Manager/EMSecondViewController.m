@@ -30,8 +30,16 @@
     
     DBLog(@" %s STARTS ", __PRETTY_FUNCTION__);
 
-    // Read all exercises
     pMAExercise = [EMSQLManager readAllExercisesFromTable:@"ExerciseCategories"];
+    UIFont *font = [UIFont fontWithName:@"Street Humouresque" size:25];
+    UIColor *color = [UIColor blackColor];
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys:font, UITextAttributeFont, color, UITextAttributeTextColor, nil];
+    
+    
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.titleTextAttributes = attr;
+    
+    self.navigationController.navigationBar.topItem.title = @"Exercises";
 }
 
 - (void)viewDidUnload
@@ -76,8 +84,12 @@
     EMExercises *tempExercise = [pMAExercise objectAtIndex:indexPath.row];
     
     [cellLabel setText:tempExercise.pSExerciseName];
-    DBLog(@"Should change font");
-    [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:24.0]];
+    [cellLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18.0]];
+    
+    //UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"categoryCellBg.png"]];
+    //cell.backgroundView = bg;
+    //cell.alpha = 0.5;
+    
     return cell;
 }
 
@@ -120,5 +132,7 @@
     }       
     [tableView endUpdates];
 }
+
+
 
 @end
