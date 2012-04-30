@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Exercise Manager.xcodeproj">
+      location = "self:TracWet.xcodeproj">
    </FileRef>
 </Workspace>

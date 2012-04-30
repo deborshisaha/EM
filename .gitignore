@@ -5,6 +5,7 @@ build/*
 *.mode1v3
 xcuserdata
 Kal.bundle
+Exercise Manager.xcodeproj
  
 # auto git version noise
 InfoPlist.h

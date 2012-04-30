@@ -81,7 +81,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   const CGFloat kHeaderVerticalAdjust = 3.f;
   
   // Header background gradient
-  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kal_grid_background.png"]];
+  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tabbarBG.png"]];
   CGRect imageFrame = headerView.frame;
   imageFrame.origin = CGPointZero;
   backgroundView.frame = imageFrame;
@@ -94,7 +94,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
                                                kChangeMonthButtonWidth,
                                                kChangeMonthButtonHeight);
   UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:previousMonthButtonFrame];
-  [previousMonthButton setImage:[UIImage imageNamed:@"kal_left_arrow.png"] forState:UIControlStateNormal];
+  [previousMonthButton setImage:[UIImage imageNamed:@"LeftArrow.png"] forState:UIControlStateNormal];
   previousMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   previousMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [previousMonthButton addTarget:self action:@selector(showPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
@@ -110,9 +110,10 @@ static const CGFloat kMonthLabelHeight = 17.f;
   headerTitleLabel.backgroundColor = [UIColor clearColor];
   headerTitleLabel.font = [UIFont boldSystemFontOfSize:22.f];
   headerTitleLabel.textAlignment = UITextAlignmentCenter;
-  headerTitleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_header_text_fill.png"]];
-  headerTitleLabel.shadowColor = [UIColor whiteColor];
-  headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
+    headerTitleLabel.textColor = [UIColor blackColor];
+  //headerTitleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_header_text_fill.png"]];
+  headerTitleLabel.shadowColor = nil;
+  //headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
   [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
   [headerView addSubview:headerTitleLabel];
   
@@ -122,7 +123,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
                                            kChangeMonthButtonWidth,
                                            kChangeMonthButtonHeight);
   UIButton *nextMonthButton = [[UIButton alloc] initWithFrame:nextMonthButtonFrame];
-  [nextMonthButton setImage:[UIImage imageNamed:@"kal_right_arrow.png"] forState:UIControlStateNormal];
+  [nextMonthButton setImage:[UIImage imageNamed:@"RightArrow.png"] forState:UIControlStateNormal];
   nextMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   nextMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [nextMonthButton addTarget:self action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
@@ -137,10 +138,10 @@ static const CGFloat kMonthLabelHeight = 17.f;
     CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
-    weekdayLabel.font = [UIFont boldSystemFontOfSize:10.f];
+    weekdayLabel.font = [UIFont fontWithName:@"Street Humouresque" size:10.0];
     weekdayLabel.textAlignment = UITextAlignmentCenter;
-    weekdayLabel.textColor = [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:1.f];
-    weekdayLabel.shadowColor = [UIColor whiteColor];
+    weekdayLabel.textColor = [UIColor blackColor];
+    weekdayLabel.shadowColor = nil;
     weekdayLabel.shadowOffset = CGSizeMake(0.f, 1.f);
     weekdayLabel.text = [weekdayNames objectAtIndex:i];
     [headerView addSubview:weekdayLabel];
