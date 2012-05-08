@@ -30,21 +30,38 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = titleString;
-    [topicLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:17]];
+    //NSString *deviceType = [[UIDevice currentDevice] model];
+    
+    if ([[[UIDevice currentDevice] model] isEqualToString:@"iPad"]) {
+        [topicLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:22]];
+        [msgLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:20]];
+    }else{
+        [topicLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:17]];
+        [msgLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:15]];
+    }
+    
+    
+    if (iPhone) {
+        DBLog(@"iPhone");
+    }else {
+        DBLog(@"iPad");
+    }
+    
+    
     topicLabel.text = topic;
     
     NSString *msgLabelText = NULL;
     
     if ( [topic isEqualToString:@"Undo today's exercise?"]){
-        msgLabelText = [[NSString alloc] initWithString:@"Go to 'History'. Locate the exercise you did not perform or want to remove. Swipe the exercise row in any direction. A red button with 'Delete' label will appear. Click on it to remove the exercise."];
+        msgLabelText = [[NSString alloc] initWithString:@"1. Go to 'History'.\n2. Locate the exercise you did not perform or want to remove.\n3. Wipe the exercise row in any direction. A red button with 'Delete' label will appear.\n4. Click on it to remove the exercise."];
     }else if ( [topic isEqualToString:@"Delete a category?"]) {
-        msgLabelText = [[NSString alloc] initWithString:@"Swipe the category row in any direction. A red button with 'Delete' label will appear. Click on it to remove the category."];
+        msgLabelText = [[NSString alloc] initWithString:@"\n1. Swipe the category row in any direction.\n2. A red button with 'Delete' label will appear.\n3. Click on it to remove the category."];
     }else if ([topic isEqualToString:@"Delete an exercise?"]) {
-         msgLabelText = [[NSString alloc] initWithString:@"Swipe the exercise row in any direction. A red button with 'Delete' label will appear. Click on it to remove the exercise."];
+         msgLabelText = [[NSString alloc] initWithString:@"1. Swipe the exercise row in any direction.\n2. A red button with 'Delete' label will appear.\n3. Click on it to remove the exercise."];
     }else if (  [topic isEqualToString:@"To expect?"]) {
-         msgLabelText = [[NSString alloc] initWithString:@"1. This app stores all its information in the device itself. No information goes out of this device.\n2. This app only assists you to keep track of weights you have used to perform an exercise.\nThe app also stores history about exercises you have performed."];
+         msgLabelText = [[NSString alloc] initWithString:@"1. This app stores all its information in the device itself. No information goes out of this device.\n2. This app only assists you to keep track of weights you have used to perform an exercise.\n\nThe app also stores history about exercises you have performed."];
     }else if (  [topic isEqualToString:@"Is the gray color on changing weight?"]) {
-         msgLabelText = [[NSString alloc] initWithString:@"A row turns gray to indicate that you have performed that exercise on that day"];
+         msgLabelText = [[NSString alloc] initWithString:@"A row turns gray to indicate that you have performed that exercise on that day."];
     }else if ( [topic isEqualToString:@"Contact Us"]){
         // This sample can run on devices running iPhone OS 2.0 or later  
         // The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
@@ -74,7 +91,7 @@
     }else {
          msgLabelText = [[NSString alloc] initWithString:@"This app has been designed and developed by Deborshi Saha and reserves all rights."];
     }
-    [msgLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:15]];
+    
     //[msgLabel sizeToFit];
     msgLabel.text =  msgLabelText;
     //[sendFeedback.titleLabel setFont:[UIFont fontWithName:@"Street Humouresque" size:18]];

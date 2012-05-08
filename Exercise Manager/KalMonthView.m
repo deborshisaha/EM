@@ -10,8 +10,6 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
-extern const CGSize kTileSize;
-
 @implementation KalMonthView
 
 @synthesize numWeeks;
@@ -22,6 +20,16 @@ extern const CGSize kTileSize;
   if ((self = [super initWithFrame:frame])) {
     self.opaque = NO;
     self.clipsToBounds = YES;
+      
+      CGSize kTileSize ;
+      if (!iPhone) {
+          DBLog(@"iPad");
+          kTileSize.width =  46.f * 2.4;
+          kTileSize.height = 44.f * 2.13;
+      }else {
+          kTileSize.width =  46.f;
+          kTileSize.height = 44.f ;
+      }
     for (int i=0; i<6; i++) {
       for (int j=0; j<7; j++) {
         CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
@@ -58,6 +66,15 @@ extern const CGSize kTileSize;
 - (void)drawRect:(CGRect)rect
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
+    CGSize kTileSize ;
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+    }else {
+        kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
 }
@@ -100,6 +117,15 @@ extern const CGSize kTileSize;
 - (void)sizeToFit
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
+    CGSize kTileSize ;
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+    }else {
+        kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
   self.height = 1.f + kTileSize.height * numWeeks;
 }
 
