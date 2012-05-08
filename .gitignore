@@ -6,6 +6,7 @@ build/*
 xcuserdata
 Kal.bundle
 Exercise Manager.xcodeproj
+.DS_Store
  
 # auto git version noise
 InfoPlist.h
