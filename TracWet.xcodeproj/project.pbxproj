@@ -59,10 +59,11 @@
 		34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70D1527FEE5005C9283 /* kal_tile_today.png */; };
 		34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3472C70E1527FEE5005C9283 /* kal_tile.png */; };
 		34D412E2153A785200D8A52C /* EMSqliteDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D412E1153A785200D8A52C /* EMSqliteDatasource.m */; };
+		34E3724F15590C9E00288D88 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E3724D15590C9E00288D88 /* MainStoryboard_iPad.storyboard */; };
+		34E3725015590C9E00288D88 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E3724E15590C9E00288D88 /* MainStoryboard_iPhone.storyboard */; };
 		34E44C57150F2248008CEA8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C56150F2248008CEA8C /* UIKit.framework */; };
 		34E44C59150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C5B150F2248008CEA8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C5A150F2248008CEA8C /* CoreGraphics.framework */; };
-		34E44C61150F2248008CEA8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C5F150F2248008CEA8C /* InfoPlist.strings */; };
 		34E44C63150F2248008CEA8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C62150F2248008CEA8C /* main.m */; };
 		34E44C67150F2248008CEA8C /* EMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C66150F2248008CEA8C /* EMAppDelegate.m */; };
 		34E44C6D150F2248008CEA8C /* EMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C6C150F2248008CEA8C /* EMFirstViewController.m */; };
@@ -72,7 +73,6 @@
 		34E44C82150F2248008CEA8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44C58150F2248008CEA8C /* Foundation.framework */; };
 		34E44C8A150F2248008CEA8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C88150F2248008CEA8C /* InfoPlist.strings */; };
 		34E44C8D150F2249008CEA8C /* Exercise_ManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */; };
-		34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */; };
 		34E44C9B150FF429008CEA8C /* EMGenericExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */; };
 		34E44CA8150FFE8D008CEA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E44CA7150FFE8D008CEA8C /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		34E44CAB150FFF1F008CEA8C /* EMSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E44CAA150FFF1F008CEA8C /* EMSQLManager.m */; };
@@ -164,12 +164,13 @@
 		34C4D3AB154BD4F3009E0D5B /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RightArrow.png; path = "Exercise Manager/Resources/RightArrow.png"; sourceTree = "<group>"; };
 		34D412E0153A785200D8A52C /* EMSqliteDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSqliteDatasource.h; sourceTree = "<group>"; };
 		34D412E1153A785200D8A52C /* EMSqliteDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSqliteDatasource.m; sourceTree = "<group>"; };
+		34E3724D15590C9E00288D88 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPad.storyboard; path = Resources/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		34E3724E15590C9E00288D88 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPhone.storyboard; path = Resources/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		34E44C52150F2248008CEA8C /* TracWet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracWet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E44C56150F2248008CEA8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34E44C58150F2248008CEA8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34E44C5A150F2248008CEA8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		34E44C5E150F2248008CEA8C /* TracWet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TracWet-Info.plist"; sourceTree = "<group>"; };
-		34E44C60150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34E44C62150F2248008CEA8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34E44C64150F2248008CEA8C /* TracWet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TracWet-Prefix.pch"; sourceTree = "<group>"; };
 		34E44C65150F2248008CEA8C /* EMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMAppDelegate.h; sourceTree = "<group>"; };
@@ -184,7 +185,6 @@
 		34E44C89150F2248008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34E44C8B150F2248008CEA8C /* Exercise_ManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exercise_ManagerTests.h; sourceTree = "<group>"; };
 		34E44C8C150F2248008CEA8C /* Exercise_ManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Exercise_ManagerTests.m; sourceTree = "<group>"; };
-		34E44C97150F34F2008CEA8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		34E44C99150FF429008CEA8C /* EMGenericExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGenericExercisesViewController.h; sourceTree = "<group>"; };
 		34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMGenericExercisesViewController.m; sourceTree = "<group>"; };
 		34E44CA5150FFDCB008CEA8C /* EM.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = EM.sqlite; path = "Exercise Manager/EM.sqlite"; sourceTree = "<group>"; };
@@ -345,13 +345,14 @@
 				34E44C5D150F2248008CEA8C /* Supporting Files */,
 				34FBA8EC15133FDD00C84C37 /* EMNewExerciseViewController.h */,
 				34FBA8ED15133FDD00C84C37 /* EMNewExerciseViewController.m */,
-				34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */,
 				34E44C65150F2248008CEA8C /* EMAppDelegate.h */,
 				34E44C66150F2248008CEA8C /* EMAppDelegate.m */,
 				34E44C6B150F2248008CEA8C /* EMFirstViewController.h */,
 				34E44C6C150F2248008CEA8C /* EMFirstViewController.m */,
 				34E44C72150F2248008CEA8C /* EMSecondViewController.h */,
 				34E44C73150F2248008CEA8C /* EMSecondViewController.m */,
+				34E3724D15590C9E00288D88 /* MainStoryboard_iPad.storyboard */,
+				34E3724E15590C9E00288D88 /* MainStoryboard_iPhone.storyboard */,
 				34E44C99150FF429008CEA8C /* EMGenericExercisesViewController.h */,
 				34E44C9A150FF429008CEA8C /* EMGenericExercisesViewController.m */,
 				34E44CA9150FFF1F008CEA8C /* EMSQLManager.h */,
@@ -379,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				34E44C5E150F2248008CEA8C /* TracWet-Info.plist */,
-				34E44C5F150F2248008CEA8C /* InfoPlist.strings */,
 				34E44C62150F2248008CEA8C /* main.m */,
 				34E44C64150F2248008CEA8C /* TracWet-Prefix.pch */,
 			);
@@ -494,8 +494,6 @@
 				34D13596152D5A7000EEC3BD /* kal_tile_text_fill.png in Resources */,
 				34D13598152D5A7000EEC3BD /* kal_tile_today.png in Resources */,
 				34D13599152D5A7000EEC3BD /* kal_tile.png in Resources */,
-				34E44C61150F2248008CEA8C /* InfoPlist.strings in Resources */,
-				34E44C98150F34F2008CEA8C /* MainStoryboard.storyboard in Resources */,
 				34FDBBA0153758F4001C7954 /* upArrow.png in Resources */,
 				34AD32F7153767DA002F3435 /* downArrow.png in Resources */,
 				348877CD154377DF003749B6 /* exerciseDone.png in Resources */,
@@ -515,6 +513,8 @@
 				34E9A1D1154CFCDA001D90AB /* Default.png in Resources */,
 				347A6CE0154D0BB8008BAFEC /* icon.png in Resources */,
 				347A6CE5154D0C70008BAFEC /* icon@2x.png in Resources */,
+				34E3724F15590C9E00288D88 /* MainStoryboard_iPad.storyboard in Resources */,
+				34E3725015590C9E00288D88 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,28 +596,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		34E44C5F150F2248008CEA8C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				34E44C60150F2248008CEA8C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		34E44C88150F2248008CEA8C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				34E44C89150F2248008CEA8C /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		34E44C96150F34F2008CEA8C /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				34E44C97150F34F2008CEA8C /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -675,9 +659,11 @@
 				GCC_PREFIX_HEADER = "Exercise Manager/TracWet-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Exercise Manager/TracWet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				"OTHER_CFLAGS[arch=*]" = "-DDEBUGGING";
 				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
 				PRODUCT_NAME = TracWet;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -689,8 +675,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Exercise Manager/TracWet-Prefix.pch";
 				INFOPLIST_FILE = "Exercise Manager/TracWet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CPLUSPLUSFLAGS = "-DDEBUGGING=1";
 				PRODUCT_NAME = TracWet;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

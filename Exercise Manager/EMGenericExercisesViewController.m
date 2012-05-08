@@ -201,11 +201,11 @@
     }       
     [tableView endUpdates];
 }
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50.0;
+    //return 50.0;
 }
-
+*/
 - (IBAction)weightIncreased:(id)sender{
     // get required elements of the cell
     UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];

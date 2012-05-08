@@ -7,8 +7,6 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
-extern const CGSize kTileSize;
-
 @implementation KalTileView
 
 @synthesize date;
@@ -28,10 +26,23 @@ extern const CGSize kTileSize;
 
 - (void)drawRect:(CGRect)rect
 {
+    CGSize kTileSize ;
     //DBLog(@"%s",__PRETTY_FUNCTION__);
-  CGContextRef ctx = UIGraphicsGetCurrentContext();
-  CGFloat fontSize = 24.f;
-  UIFont *font = [UIFont fontWithName:@"Street Humouresque" size:24.0];
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    UIFont *font = nil;
+    CGFloat fontSize = 20.f;
+
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+        fontSize = fontSize * 2.4;
+    }else {
+        kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
+    
+  font = [UIFont fontWithName:@"Street Humouresque" size:fontSize];
   UIColor *shadowColor = nil;
   UIColor *textColor = nil;
   UIImage *markerImage = nil;
@@ -40,6 +51,7 @@ extern const CGSize kTileSize;
   CGContextTranslateCTM(ctx, 0, kTileSize.height);
   CGContextScaleCTM(ctx, 1, -1);
   
+     
   if ([self isToday] && self.selected) {
     [[[UIImage imageNamed:@"TodaysTileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
       textColor = [UIColor blackColor];
@@ -96,6 +108,17 @@ extern const CGSize kTileSize;
 {
     //DBLog(@"%s",__PRETTY_FUNCTION__);
   // realign to the grid
+    CGSize kTileSize ;
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+    }else {
+        kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
+    
+
   CGRect frame = self.frame;
   frame.origin = origin;
   frame.size = kTileSize;

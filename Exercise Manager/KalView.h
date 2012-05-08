@@ -48,6 +48,8 @@
 }
 
 @property (nonatomic, retain) id<KalViewDelegate> delegate;
+//@property (nonatomic, strong) CGFloat scaleH;
+//@property (nonatomic, strong) CGFloat scaleW;
 @property (nonatomic, readonly) UITableView *tableView;
 @property (nonatomic, readonly) KalDate *selectedDate;
 

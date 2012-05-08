@@ -17,7 +17,6 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 44.f };
 
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
@@ -42,7 +41,18 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // will be clipped off the screen, but that's fine because
   // MobileCal does the same thing.
     DBLog(@"%s",__PRETTY_FUNCTION__);
-  frame.size.width = 7 * kTileSize.width;
+    CGSize kTileSize ;
+    
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+    }else {
+       kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
+
+  frame.size.width = 7 * kTileSize.width ;
   
   if (self = [super initWithFrame:frame]) {
     self.clipsToBounds = YES;
@@ -179,7 +189,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
     DBLog(@"%s",__PRETTY_FUNCTION__);
   backMonthView.hidden = NO;
-  
+    CGSize kTileSize ;
+    if (!iPhone) {
+        DBLog(@"iPad");
+        kTileSize.width =  46.f * 2.4;
+        kTileSize.height = 44.f * 2.13;
+    }else {
+        kTileSize.width =  46.f;
+        kTileSize.height = 44.f ;
+    }
+    
+    
   // set initial positions before the slide
   if (direction == SLIDE_UP) {
     backMonthView.top = keepOneRow
@@ -268,16 +288,4 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (KalDate *)selectedDate { return selectedTile.date; }
 
-#pragma mark -
-/*
-- (void)dealloc
-{
-  [selectedTile release];
-  [highlightedTile release];
-  [frontMonthView release];
-  [backMonthView release];
-  [logic release];
-  [super dealloc];
-}
-*/
 @end

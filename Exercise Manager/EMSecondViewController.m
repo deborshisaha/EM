@@ -40,6 +40,7 @@
     self.navigationController.navigationBar.titleTextAttributes = attr;
     
     self.navigationController.navigationBar.topItem.title = @"Exercises";
+    
 }
 
 - (void)viewDidUnload
