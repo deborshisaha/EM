@@ -76,7 +76,12 @@
         kTileSize.height = 44.f ;
     }
   CGContextRef ctx = UIGraphicsGetCurrentContext();
-  CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
+    if (iPhone) {
+          CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
+    }else {
+          CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile@2x.png"] CGImage]);
+    }
+
 }
 
 - (KalTileView *)firstTileOfMonth

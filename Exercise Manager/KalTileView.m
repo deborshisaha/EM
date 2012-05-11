@@ -53,7 +53,11 @@
   
      
   if ([self isToday] && self.selected) {
-    [[[UIImage imageNamed:@"TodaysTileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+       if (iPhone) {
+           [[[UIImage imageNamed:@"TodaysTileSelected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+       }else {
+           [[[UIImage imageNamed:@"TodaysTileSelected@2x.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+       }
       textColor = [UIColor blackColor];
       shadowColor = nil;
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
@@ -64,8 +68,14 @@
     markerImage = [UIImage imageNamed:@"kal_marker_today.png"];
   } else if (self.selected) {
       // Some day selected
-    [[[UIImage imageNamed:@"TileSelected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
-      textColor = [UIColor blackColor];
+      if (iPhone) {
+          [[[UIImage imageNamed:@"TileSelected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+          textColor = [UIColor blackColor];
+      }else {
+          [[[UIImage imageNamed:@"TileSelected@2x.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+          textColor = [UIColor blackColor];
+      }
+
       shadowColor = nil;
       markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
   } else if (self.belongsToAdjacentMonth) {
